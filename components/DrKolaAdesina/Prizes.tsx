@@ -47,7 +47,13 @@ const PrizeCard = ({
   >
     {/* Badge */}
     <div>
-      <Image src={image} alt={`${place} badge`} width={50} height={50} />
+      <Image
+        className="grayscale-100"
+        src={image}
+        alt={`${place} badge`}
+        width={50}
+        height={50}
+      />
     </div>
 
     {/* Place & Amount */}
