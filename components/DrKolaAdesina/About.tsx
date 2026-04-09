@@ -19,15 +19,11 @@ export default function About() {
               />
             </div>
             {/* Name badge */}
-            <div className="bg-[#e6f7ec] rounded-md px-5 py-4">
-              <p
-                className="text-[#0f1990] font-bold text-base leading-snug"
-              >
+            <div className="bg-[#e6f7ec] font-epilogue font-semibold rounded-md px-5 py-4">
+              <p className="text-[#0f1990] font-bold text-base leading-snug">
                 Dr Kola Adesina
               </p>
-              <p
-                className="text-[#0f1990] text-xs mt-0.5"
-              >
+              <p className="text-[#0f1990] text-xs mt-0.5">
                 MD/CEO, Sahara Group
               </p>
             </div>
@@ -37,28 +33,25 @@ export default function About() {
         {/* Right – Content */}
         <div className="flex-1 flex flex-col gap-6">
           {/* Heading */}
-          <div>
-            <h2
-              className="text-3xl sm:text-4xl font-normal text-[#1e3a8a] leading-tight"
-            >
+          <div className="font-epilogue">
+            <h2 className="text-3xl sm:text-3xl font-normal text-[#1e3a8a] leading-tight">
               What Is the{" "}
-              <span className="relative inline-block font-black italic text-[#0DA04C]">
+              <span className="relative inline-block font-black text-[#0DA04C]">
                 DARE Nigeria Challenge?
                 <Image
-                  src="/icons/zap.svg"
+                  src="/icons/zapAbout.svg"
                   alt="Green squiggle"
-                  width={300}
-                  height={8}
+                  width={170}
+                  height={12}
+                  className="absolute left-1/2 -translate-x-1/2 bottom-[-8px]"
                 />
               </span>
             </h2>
 
             {/* Subheading */}
-            <p
-              className="text-gray-600 text-sm sm:text-base mt-4"
-            >
+            <p className="text-[#4a5565] text-sm sm:text-base mt-4">
               Your bold idea, backed by{" "}
-              <span className="font-bold text-gray-900">₦30 Million</span> in
+              <span className="font-bold text-[#333333]">₦30 Million</span> in
               seed funding.
             </p>
           </div>
@@ -76,15 +69,11 @@ export default function About() {
                   className="w-5 h-5 sm:w-6 sm:h-6"
                 />
               </div>
-              <div>
-                <h3
-                  className="font-bold text-gray-900 text-base mb-1"
-                >
+              <div className="font-epilogue">
+                <h3 className="font-bold text-[#333333] text-base mb-1">
                   The Opportunity
                 </h3>
-                <p
-                  className="text-gray-500 text-sm leading-relaxed"
-                >
+                <p className="text-[#4a5565] text-sm leading-relaxed">
                   Celebrating the NGM Platform&apos;s 10th Anniversary, the DARE
                   Nigeria Challenge is a structured, multi-phase competition
                   designed to find and scale Nigeria&apos;s most innovative
@@ -106,15 +95,11 @@ export default function About() {
                   className="w-5 h-5 sm:w-6 sm:h-6"
                 />
               </div>
-              <div>
-                <h3
-                  className="font-bold text-gray-900 text-base mb-1"
-                >
+              <div className="font-epilogue">
+                <h3 className="font-bold text-[#333333] text-base mb-1">
                   The Visionary Backing
                 </h3>
-                <p
-                  className="text-gray-500 text-sm leading-relaxed"
-                >
+                <p className="text-[#4a5565] text-sm leading-relaxed">
                   This initiative was born from a spontaneous ₦30,000,000 pledge
                   made live at NGM Conference 4.0 by Dr. Kola Adesina. His
                   vision is clear: to put real resources behind young Nigerians
@@ -127,7 +112,7 @@ export default function About() {
           </div>
 
           {/* CTA */}
-          <div className="mt-2">
+          <div className="mt-2 font-epilogue">
             <a
               href="#apply"
               className="inline-flex items-center gap-2 bg-[#1e3a8a] hover:bg-[#1d4ed8] text-white font-bold text-sm px-6 py-3 rounded-md transition-colors duration-200 tracking-wide shadow-md"

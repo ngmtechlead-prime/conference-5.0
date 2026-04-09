@@ -48,7 +48,7 @@ const PrizeCard = ({
     {/* Badge */}
     <div>
       <Image
-        className="grayscale-100"
+        className={place === "2nd Place" ? "grayscale-100" : ""}
         src={image}
         alt={`${place} badge`}
         width={50}
@@ -137,7 +137,7 @@ export default function Prizes() {
 
   return (
     <section className="w-full bg-white py-16 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto flex flex-col items-center gap-12">
+      <div className="max-w-6xl mx-auto flex flex-col items-center gap-12 font-epilogue">
         {/* Heading */}
         <div className="text-center max-w-xl">
           <h2 className="text-3xl sm:text-4xl font-normal text-[#1e3a8a] leading-tight mb-3">
@@ -145,19 +145,14 @@ export default function Prizes() {
             <span className="relative inline-block font-black italic text-[#16a34a]">
               Win
               <Image
-                src="/icons/zap.svg"
+                src="/icons/zapWin.svg"
                 alt="Winning"
                 width={80}
                 height={100}
               />
             </span>
           </h2>
-          <p
-            className="text-gray-500 text-sm sm:text-base leading-relaxed"
-            style={{
-              fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
-            }}
-          >
+          <p className="text-gray-500 text-sm sm:text-base leading-relaxed">
             ₦30 Million in total seed funding across 5 winners, plus invaluable
             ecosystem support to scale your innovation.
           </p>

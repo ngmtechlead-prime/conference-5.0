@@ -10,34 +10,30 @@ interface FAQItem {
 
 const faqs: FAQItem[] = [
   {
-    question: "Who is eligible to apply for the DARE Nigeria Challenge?",
+    question:
+      "What is the NGM x Dr Kola Adesina Dare Nigeria Challenge about? ",
     answer:
-      "You must be a Nigerian citizen aged 18–40, with a business at the Idea or Prototype/Early-traction stage. You must not have raised institutional funding (VC, Private Equity, or formal grants), and you can apply solo or as a team of up to 3 members.",
+      "The NGM x Dr Kola Adesina Dare Nigeria Challenge is a flagship innovative competition targeting young Nigerians with bold ideas and the drive to transform them into national impact.",
   },
   {
-    question: "What sectors does the challenge focus on?",
+    question: "Is it open to only NGM members? ",
     answer:
-      "The challenge is open to innovations in Agriculture, Health, Education, Fintech, Energy, Climate/Environment, and Social Enterprise.",
+      "The NGM x Dr Kola Adesina Dare Nigeria Challenge is a flagship innovative competition targeting young Nigerians with bold ideas and the drive to transform them into national impact.",
   },
   {
-    question: "How much funding can I win?",
+    question: "Does the idea has to be SDG-aligned?",
     answer:
-      "The total prize pool is ₦30 Million across 5 winners. 1st Place receives ₦5,000,000; 2nd Place receives ₦3,000,000; 3rd Place receives ₦1,000,000; 4th Place receives ₦1.5M; and 5th Place receives ₦1.0M — all with mentorship and network access.",
+      "The NGM x Dr Kola Adesina Dare Nigeria Challenge is a flagship innovative competition targeting young Nigerians with bold ideas and the drive to transform them into national impact.",
   },
   {
-    question: "Is the funding given all at once?",
+    question: "Is there a registration fee? ",
     answer:
-      "No. Funding is disbursed on a milestone basis. Winners receive capital in tranches tied to agreed business milestones to ensure accountability and sustainable growth.",
+      "The NGM x Dr Kola Adesina Dare Nigeria Challenge is a flagship innovative competition targeting young Nigerians with bold ideas and the drive to transform them into national impact.",
   },
   {
-    question: "Can Nigerians in the diaspora apply?",
+    question: "How do I apply?",
     answer:
-      "Yes. We welcome applications from Nigerian citizens both within Nigeria and in the diaspora, as long as all other eligibility criteria are met.",
-  },
-  {
-    question: "What happens after I apply?",
-    answer:
-      "Applications are reviewed by a panel of judges. Shortlisted candidates will be invited to pitch at NGM Conference 5.0. The top 5 SMEs will each deliver a 5-minute pitch followed by a 5-minute Q&A, for a total of 12 minutes per SME.",
+      "The NGM x Dr Kola Adesina Dare Nigeria Challenge is a flagship innovative competition targeting young Nigerians with bold ideas and the drive to transform them into national impact.",
   },
 ];
 
@@ -69,7 +65,7 @@ export default function FAQ() {
 
   return (
     <section className="w-full bg-white py-16 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-3xl mx-auto flex flex-col items-center gap-10">
+      <div className="max-w-3xl mx-auto flex flex-col items-center gap-10 font-epilogue">
         {/* Heading */}
         <div className="text-center">
           <h2 className="text-3xl sm:text-4xl font-normal text-[#1e3a8a] leading-tight mb-3">
