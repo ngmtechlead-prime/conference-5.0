@@ -51,7 +51,7 @@ export default function Footer() {
                     />
                   ),
                   label: "LinkedIn",
-                  href: "#",
+                  href: "https://www.linkedin.com/company/ngm-platform/",
                 },
                 {
                   icon: (
@@ -63,7 +63,7 @@ export default function Footer() {
                     />
                   ),
                   label: "Instagram",
-                  href: "#",
+                  href: "https://www.instagram.com/ngm.platform?igsh=MTJ3aWtocXlyZHFmdA==",
                 },
                 {
                   icon: (
@@ -75,7 +75,7 @@ export default function Footer() {
                     />
                   ),
                   label: "Twitter",
-                  href: "#",
+                  href: "https://x.com/NGM_Platform",
                 },
                 {
                   icon: (
