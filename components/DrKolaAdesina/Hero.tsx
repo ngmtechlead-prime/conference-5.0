@@ -1,16 +1,18 @@
 import Image from "next/image";
 import React from "react";
+import Wrapper from "../shared/Wrapper";
 
 export default function Hero() {
   return (
-    <section className="w-full bg-white py-12 px-4 sm:px-6 lg:px-8 flex flex-col items-center">
+    <section className="w-full bg-white py-16 px-4 sm:px-6 lg:px-8 flex flex-col items-center">
       {/* Heading */}
-      <div className="max-w-3xl w-full text-center mb-4">
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-epilogue font-normal text-[#0F1990] leading-tight">
+      <div className="max-w-3xl w-full text-center mb-2">
+        <h1 className="text-4xl sm:text-5xl lg:text-[56px] font-epilogue font-normal text-[#0F1990] leading-tight tracking-tight">
           Do You Have a{" "}
           <span className="relative inline-block font-bold font-epilogue text-[#0DA04C]">
             Bold Idea
             <Image
+              className="block -mt-2.5"
               src="/icons/zap.svg"
               alt="Green squiggle"
               width={218}
@@ -22,6 +24,7 @@ export default function Hero() {
           <span className="relative inline-block font-bold font-epilogue text-[#0DA04C]">
             Nigeria?
             <Image
+              className="block -mt-1"
               src="/icons/zap.svg"
               alt="Green squiggle"
               width={186}
@@ -32,30 +35,29 @@ export default function Hero() {
       </div>
 
       {/* Subtext */}
-      <p className="text-[#4a5565] font-epilogue text-sm sm:text-base text-center mb-6 max-w-md">
+      <p className="text-[#4a5565] font-epilogue text-sm sm:text-lg text-center mb-8">
         Apply for the NGM x Dr. Kola Adesina DARE Nigeria Challenge 2026
       </p>
 
       {/* CTA Button */}
       <a
-        href="#apply"
-        className="inline-flex items-center font-archivo gap-2 border-2 border-[#1e3a8a] text-white font-bold text-sm px-7 py-3 rounded-md bg-[#0f1990] hover:bg-blue-950  transition-all duration-200 tracking-wide mb-10"
+        href="/competitions/dare-nigeria/apply"
+        className="inline-flex items-center font-archivo gap-2 border-2 border-[#0F1990] text-white font-bold text-sm px-7 py-3 rounded-md bg-[#0f1990] hover:bg-blue-950  transition-all duration-200 tracking-wide mb-10"
       >
         Apply Now
         <Image src="/icons/rightArrow.svg" alt="right" width={16} height={16} />
       </a>
 
       {/* Hero Image */}
-      <div className="w-full max-w-5xl rounded-xl overflow-hidden shadow-lg">
+      <Wrapper className="w-full max-w-7xl">
         <Image
           src="/gallery/MuslimahPitcher.png"
           alt="NGM Pitch participant on stage"
-          className="w-full h-auto object-cover"
-          style={{ maxHeight: "520px" }}
+          className="w-full h-full object-cover rounded-xl"
           width={1140}
           height={642}
         />
-      </div>
+      </Wrapper>
     </section>
   );
 }

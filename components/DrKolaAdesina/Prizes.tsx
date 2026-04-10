@@ -1,5 +1,24 @@
 import Image from "next/image";
-import React from "react";
+import Wrapper from "../shared/Wrapper";
+import { cn } from "@/lib/utils";
+
+const WinZap = ({ className }: { className?: string }) => (
+  <svg
+    width="77"
+    height="15"
+    viewBox="0 0 77 15"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className={className}
+  >
+    <path
+      d="M1.4353 5.32933C14.8607 4.86676 28.1986 2.74055 41.5949 1.71038C43.6518 1.55221 45.4931 1.4341 47.5237 1.40145C48.0317 1.39328 49.3928 1.30338 49.0242 1.72509C48.0294 2.86316 46.5981 3.27057 45.3522 3.96119C41.2141 6.2551 42.4626 5.51183 38.2279 7.87436C35.9188 9.16262 33.2523 10.3866 31.1524 12.1847C31.025 12.2939 30.1367 13.0989 30.9572 13.3028C31.9466 13.5486 35.1877 13.1904 35.6905 13.1263C49.0379 11.4245 62.103 7.38054 75.4353 5.59413"
+      stroke="#0DA04C"
+      stroke-width="2.77644"
+      stroke-linecap="square"
+    />
+  </svg>
+);
 
 const CheckIcon = ({ color = "#16a34a" }: { color?: string }) => (
   <svg
@@ -7,7 +26,7 @@ const CheckIcon = ({ color = "#16a34a" }: { color?: string }) => (
     height="16"
     viewBox="0 0 24 24"
     fill="none"
-    className="flex-shrink-0 mt-0.5"
+    className="shrink-0 mt-0.5"
   >
     <circle cx="12" cy="12" r="11" stroke={color} strokeWidth="2" />
     <path
@@ -27,6 +46,7 @@ interface PrizeCardProps {
   featured?: boolean;
   placeColor: string;
   image: string;
+  index: number;
 }
 
 const PrizeCard = ({
@@ -36,23 +56,29 @@ const PrizeCard = ({
   featured = false,
   placeColor,
   image,
+  index,
 }: PrizeCardProps) => (
   <div
-    className={`relative flex flex-col rounded-2xl p-6 transition-transform duration-200
-      ${
-        featured
-          ? "bg-[#1e3a8a] text-white shadow-2xl scale-105 z-10"
-          : "bg-white text-gray-800 border border-gray-200 shadow-sm"
-      }`}
+    className={cn(
+      "relative flex flex-col rounded-2xl px-8 transition-transform duration-200",
+      {
+        "bg-[#0F1990] text-white shadow-2xl scale-105 z-10": featured,
+        "bg-white text-gray-800 border border-gray-200 shadow-sm": !featured,
+        "pt-8 pb-16": index === 0 || index === 2,
+        "pt-10 pb-8": index === 1,
+      },
+    )}
   >
     {/* Badge */}
     <div>
       <Image
-        className={place === "2nd Place" ? "grayscale-100" : ""}
+        className={cn("h-16 w-16", {
+          "grayscale-100": place === "2nd Place",
+        })}
         src={image}
         alt={`${place} badge`}
-        width={50}
-        height={50}
+        width={64}
+        height={64}
       />
     </div>
 
@@ -72,9 +98,9 @@ const PrizeCard = ({
     <ul className="flex flex-col gap-2.5">
       {perks.map((perk, i) => (
         <li key={i} className="flex items-start gap-2">
-          <CheckIcon color={featured ? "#86efac" : "#16a34a"} />
+          <CheckIcon color={featured ? "#D4AF37" : "#16a34a"} />
           <span
-            className={`text-sm leading-snug ${
+            className={`text-sm ${
               featured ? "text-blue-100" : "text-gray-500"
             }`}
           >
@@ -130,66 +156,35 @@ export default function Prizes() {
     },
   ];
 
-  const bottomTwo = [
-    { place: "4th Place", amount: "₦1.5M" },
-    { place: "5th Place", amount: "₦1.0M" },
-  ];
-
   return (
-    <section className="w-full bg-white py-16 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto flex flex-col items-center gap-12 font-epilogue">
+    <section className="w-full bg-white py-24 border-t border-gray-200">
+      <Wrapper className="flex flex-col items-center gap-12 font-epilogue max-w-6xl">
         {/* Heading */}
-        <div className="text-center max-w-xl">
-          <h2 className="text-3xl sm:text-4xl font-normal text-[#1e3a8a] leading-tight mb-3">
+        <div className="text-center max-w-3xl">
+          <h2 className="text-4xl sm:text-4xl font-normal text-[#0F1990] tracking-tight mb-4">
             What You Could{" "}
-            <span className="relative inline-block font-black italic text-[#16a34a]">
+            <span className="relative inline-block font-bold text-[#16a34a]">
               Win
-              <Image
-                src="/icons/zapWin.svg"
-                alt="Winning"
-                width={80}
-                height={100}
-              />
+              <WinZap className="absolute -bottom-2 -right-2" />
             </span>
           </h2>
-          <p className="text-gray-500 text-sm sm:text-base leading-relaxed">
+          <p className="text-gray-500 text-lg">
             ₦30 Million in total seed funding across 5 winners, plus invaluable
             ecosystem support to scale your innovation.
           </p>
         </div>
 
         {/* Top 3 Cards */}
-        <div className="w-full grid grid-cols-1 sm:grid-cols-3 gap-6 items-center">
-          {topThree.map((prize) => (
-            <PrizeCard key={prize.place} {...prize} />
+        <div className="w-full grid grid-cols-1 sm:grid-cols-3 gap-8 items-end">
+          {topThree.map((prize, idx) => (
+            <PrizeCard key={prize.place} index={idx} {...prize} />
           ))}
-        </div>
-
-        {/* 4th & 5th Place Banner */}
-        <div className="w-full bg-white border border-gray-200 rounded-2xl shadow-sm px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-4 divide-y sm:divide-y-0 sm:divide-x divide-gray-100">
-          {bottomTwo.map(({ place, amount }) => (
-            <div
-              key={place}
-              className="flex items-center gap-3 w-full sm:w-auto justify-center py-2 sm:py-0 sm:px-10"
-            >
-              <span className="bg-[#f3f4f6] rounded-lg p-2.5 text-[#4a5565] font-bold text-sm">
-                {place}
-              </span>
-              <span className="text-gray-900 font-bold text-lg">{amount}</span>
-            </div>
-          ))}
-          <div className="flex items-center gap-2 w-full sm:w-auto justify-center py-2 sm:py-0 sm:px-10">
-            <CheckIcon color="#16a34a" />
-            <span className="text-gray-500 text-sm font-medium">
-              Plus Mentorship &amp; Network Access
-            </span>
-          </div>
         </div>
 
         {/* CTA */}
         <a
-          href="#apply"
-          className="inline-flex items-center gap-2 bg-[#1e3a8a] hover:bg-[#1d4ed8] text-white font-bold text-sm px-7 py-3 rounded-md transition-colors duration-200 tracking-wide shadow-md"
+          href="/competitions/dare-nigeria/apply"
+          className="inline-flex items-center gap-2 bg-[#0F1990] hover:bg-[#1d4ed8] text-white font-bold text-sm px-7 py-3 rounded-md transition-colors duration-200 tracking-wide shadow-md"
         >
           Apply Now
           <Image
@@ -199,7 +194,7 @@ export default function Prizes() {
             height={16}
           />
         </a>
-      </div>
+      </Wrapper>
     </section>
   );
 }

@@ -8,7 +8,7 @@ interface CriteriaCardProps {
 }
 
 const CriteriaCard = ({ icon, title, description }: CriteriaCardProps) => (
-  <div className="bg-[#3347b0]/30  border border-[#ffffff]/[0.1] rounded-2xl p-6 flex flex-col gap-4  transition-colors duration-200">
+  <div className="bg-[#3347b0]/30  border border-[#ffffff]/[0.1] rounded-2xl p-8 flex flex-col gap-4  transition-colors duration-200">
     <div className="w-10 h-10 flex items-center justify-center">
       <Image src={icon} alt={title} width={32} height={32} />
     </div>
@@ -90,18 +90,18 @@ export default function WhoCanApply() {
 
   return (
     <section
-      className="w-full py-16 px-4 sm:px-6 lg:px-8 font-epilogue"
+      className="w-full py-24 px-4 sm:px-6 lg:px-8 font-epilogue"
       style={{
         backgroundImage: `url("/gallery/WhoCanApplyBg.png")`,
       }}
     >
       <div className="max-w-5xl mx-auto flex flex-col items-center gap-10">
         {/* Heading */}
-        <div className="text-center max-w-xl">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white leading-tight mb-4">
+        <div className="text-center max-w-3xl">
+          <h2 className="text-3xl sm:text-5xl font-bold text-white leading-tight mb-6">
             Who Can Apply?
           </h2>
-          <p className="text-blue-200 font-normal text-[18px] sm:text-base leading-relaxed">
+          <p className="text-[#DBEAFE] font-normal text-lg text-center">
             We are looking for Nigeria&apos;s brightest young minds. Review the
             criteria below to ensure your idea qualifies for the ₦30M DARE
             Nigeria Challenge.
@@ -109,7 +109,7 @@ export default function WhoCanApply() {
         </div>
 
         {/* Cards Grid */}
-        <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="mt-16 w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {criteria.map((item) => (
             <CriteriaCard key={item.title} {...item} />
           ))}

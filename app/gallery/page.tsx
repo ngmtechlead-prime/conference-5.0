@@ -1,7 +1,5 @@
 "use client";
 import { useState } from "react";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 
 const tabs = ["NGM 1.0", "NGM 2.0", "NGM 3.0", "NGM 4.0"];
 
@@ -12,8 +10,6 @@ export default function GalleryPage() {
 
   return (
     <div className="flex flex-col min-h-screen font-sans">
-      <Navbar />
-
       <section className="flex flex-col items-center text-center py-16 px-4">
         <p className="text-xs font-semibold tracking-[0.3em] text-gray-500 uppercase mb-4">
           Gallery
@@ -66,46 +62,94 @@ export default function GalleryPage() {
         <div className="grid grid-cols-3 gap-3">
           {/* Row 1: large left + 2 stacked right */}
           <div className="col-span-2 row-span-2 overflow-hidden rounded-lg bg-gray-200 min-h-[300px]">
-            <img src="https://picsum.photos/seed/10/800/600" alt="NGM moment" className="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
+            <img
+              src="https://picsum.photos/seed/10/800/600"
+              alt="NGM moment"
+              className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+            />
           </div>
           <div className="overflow-hidden rounded-lg bg-gray-200 aspect-[4/3]">
-            <img src="https://picsum.photos/seed/11/400/300" alt="NGM moment" className="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
+            <img
+              src="https://picsum.photos/seed/11/400/300"
+              alt="NGM moment"
+              className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+            />
           </div>
           <div className="overflow-hidden rounded-lg bg-gray-200 aspect-[4/3]">
-            <img src="https://picsum.photos/seed/12/400/300" alt="NGM moment" className="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
+            <img
+              src="https://picsum.photos/seed/12/400/300"
+              alt="NGM moment"
+              className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+            />
           </div>
 
           {/* Row 2: 3 equal */}
           <div className="overflow-hidden rounded-lg bg-gray-200 aspect-[4/3]">
-            <img src="https://picsum.photos/seed/13/400/300" alt="NGM moment" className="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
+            <img
+              src="https://picsum.photos/seed/13/400/300"
+              alt="NGM moment"
+              className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+            />
           </div>
           <div className="overflow-hidden rounded-lg bg-gray-200 aspect-[4/3]">
-            <img src="https://picsum.photos/seed/14/400/300" alt="NGM moment" className="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
+            <img
+              src="https://picsum.photos/seed/14/400/300"
+              alt="NGM moment"
+              className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+            />
           </div>
           <div className="overflow-hidden rounded-lg bg-gray-200 aspect-[4/3]">
-            <img src="https://picsum.photos/seed/15/400/300" alt="NGM moment" className="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
+            <img
+              src="https://picsum.photos/seed/15/400/300"
+              alt="NGM moment"
+              className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+            />
           </div>
 
           {/* Row 3: large left + 2 stacked right */}
           <div className="col-span-2 row-span-2 overflow-hidden rounded-lg bg-gray-200 min-h-[300px]">
-            <img src="https://picsum.photos/seed/16/800/600" alt="NGM moment" className="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
+            <img
+              src="https://picsum.photos/seed/16/800/600"
+              alt="NGM moment"
+              className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+            />
           </div>
           <div className="overflow-hidden rounded-lg bg-gray-200 aspect-[4/3]">
-            <img src="https://picsum.photos/seed/17/400/300" alt="NGM moment" className="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
+            <img
+              src="https://picsum.photos/seed/17/400/300"
+              alt="NGM moment"
+              className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+            />
           </div>
           <div className="overflow-hidden rounded-lg bg-gray-200 aspect-[4/3]">
-            <img src="https://picsum.photos/seed/18/400/300" alt="NGM moment" className="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
+            <img
+              src="https://picsum.photos/seed/18/400/300"
+              alt="NGM moment"
+              className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+            />
           </div>
 
           {/* Row 4: 3 equal */}
           <div className="overflow-hidden rounded-lg bg-gray-200 aspect-[4/3]">
-            <img src="https://picsum.photos/seed/19/400/300" alt="NGM moment" className="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
+            <img
+              src="https://picsum.photos/seed/19/400/300"
+              alt="NGM moment"
+              className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+            />
           </div>
           <div className="overflow-hidden rounded-lg bg-gray-200 aspect-[4/3]">
-            <img src="https://picsum.photos/seed/20/400/300" alt="NGM moment" className="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
+            <img
+              src="https://picsum.photos/seed/20/400/300"
+              alt="NGM moment"
+              className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+            />
           </div>
           <div className="overflow-hidden rounded-lg bg-gray-200 aspect-[4/3]">
-            <img src="https://picsum.photos/seed/21/400/300" alt="NGM moment" className="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
+            <img
+              src="https://picsum.photos/seed/21/400/300"
+              alt="NGM moment"
+              className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+            />
           </div>
         </div>
       </section>
@@ -127,8 +171,8 @@ export default function GalleryPage() {
                 currentPage === page
                   ? "bg-[#1e2d8f] text-white"
                   : page === "..."
-                  ? "text-gray-400 cursor-default"
-                  : "text-gray-600 hover:text-[#1e2d8f]"
+                    ? "text-gray-400 cursor-default"
+                    : "text-gray-600 hover:text-[#1e2d8f]"
               }`}
             >
               {page}
@@ -167,16 +211,15 @@ export default function GalleryPage() {
           <p className="text-blue-200 text-sm mb-8">
             Relive some of the best moments from the NGM Conferences
           </p>
-          
-           <a href="#"
+
+          <a
+            href="#"
             className="bg-[#22c55e] text-white px-8 py-3 rounded-md font-semibold hover:bg-green-600 transition-colors"
           >
             Buy Tickets
           </a>
         </div>
       </section>
-
-      <Footer />
     </div>
   );
 }

@@ -22,9 +22,9 @@ const navColumns = [
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-white border-t border-gray-100">
+    <footer className="w-full bg-white border-t border-gray-100 pt-24">
       {/* Main footer body */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         <div className="flex flex-col lg:flex-row gap-10 lg:gap-16">
           {/* Brand column */}
           <div className="flex-shrink-0 flex flex-col gap-5 lg:w-56">
@@ -94,7 +94,7 @@ export default function Footer() {
                   key={label}
                   href={href}
                   aria-label={label}
-                  className="text-gray-400 hover:text-[#1e3a8a] transition-colors duration-150"
+                  className="text-gray-400 hover:text-[#0F1990] transition-colors duration-150"
                 >
                   {icon}
                 </a>
@@ -114,7 +114,7 @@ export default function Footer() {
                     <li key={link}>
                       <a
                         href="#"
-                        className="text-gray-500 text-sm hover:text-[#1e3a8a] transition-colors duration-150 leading-snug"
+                        className="text-gray-500 text-sm hover:text-[#0F1990] transition-colors duration-150 leading-snug"
                       >
                         {link}
                       </a>
@@ -128,8 +128,8 @@ export default function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div className="border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-2">
+      <div className="pb-12">
+        <div className="max-w-7xl mx-auto border-t border-gray-100 pt-8 px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-2">
           <p className="text-gray-400 text-xs">
             © 2026 Nasir Giwa Mentorship. All Rights Reserved
           </p>
@@ -138,7 +138,7 @@ export default function Footer() {
               <a
                 key={item}
                 href="#"
-                className="text-gray-500 text-xs hover:text-[#1e3a8a] transition-colors duration-150"
+                className="text-gray-500 text-xs hover:text-[#0F1990] transition-colors duration-150"
               >
                 {item}
               </a>

@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import React, { useState } from "react";
+import Wrapper from "../shared/Wrapper";
 
 interface FAQItem {
   question: string;
@@ -47,7 +48,7 @@ function ChevronIcon({ open }: { open: boolean }) {
       viewBox="0 0 24 24"
       stroke="currentColor"
       strokeWidth={2.5}
-      className={`flex-shrink-0 transition-transform duration-300 text-[#1e3a8a] ${
+      className={`flex-shrink-0 transition-transform duration-300 text-[#0F1990] ${
         open ? "rotate-180" : "rotate-0"
       }`}
     >
@@ -55,6 +56,24 @@ function ChevronIcon({ open }: { open: boolean }) {
     </svg>
   );
 }
+
+const QuestionZap = ({ className }: { className?: string }) => (
+  <svg
+    width="215"
+    height="15"
+    viewBox="0 0 215 15"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className={className}
+  >
+    <path
+      d="M1.40479 5.32958C39.8668 4.867 78.0779 2.74079 116.457 1.71063C122.349 1.55245 127.624 1.43434 133.442 1.40169C134.897 1.39352 138.796 1.30362 137.74 1.72534C134.891 2.86341 130.79 3.27081 127.221 3.96144C115.366 6.25534 118.942 5.51208 106.811 7.87461C100.195 9.16286 92.5563 10.3869 86.5403 12.185C86.1752 12.2941 83.6304 13.0991 85.9811 13.303C88.8156 13.5489 98.1008 13.1906 99.5413 13.1265C137.78 11.4247 175.21 7.38078 213.405 5.59438"
+      stroke="#0DA04C"
+      stroke-width="2.77644"
+      stroke-linecap="square"
+    />
+  </svg>
+);
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -64,18 +83,18 @@ export default function FAQ() {
   };
 
   return (
-    <section className="w-full bg-white py-16 px-4 sm:px-6 lg:px-8">
+    <Wrapper className="w-full bg-white py-24 px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl mx-auto flex flex-col items-center gap-10 font-epilogue">
         {/* Heading */}
         <div className="text-center">
-          <h2 className="text-3xl sm:text-4xl font-normal text-[#1e3a8a] leading-tight mb-3">
+          <h2 className="text-4xl sm:text-5xl font-normal text-[#0F1990] tracking-tight mb-4">
             Frequently Asked{" "}
-            <span className="relative inline-block font-black italic text-[#16a34a]">
+            <span className="relative inline-block font-bold text-[#16a34a]">
               Questions
-              <Image src="/icons/zap.svg" alt="FAQ" width={150} height={150} />
+              <QuestionZap className="absolute -bottom-2 left-0 w-full h-auto" />
             </span>
           </h2>
-          <p className="text-gray-400 text-sm sm:text-base mt-2">
+          <p className="text-[#4A5565] text-lg mt-2">
             Everything you need to know about transforming your backyard.
           </p>
         </div>
@@ -117,6 +136,6 @@ export default function FAQ() {
           })}
         </div>
       </div>
-    </section>
+    </Wrapper>
   );
 }
