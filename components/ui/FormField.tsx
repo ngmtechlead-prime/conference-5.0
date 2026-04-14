@@ -1,6 +1,8 @@
 "use client";
 
+import React from "react";
 import { cn } from "@/lib/utils";
+import { uploadFileToR2 } from "@/lib/upload";
 import { FieldError } from "react-hook-form";
 
 interface FormFieldProps {
@@ -233,6 +235,9 @@ interface FileUploadProps {
   fileName?: string;
   onFileSelect: (file: File | null) => void;
   error?: boolean;
+  competition?: string;
+  fieldName?: string;
+  onFileKeyChange?: (key: string | null) => void;
 }
 
 export function FileUpload({
@@ -242,27 +247,72 @@ export function FileUpload({
   fileName,
   onFileSelect,
   error,
+  competition,
+  fieldName,
+  onFileKeyChange,
 }: FileUploadProps) {
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const [isUploading, setIsUploading] = React.useState(false);
+  const [uploadError, setUploadError] = React.useState<string | null>(null);
+
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0] || null;
-    onFileSelect(file);
+
+    if (!file) {
+      onFileSelect(null);
+      onFileKeyChange?.(null);
+      return;
+    }
+
+    // If competition and fieldName are provided, upload to R2
+    if (competition && fieldName) {
+      setIsUploading(true);
+      setUploadError(null);
+
+      try {
+        const fileKey = await uploadFileToR2({
+          file,
+          competition,
+          fieldName,
+        });
+
+        onFileSelect(file);
+        onFileKeyChange?.(fileKey);
+      } catch (err) {
+        setUploadError(err instanceof Error ? err.message : "Upload failed");
+        onFileSelect(null);
+        onFileKeyChange?.(null);
+      } finally {
+        setIsUploading(false);
+      }
+    } else {
+      // Fallback to just storing the file locally
+      onFileSelect(file);
+    }
   };
 
   return (
     <div
       className={cn(
         "border-2 border-dashed rounded-lg p-6 text-center transition-colors",
-        error
+        error || uploadError
           ? "border-red-300 bg-red-50"
           : "border-gray-300 hover:border-gray-400",
       )}
     >
-      {fileName ? (
+      {isUploading ? (
+        <div className="flex flex-col items-center gap-2">
+          <div className="w-8 h-8 border-2 border-[#0F1990] border-t-transparent rounded-full animate-spin" />
+          <p className="text-sm text-gray-600">Uploading...</p>
+        </div>
+      ) : fileName ? (
         <div className="space-y-2">
           <p className="text-sm text-gray-700">{fileName}</p>
           <button
             type="button"
-            onClick={() => onFileSelect(null)}
+            onClick={() => {
+              onFileSelect(null);
+              onFileKeyChange?.(null);
+            }}
             className="text-sm text-red-500 hover:text-red-700"
           >
             Remove
@@ -292,12 +342,16 @@ export function FileUpload({
             </p>
             {hint && <p className="text-xs text-gray-500">{hint}</p>}
             {maxSize && <p className="text-xs text-gray-400">Max {maxSize}</p>}
+            {uploadError && (
+              <p className="text-xs text-red-500">{uploadError}</p>
+            )}
           </div>
           <input
             type="file"
             accept={accept}
             onChange={handleFileChange}
             className="hidden"
+            disabled={isUploading}
           />
         </label>
       )}

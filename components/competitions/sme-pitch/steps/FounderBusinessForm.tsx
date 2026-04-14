@@ -55,6 +55,7 @@ export default function FounderBusinessForm({
         phoneNumber: "",
         socialMediaUrl: "",
         governmentIdName: "",
+        governmentIdKey: "",
       },
       businessInfo: {
         isRegistered: undefined,
@@ -298,6 +299,12 @@ export default function FounderBusinessForm({
                   onFileSelect={(file) => {
                     field.onChange(file?.name || "");
                   }}
+                  onFileKeyChange={(key) => {
+                    control._formValues.personalInfo.governmentIdKey =
+                      key || "";
+                  }}
+                  competition="sme-pitch"
+                  fieldName="governmentId"
                   error={!!errors.personalInfo?.governmentIdName}
                 />
               )}

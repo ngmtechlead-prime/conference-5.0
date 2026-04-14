@@ -42,11 +42,16 @@ export default function FundingMediaForm({
       },
       documents: {
         innovationSummaryName: "",
+        innovationSummaryKey: "",
         pitchDeckName: "",
+        pitchDeckKey: "",
         prototypeDemoName: "",
+        prototypeDemoKey: "",
         videoPitchName: "",
+        videoPitchKey: "",
         videoPitchUrl: "",
         ticketEvidenceName: "",
+        ticketEvidenceKey: "",
       },
       ...defaultValues,
     },
@@ -179,10 +184,16 @@ export default function FundingMediaForm({
               render={({ field }) => (
                 <FileUpload
                   accept=".pdf,.doc,.docx"
-                  maxSize="5MB"
+                  maxSize="10MB"
                   hint="A concise written overview: problem, solution, market, team, and funding ask. (PDF, DOC, DOCX)"
                   fileName={field.value}
                   onFileSelect={(file) => field.onChange(file?.name || "")}
+                  onFileKeyChange={(key) => {
+                    control._formValues.documents.innovationSummaryKey =
+                      key || "";
+                  }}
+                  competition="dare-nigeria"
+                  fieldName="innovationSummary"
                   error={!!errors.documents?.innovationSummaryName}
                 />
               )}
@@ -203,6 +214,11 @@ export default function FundingMediaForm({
                   hint="Slides covering your idea, market, team, financials, and ask (if prepared). Max 15MB"
                   fileName={field.value}
                   onFileSelect={(file) => field.onChange(file?.name || "")}
+                  onFileKeyChange={(key) => {
+                    control._formValues.documents.pitchDeckKey = key || "";
+                  }}
+                  competition="dare-nigeria"
+                  fieldName="pitchDeck"
                   error={!!errors.documents?.pitchDeckName}
                 />
               )}
@@ -223,6 +239,11 @@ export default function FundingMediaForm({
                   hint="Photos, screenshots, mockups, or documentation. Supported: PDF, JPG, PNG. Max 10MB"
                   fileName={field.value}
                   onFileSelect={(file) => field.onChange(file?.name || "")}
+                  onFileKeyChange={(key) => {
+                    control._formValues.documents.prototypeDemoKey = key || "";
+                  }}
+                  competition="dare-nigeria"
+                  fieldName="prototypeDemo"
                   error={!!errors.documents?.prototypeDemoName}
                 />
               )}
@@ -244,6 +265,11 @@ export default function FundingMediaForm({
                   hint="Record yourself discussing or presenting pitch. A smartphone MP4, MOV. Max 100MB"
                   fileName={field.value}
                   onFileSelect={(file) => field.onChange(file?.name || "")}
+                  onFileKeyChange={(key) => {
+                    control._formValues.documents.videoPitchKey = key || "";
+                  }}
+                  competition="dare-nigeria"
+                  fieldName="videoPitch"
                   error={!!errors.documents?.videoPitchName}
                 />
               )}
@@ -277,6 +303,11 @@ export default function FundingMediaForm({
                   maxSize="5MB"
                   fileName={field.value}
                   onFileSelect={(file) => field.onChange(file?.name || "")}
+                  onFileKeyChange={(key) => {
+                    control._formValues.documents.ticketEvidenceKey = key || "";
+                  }}
+                  competition="dare-nigeria"
+                  fieldName="ticketEvidence"
                   error={!!errors.documents?.ticketEvidenceName}
                 />
               )}

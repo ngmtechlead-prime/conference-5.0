@@ -11,6 +11,7 @@ import InnovationPitchForm from "@/components/competitions/dare-nigeria/steps/In
 import FundingMediaForm from "@/components/competitions/dare-nigeria/steps/FundingMediaForm";
 import CommitmentForm from "@/components/competitions/dare-nigeria/steps/CommitmentForm";
 import { useDareNigeriaForm } from "@/hooks/useDareNigeriaForm";
+import { submitDareNigeriaApplication } from "@/lib/api/submissions";
 import type {
   Step1FormData,
   Step2FormData,
@@ -62,12 +63,28 @@ export default function DareNigeriaApplyPage() {
     try {
       updateStep4(data);
 
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      const finalFormData = {
+        step1: formData.step1,
+        step2: formData.step2,
+        step3: formData.step3,
+        step4: data,
+      };
+
+      const result = await submitDareNigeriaApplication(finalFormData);
+
+      if (!result.success) {
+        throw new Error(result.error);
+      }
 
       clearFormData();
       router.push("/competitions/dare-nigeria/apply/success");
     } catch (error) {
       console.error("Error submitting application:", error);
+      alert(
+        error instanceof Error
+          ? error.message
+          : "Failed to submit application. Please try again.",
+      );
       setIsSubmitting(false);
     }
   };
@@ -81,11 +98,9 @@ export default function DareNigeriaApplyPage() {
   if (isLoading) {
     return (
       <div className="flex flex-col min-h-screen">
-        <Navbar />
         <main className="flex-1 flex items-center justify-center">
           <div className="animate-pulse text-gray-500">Loading...</div>
         </main>
-        <Footer />
       </div>
     );
   }

@@ -23,7 +23,9 @@ export const personalInfoSchema = z.object({
   nationality: z.string().min(1, "Please select a nationality"),
   stateOfOrigin: z.string().min(1, "Please select state of origin"),
   maritalStatus: z.string().min(1, "Please select marital status"),
-  residentialAddress: z.string().min(10, "Please enter your full residential address"),
+  residentialAddress: z
+    .string()
+    .min(10, "Please enter your full residential address"),
   stateOfResidence: z.string().min(1, "Please select state of residence"),
   email: z.string().email("Please enter a valid email address"),
   phoneNumber: z.string().min(10, "Please enter a valid phone number"),
@@ -33,13 +35,16 @@ export const personalInfoSchema = z.object({
     .optional()
     .or(z.literal("")),
   governmentIdName: z.string().optional(),
+  governmentIdKey: z.string().optional(),
 });
 
 export const businessInfoSchema = z.object({
   isRegistered: z.enum(["yes", "in_progress", "no"], {
     message: "Please select an option",
   }),
-  businessName: z.string().min(2, "Business name must be at least 2 characters"),
+  businessName: z
+    .string()
+    .min(2, "Business name must be at least 2 characters"),
   ownershipStatus: z.string().min(1, "Please select ownership status"),
   cacNumber: z.string().optional(),
   industrySector: z.string().min(1, "Please select industry/sector"),
@@ -109,15 +114,21 @@ export const step2Schema = z.object({
 
 export const documentsSchema = z.object({
   businessRegistrationName: z.string().optional(),
+  businessRegistrationKey: z.string().optional(),
   businessProfileName: z.string().optional(),
+  businessProfileKey: z.string().optional(),
   financialStatementsName: z.string().optional(),
+  financialStatementsKey: z.string().optional(),
   businessSummaryName: z.string().optional(),
+  businessSummaryKey: z.string().optional(),
   videoPitchUrl: z
     .string()
     .url("Please enter a valid URL")
     .min(1, "Video pitch link is required"),
   ticketEvidenceName: z.string().optional(),
+  ticketEvidenceKey: z.string().optional(),
   governmentIdName: z.string().optional(),
+  governmentIdKey: z.string().optional(),
 });
 
 export const step3Schema = z.object({

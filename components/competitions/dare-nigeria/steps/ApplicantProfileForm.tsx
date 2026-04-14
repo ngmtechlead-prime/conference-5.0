@@ -47,6 +47,7 @@ export default function ApplicantProfileForm({
         phoneNumber: "",
         linkedinUrl: "",
         governmentIdName: "",
+        governmentIdKey: "",
       },
       education: {
         highestEducation: "",
@@ -247,6 +248,12 @@ export default function ApplicantProfileForm({
                   onFileSelect={(file) => {
                     field.onChange(file?.name || "");
                   }}
+                  onFileKeyChange={(key) => {
+                    control._formValues.personalInfo.governmentIdKey =
+                      key || "";
+                  }}
+                  competition="dare-nigeria"
+                  fieldName="governmentId"
                   error={!!errors.personalInfo?.governmentIdName}
                 />
               )}

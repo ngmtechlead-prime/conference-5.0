@@ -27,12 +27,18 @@ export default function DocumentsMediaForm({
     defaultValues: {
       documents: {
         businessRegistrationName: "",
+        businessRegistrationKey: "",
         businessProfileName: "",
+        businessProfileKey: "",
         financialStatementsName: "",
+        financialStatementsKey: "",
         businessSummaryName: "",
+        businessSummaryKey: "",
         videoPitchUrl: "",
         ticketEvidenceName: "",
+        ticketEvidenceKey: "",
         governmentIdName: "",
+        governmentIdKey: "",
       },
       ...defaultValues,
     },
@@ -65,6 +71,12 @@ export default function DocumentsMediaForm({
                   onFileSelect={(file) => {
                     field.onChange(file?.name || "");
                   }}
+                  onFileKeyChange={(key) => {
+                    control._formValues.documents.businessRegistrationKey =
+                      key || "";
+                  }}
+                  competition="sme-pitch"
+                  fieldName="businessRegistration"
                   error={!!errors.documents?.businessRegistrationName}
                 />
               )}
@@ -88,6 +100,12 @@ export default function DocumentsMediaForm({
                   onFileSelect={(file) => {
                     field.onChange(file?.name || "");
                   }}
+                  onFileKeyChange={(key) => {
+                    control._formValues.documents.businessProfileKey =
+                      key || "";
+                  }}
+                  competition="sme-pitch"
+                  fieldName="businessProfile"
                   error={!!errors.documents?.businessProfileName}
                 />
               )}
@@ -111,6 +129,12 @@ export default function DocumentsMediaForm({
                   onFileSelect={(file) => {
                     field.onChange(file?.name || "");
                   }}
+                  onFileKeyChange={(key) => {
+                    control._formValues.documents.financialStatementsKey =
+                      key || "";
+                  }}
+                  competition="sme-pitch"
+                  fieldName="financialStatements"
                   error={!!errors.documents?.financialStatementsName}
                 />
               )}
@@ -134,6 +158,12 @@ export default function DocumentsMediaForm({
                   onFileSelect={(file) => {
                     field.onChange(file?.name || "");
                   }}
+                  onFileKeyChange={(key) => {
+                    control._formValues.documents.businessSummaryKey =
+                      key || "";
+                  }}
+                  competition="sme-pitch"
+                  fieldName="businessSummary"
                   error={!!errors.documents?.businessSummaryName}
                 />
               )}
@@ -187,6 +217,11 @@ export default function DocumentsMediaForm({
                   onFileSelect={(file) => {
                     field.onChange(file?.name || "");
                   }}
+                  onFileKeyChange={(key) => {
+                    control._formValues.documents.ticketEvidenceKey = key || "";
+                  }}
+                  competition="sme-pitch"
+                  fieldName="ticketEvidence"
                   error={!!errors.documents?.ticketEvidenceName}
                 />
               )}
@@ -210,6 +245,11 @@ export default function DocumentsMediaForm({
                   onFileSelect={(file) => {
                     field.onChange(file?.name || "");
                   }}
+                  onFileKeyChange={(key) => {
+                    control._formValues.documents.governmentIdKey = key || "";
+                  }}
+                  competition="sme-pitch"
+                  fieldName="governmentId"
                   error={!!errors.documents?.governmentIdName}
                 />
               )}

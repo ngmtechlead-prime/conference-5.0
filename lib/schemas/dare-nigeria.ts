@@ -31,6 +31,7 @@ export const personalInfoSchema = z.object({
     .optional()
     .or(z.literal("")),
   governmentIdName: z.string().optional(),
+  governmentIdKey: z.string().optional(),
 });
 
 export const educationSchema = z.object({
@@ -137,15 +138,20 @@ export const fundingSchema = z.object({
 
 export const documentsSchema = z.object({
   innovationSummaryName: z.string().optional(),
+  innovationSummaryKey: z.string().optional(),
   pitchDeckName: z.string().optional(),
+  pitchDeckKey: z.string().optional(),
   prototypeDemoName: z.string().optional(),
+  prototypeDemoKey: z.string().optional(),
   videoPitchName: z.string().optional(),
+  videoPitchKey: z.string().optional(),
   videoPitchUrl: z
     .string()
     .url("Please enter a valid URL")
     .optional()
     .or(z.literal("")),
   ticketEvidenceName: z.string().optional(),
+  ticketEvidenceKey: z.string().optional(),
 });
 
 export const step3Schema = z.object({

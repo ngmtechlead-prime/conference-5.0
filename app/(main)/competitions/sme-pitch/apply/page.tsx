@@ -8,6 +8,7 @@ import DocumentsMediaForm from "@/components/competitions/sme-pitch/steps/Docume
 import DeclarationForm from "@/components/competitions/sme-pitch/steps/DeclarationForm";
 import SuccessPage from "@/components/competitions/sme-pitch/SuccessPage";
 import { LOCAL_STORAGE_KEY } from "@/lib/constants/sme-pitch";
+import { submitSMEPitchApplication } from "@/lib/api/submissions";
 import type {
   Step1FormData,
   Step2FormData,
@@ -79,18 +80,21 @@ export default function SMEPitchApplyPage() {
     const finalData = { ...formData, step4: data };
 
     try {
-      // TODO: Submit to API
-      console.log("Submitting application:", finalData);
+      const result = await submitSMEPitchApplication(finalData);
 
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      if (!result.success) {
+        throw new Error(result.error);
+      }
 
-      // Clear localStorage on successful submission
       localStorage.removeItem(LOCAL_STORAGE_KEY);
       setIsSubmitted(true);
     } catch (error) {
       console.error("Submission failed:", error);
-      alert("Failed to submit application. Please try again.");
+      alert(
+        error instanceof Error
+          ? error.message
+          : "Failed to submit application. Please try again.",
+      );
     } finally {
       setIsSubmitting(false);
     }
