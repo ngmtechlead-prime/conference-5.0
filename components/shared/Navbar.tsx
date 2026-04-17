@@ -6,8 +6,8 @@ import Wrapper from "./Wrapper";
 import Link from "next/link";
 
 const navLinks = [
-  { name: "Speakers" },
-  { name: "Agenda" },
+  { name: "Speakers", href: "/speakers" },
+  { name: "Agenda", href: "/agenda" },
   {
     name: "Competitions",
     hasDropdown: true,
@@ -20,7 +20,7 @@ const navLinks = [
     ],
   },
   { name: "Gallery", href: "/gallery" },
-  { name: "Contact" },
+  { name: "Contact", href: "/contact" },
 ];
 
 function HamburgerIcon({ open }: { open: boolean }) {
@@ -101,9 +101,7 @@ export default function Navbar() {
             {navLinks.map((link) => (
               <div key={link.name} className="relative">
                 <a
-                  href={
-                    link.hasDropdown ? undefined : `${link.name.toLowerCase()}`
-                  }
+                  href={link.hasDropdown ? undefined : link.href}
                   onClick={() => {
                     if (link.hasDropdown) {
                       setOpenDropdown(
@@ -184,9 +182,7 @@ export default function Navbar() {
           {navLinks.map((link) => (
             <div key={link.name}>
               <a
-                href={
-                  link.hasDropdown ? undefined : `#${link.name.toLowerCase()}`
-                }
+                href={link.hasDropdown ? undefined : link.href}
                 onClick={() => {
                   if (link.hasDropdown) {
                     setOpenDropdown(
