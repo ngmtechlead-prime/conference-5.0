@@ -9,7 +9,7 @@ export async function middleware(request: NextRequest) {
   if (pathname.startsWith("/admin") && pathname !== "/admin/login") {
     const token = await getToken({
       req: request,
-      secret: process.env.NEXTAUTH_SECRET,
+      secret: process.env.AUTH_SECRET,
     });
 
     if (!token || token.role !== "ADMIN") {
@@ -23,7 +23,7 @@ export async function middleware(request: NextRequest) {
   if (pathname.startsWith("/api/admin")) {
     const token = await getToken({
       req: request,
-      secret: process.env.NEXTAUTH_SECRET,
+      secret: process.env.AUTH_SECRET,
     });
 
     if (!token || token.role !== "ADMIN") {
