@@ -7,7 +7,7 @@ import { emailLogger } from "@/lib/logger";
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 const FROM_EMAIL =
-  process.env.RESEND_FROM_EMAIL || "NGM Conference <noreply@ngmconference.com>";
+  process.env.RESEND_FROM_EMAIL || "NGM Conference 5.0 <info@ngmplatform.com>";
 
 export async function sendApplicationReceivedEmail(
   to: string,

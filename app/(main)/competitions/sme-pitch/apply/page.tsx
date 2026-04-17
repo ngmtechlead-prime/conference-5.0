@@ -91,7 +91,6 @@ export default function SMEPitchApplyPage() {
         throw new Error(result.error);
       }
 
-      localStorage.removeItem(LOCAL_STORAGE_KEY);
       setIsSubmitted(true);
     } catch (error) {
       console.error("Submission failed:", error);
