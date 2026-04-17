@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { getToken } from "next-auth/jwt";
+import { authLogger } from "@/lib/logger";
 
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -13,6 +14,15 @@ export async function middleware(request: NextRequest) {
     });
 
     if (!token || token.role !== "ADMIN") {
+      authLogger.error(
+        {
+          pathname,
+          hasToken: !!token,
+          role: token?.role,
+          token,
+        },
+        "Auth failed for admin route",
+      );
       const loginUrl = new URL("/admin/login", request.url);
       loginUrl.searchParams.set("callbackUrl", pathname);
       return NextResponse.redirect(loginUrl);
@@ -27,6 +37,15 @@ export async function middleware(request: NextRequest) {
     });
 
     if (!token || token.role !== "ADMIN") {
+      authLogger.error(
+        {
+          pathname,
+          hasToken: !!token,
+          role: token?.role,
+          token,
+        },
+        "Auth failed for admin API",
+      );
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
   }
