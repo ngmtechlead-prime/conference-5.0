@@ -2,9 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import Navbar from "@/components/shared/Navbar";
-import Footer from "@/components/shared/Footer";
-import TermsModal from "@/components/competitions/dare-nigeria/TermsModal";
+import TermsModal from "@/components/shared/TermsModal";
 import FormProgress from "@/components/competitions/dare-nigeria/FormProgress";
 import ApplicantProfileForm from "@/components/competitions/dare-nigeria/steps/ApplicantProfileForm";
 import InnovationPitchForm from "@/components/competitions/dare-nigeria/steps/InnovationPitchForm";
@@ -48,14 +46,17 @@ export default function DareNigeriaApplyPage() {
 
   const handleStep1Submit = (data: Step1FormData) => {
     updateStep1(data);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const handleStep2Submit = (data: Step2FormData) => {
     updateStep2(data);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const handleStep3Submit = (data: Step3FormData) => {
     updateStep3(data);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const handleStep4Submit = async (data: Step4FormData) => {
@@ -92,6 +93,7 @@ export default function DareNigeriaApplyPage() {
   const handleBack = () => {
     if (formData.currentStep > 1) {
       setCurrentStep(formData.currentStep - 1);
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
 
@@ -110,6 +112,7 @@ export default function DareNigeriaApplyPage() {
   return (
     <section className="flex flex-col min-h-screen">
       <TermsModal
+        competition="DARE Nigeria Challenge 2026"
         isOpen={shouldShowTermsModal}
         onAccept={handleAcceptTerms}
         onCancel={handleCancelTerms}

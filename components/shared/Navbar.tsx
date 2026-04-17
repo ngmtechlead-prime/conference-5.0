@@ -71,15 +71,30 @@ export default function Navbar() {
     >
       <Wrapper className="h-full flex items-center">
         <div className="flex items-center justify-between w-full">
-          {/* Logo */}
-          <Link href="/">
-            <Image
-              src="/icons/NGMLogo.svg"
-              alt="NGM Logo"
-              width={190}
-              height={40}
-            />
-          </Link>
+          <div className="flex items-center gap-4">
+            <Link
+              href="https://ngmplatform.com"
+              target="_blank"
+              rel="noreferrer noopenner"
+            >
+              <Image
+                src="/icons/ngm-logo-white.png"
+                alt="NGM Logo"
+                width={60}
+                height={60}
+              />
+            </Link>
+            <div className="h-8 w-px bg-gray-300" />
+            {/* Logo */}
+            <Link href="/">
+              <Image
+                src="/icons/NGMLogo.svg"
+                alt="NGM Logo"
+                width={190}
+                height={40}
+              />
+            </Link>
+          </div>
 
           {/* Desktop Nav Links */}
           <div ref={dropdownRef} className="hidden md:flex items-center gap-1">

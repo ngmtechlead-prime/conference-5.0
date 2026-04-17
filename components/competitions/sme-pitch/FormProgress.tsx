@@ -2,58 +2,63 @@
 
 import { cn } from "@/lib/utils";
 import { FORM_STEPS } from "@/lib/constants/sme-pitch";
-import { Check } from "lucide-react";
+import { TrendingUp, FileText, ShieldCheck, Briefcase } from "lucide-react";
+import { Fragment } from "react";
 
 interface FormProgressProps {
   currentStep: number;
 }
 
+const stepIcons = [Briefcase, TrendingUp, FileText, ShieldCheck];
+
 export default function FormProgress({ currentStep }: FormProgressProps) {
   return (
-    <div className="w-full py-8 font-epilogue">
-      <div className="flex items-center justify-center">
-        {FORM_STEPS.map((step, index) => (
-          <div key={step.number} className="flex items-center">
-            <div className="flex flex-col items-center">
-              <div
-                className={cn(
-                  "w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold border-2 transition-all",
-                  currentStep > step.number
-                    ? "bg-[#0DA04C] border-[#0DA04C] text-white"
-                    : currentStep === step.number
-                      ? "bg-[#0F1990] border-[#0F1990] text-white"
-                      : "bg-white border-gray-300 text-gray-400",
+    <div className="w-full font-epilogue">
+      <div className="bg-[#f8f9fa] rounded-tr-2xl rounded-tl-2xl border border-gray-200 py-10 px-4 sm:px-10">
+        <div className="flex items-center justify-center">
+          {FORM_STEPS.map((step, index) => {
+            const Icon = stepIcons[index];
+            const isActive = currentStep === step.number;
+            const isCompleted = currentStep > step.number;
+
+            return (
+              <Fragment key={step.number}>
+                <div className="flex">
+                  <div className="flex flex-col items-center">
+                    <div
+                      className={cn(
+                        "w-10 h-10 rounded-full flex items-center justify-center transition-all",
+                        isActive || isCompleted
+                          ? "bg-[#0DA04C] text-white"
+                          : "bg-white border-2 border-gray-300 text-gray-500",
+                      )}
+                    >
+                      <Icon className="w-4 h-4" strokeWidth={1.5} />
+                    </div>
+                    <span
+                      className={cn(
+                        "mt-3 text-xs text-center whitespace-nowrap",
+                        isActive
+                          ? "text-[#0DA04C] font-semibold"
+                          : "text-gray-500",
+                      )}
+                    >
+                      {step.title}
+                    </span>
+                  </div>
+                </div>
+                {index < FORM_STEPS.length - 1 && (
+                  <div
+                    className={cn(
+                      "w-20 sm:w-28 lg:w-48 h-1 mx-3 -mt-6 transition-all",
+                      isCompleted ? "bg-[#0DA04C]" : "bg-gray-300",
+                    )}
+                  />
                 )}
-              >
-                {currentStep > step.number ? (
-                  <Check className="w-5 h-5" />
-                ) : (
-                  step.number
-                )}
-              </div>
-              <span
-                className={cn(
-                  "mt-2 text-xs text-center max-w-[100px]",
-                  currentStep > step.number
-                    ? "text-[#0DA04C] font-medium"
-                    : currentStep === step.number
-                      ? "text-[#0F1990] font-medium"
-                      : "text-gray-400",
-                )}
-              >
-                {step.title}
-              </span>
-            </div>
-            {index < FORM_STEPS.length - 1 && (
-              <div
-                className={cn(
-                  "w-16 sm:w-24 h-0.5 mx-2 transition-all",
-                  currentStep > step.number ? "bg-[#0DA04C]" : "bg-gray-300",
-                )}
-              />
-            )}
-          </div>
-        ))}
+              </Fragment>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

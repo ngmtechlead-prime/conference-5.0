@@ -247,7 +247,7 @@ export default function DeclarationForm({
         <button
           type="submit"
           disabled={isSubmitting}
-          className="inline-flex items-center gap-2 bg-[#0F1990] hover:bg-[#0F1990]/90 disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold text-sm px-8 py-3 rounded-lg transition-colors"
+          className="inline-flex items-center gap-2 bg-[#0DA04C] hover:bg-[#0DA04C]/90 disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold text-sm px-8 py-3 rounded-lg transition-colors"
         >
           {isSubmitting ? "Submitting..." : "Submit Application"}
         </button>

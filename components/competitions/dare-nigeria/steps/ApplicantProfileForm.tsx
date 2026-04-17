@@ -3,13 +3,7 @@
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { step1Schema, Step1FormData } from "@/lib/schemas/dare-nigeria";
-import {
-  FormField,
-  Input,
-  Select,
-  Textarea,
-  FileUpload,
-} from "@/components/ui/FormField";
+import { FormField, Input, Select, Textarea } from "@/components/ui/FormField";
 import {
   NIGERIAN_STATES,
   GENDER_OPTIONS,
@@ -46,8 +40,7 @@ export default function ApplicantProfileForm({
         email: "",
         phoneNumber: "",
         linkedinUrl: "",
-        governmentIdName: "",
-        governmentIdKey: "",
+        governmentIdUrl: "",
       },
       education: {
         highestEducation: "",
@@ -232,31 +225,16 @@ export default function ApplicantProfileForm({
 
         <div className="mt-6">
           <FormField
-            label="Upload Valid Government-Issued ID"
+            label="Google Drive Link to Valid Government-Issued ID"
             required
-            error={errors.personalInfo?.governmentIdName as never}
-            hint="Accepted: National ID, Voter's Card, International Passport, Driver's Licence (Max 5MB)."
+            error={errors.personalInfo?.governmentIdUrl as never}
+            hint="Accepted: National ID, Voter's Card, International Passport, Driver's Licence"
           >
-            <Controller
-              name="personalInfo.governmentIdName"
-              control={control}
-              render={({ field }) => (
-                <FileUpload
-                  accept=".pdf,.jpg,.jpeg,.png"
-                  maxSize="5MB"
-                  fileName={field.value}
-                  onFileSelect={(file) => {
-                    field.onChange(file?.name || "");
-                  }}
-                  onFileKeyChange={(key) => {
-                    control._formValues.personalInfo.governmentIdKey =
-                      key || "";
-                  }}
-                  competition="dare-nigeria"
-                  fieldName="governmentId"
-                  error={!!errors.personalInfo?.governmentIdName}
-                />
-              )}
+            <Input
+              type="url"
+              {...register("personalInfo.governmentIdUrl")}
+              placeholder="https://"
+              error={!!errors.personalInfo?.governmentIdUrl}
             />
           </FormField>
         </div>

@@ -34,8 +34,11 @@ export const personalInfoSchema = z.object({
     .url("Please enter a valid URL")
     .optional()
     .or(z.literal("")),
-  governmentIdName: z.string().optional(),
-  governmentIdKey: z.string().optional(),
+  governmentIdUrl: z
+    .string()
+    .url("Please enter a valid URL")
+    .optional()
+    .or(z.literal("")),
 });
 
 export const businessInfoSchema = z.object({
@@ -113,22 +116,40 @@ export const step2Schema = z.object({
 });
 
 export const documentsSchema = z.object({
-  businessRegistrationName: z.string().optional(),
-  businessRegistrationKey: z.string().optional(),
-  businessProfileName: z.string().optional(),
-  businessProfileKey: z.string().optional(),
-  financialStatementsName: z.string().optional(),
-  financialStatementsKey: z.string().optional(),
-  businessSummaryName: z.string().optional(),
-  businessSummaryKey: z.string().optional(),
+  businessRegistrationUrl: z
+    .string()
+    .url("Please enter a valid URL")
+    .optional()
+    .or(z.literal("")),
+  businessProfileUrl: z
+    .string()
+    .url("Please enter a valid URL")
+    .optional()
+    .or(z.literal("")),
+  financialStatementsUrl: z
+    .string()
+    .url("Please enter a valid URL")
+    .optional()
+    .or(z.literal("")),
+  businessSummaryUrl: z
+    .string()
+    .url("Please enter a valid URL")
+    .optional()
+    .or(z.literal("")),
   videoPitchUrl: z
     .string()
     .url("Please enter a valid URL")
     .min(1, "Video pitch link is required"),
-  ticketEvidenceName: z.string().optional(),
-  ticketEvidenceKey: z.string().optional(),
-  governmentIdName: z.string().optional(),
-  governmentIdKey: z.string().optional(),
+  ticketEvidenceUrl: z
+    .string()
+    .url("Please enter a valid URL")
+    .optional()
+    .or(z.literal("")),
+  governmentIdUrl: z
+    .string()
+    .url("Please enter a valid URL")
+    .optional()
+    .or(z.literal("")),
 });
 
 export const step3Schema = z.object({

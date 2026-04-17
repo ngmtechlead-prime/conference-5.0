@@ -30,8 +30,11 @@ export const personalInfoSchema = z.object({
     .url("Please enter a valid URL")
     .optional()
     .or(z.literal("")),
-  governmentIdName: z.string().optional(),
-  governmentIdKey: z.string().optional(),
+  governmentIdUrl: z
+    .string()
+    .url("Please enter a valid URL")
+    .optional()
+    .or(z.literal("")),
 });
 
 export const educationSchema = z.object({
@@ -137,21 +140,31 @@ export const fundingSchema = z.object({
 });
 
 export const documentsSchema = z.object({
-  innovationSummaryName: z.string().optional(),
-  innovationSummaryKey: z.string().optional(),
-  pitchDeckName: z.string().optional(),
-  pitchDeckKey: z.string().optional(),
-  prototypeDemoName: z.string().optional(),
-  prototypeDemoKey: z.string().optional(),
-  videoPitchName: z.string().optional(),
-  videoPitchKey: z.string().optional(),
+  innovationSummaryUrl: z
+    .string()
+    .url("Please enter a valid URL")
+    .optional()
+    .or(z.literal("")),
+  pitchDeckUrl: z
+    .string()
+    .url("Please enter a valid URL")
+    .optional()
+    .or(z.literal("")),
+  prototypeDemoUrl: z
+    .string()
+    .url("Please enter a valid URL")
+    .optional()
+    .or(z.literal("")),
   videoPitchUrl: z
     .string()
     .url("Please enter a valid URL")
     .optional()
     .or(z.literal("")),
-  ticketEvidenceName: z.string().optional(),
-  ticketEvidenceKey: z.string().optional(),
+  ticketEvidenceUrl: z
+    .string()
+    .url("Please enter a valid URL")
+    .optional()
+    .or(z.literal("")),
 });
 
 export const step3Schema = z.object({

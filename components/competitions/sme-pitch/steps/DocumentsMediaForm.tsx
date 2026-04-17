@@ -1,9 +1,9 @@
 "use client";
 
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { step3Schema, Step3FormData } from "@/lib/schemas/sme-pitch";
-import { FormField, Input, FileUpload } from "@/components/ui/FormField";
+import { FormField, Input } from "@/components/ui/FormField";
 import { ArrowLeft, ArrowRight, AlertTriangle } from "lucide-react";
 
 interface DocumentsMediaFormProps {
@@ -20,25 +20,18 @@ export default function DocumentsMediaForm({
   const {
     register,
     handleSubmit,
-    control,
     formState: { errors },
   } = useForm<Step3FormData>({
     resolver: zodResolver(step3Schema),
     defaultValues: {
       documents: {
-        businessRegistrationName: "",
-        businessRegistrationKey: "",
-        businessProfileName: "",
-        businessProfileKey: "",
-        financialStatementsName: "",
-        financialStatementsKey: "",
-        businessSummaryName: "",
-        businessSummaryKey: "",
+        businessRegistrationUrl: "",
+        businessProfileUrl: "",
+        financialStatementsUrl: "",
+        businessSummaryUrl: "",
         videoPitchUrl: "",
-        ticketEvidenceName: "",
-        ticketEvidenceKey: "",
-        governmentIdName: "",
-        governmentIdKey: "",
+        ticketEvidenceUrl: "",
+        governmentIdUrl: "",
       },
       ...defaultValues,
     },
@@ -54,127 +47,83 @@ export default function DocumentsMediaForm({
           Document & Media Uploads
         </h2>
 
+        <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
+          <div className="flex gap-3">
+            <AlertTriangle className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
+            <div>
+              <p className="text-sm text-red-800">
+                <strong>Disclaimer: </strong> Providing a video or google drive
+                link that cannot be accessed by our reviewers (e.g., private
+                video, broken link, requires login) will result in{" "}
+                <strong>instant disqualification</strong>. Please ensure
+                permissions are set to &quot;Anyone with the link can
+                view.&quot;
+              </p>
+            </div>
+          </div>
+        </div>
+
         <div className="space-y-8">
           <FormField
-            label="Upload Evidence of Business Registration (Optional)"
-            error={errors.documents?.businessRegistrationName as never}
-            hint="Upload CAC certificate, business name certificate, or equivalent document. Max 5MB."
+            label="Google Drive Link to Evidence of Business Registration (Optional)"
+            error={errors.documents?.businessRegistrationUrl as never}
+            hint="CAC certificate, business name certificate, or equivalent document."
           >
-            <Controller
-              name="documents.businessRegistrationName"
-              control={control}
-              render={({ field }) => (
-                <FileUpload
-                  accept=".pdf,.jpg,.jpeg,.png"
-                  maxSize="5MB"
-                  fileName={field.value}
-                  onFileSelect={(file) => {
-                    field.onChange(file?.name || "");
-                  }}
-                  onFileKeyChange={(key) => {
-                    control._formValues.documents.businessRegistrationKey =
-                      key || "";
-                  }}
-                  competition="sme-pitch"
-                  fieldName="businessRegistration"
-                  error={!!errors.documents?.businessRegistrationName}
-                />
-              )}
+            <Input
+              type="url"
+              {...register("documents.businessRegistrationUrl")}
+              placeholder="https://"
+              error={!!errors.documents?.businessRegistrationUrl}
             />
           </FormField>
 
           <FormField
-            label="Upload your Business Profile"
+            label="Google Drive Link to your Business Profile"
             required
-            error={errors.documents?.businessProfileName as never}
-            hint="Accepted formats: PDF, PPT, PPTX. Max file size: 10MB."
+            error={errors.documents?.businessProfileUrl as never}
+            hint="Business profile document (PDF, PPT, PPTX)."
           >
-            <Controller
-              name="documents.businessProfileName"
-              control={control}
-              render={({ field }) => (
-                <FileUpload
-                  accept=".pdf,.ppt,.pptx"
-                  maxSize="10MB"
-                  fileName={field.value}
-                  onFileSelect={(file) => {
-                    field.onChange(file?.name || "");
-                  }}
-                  onFileKeyChange={(key) => {
-                    control._formValues.documents.businessProfileKey =
-                      key || "";
-                  }}
-                  competition="sme-pitch"
-                  fieldName="businessProfile"
-                  error={!!errors.documents?.businessProfileName}
-                />
-              )}
+            <Input
+              type="url"
+              {...register("documents.businessProfileUrl")}
+              placeholder="https://"
+              error={!!errors.documents?.businessProfileUrl}
             />
           </FormField>
 
           <FormField
-            label="Upload Financial Statements or Revenue Projections"
+            label="Google Drive Link to Financial Statements or Revenue Projections"
             required
-            error={errors.documents?.financialStatementsName as never}
-            hint="Include actual financials if available or 12-18 month projections. Accepted: PDF, Excel. Max 5MB."
+            error={errors.documents?.financialStatementsUrl as never}
+            hint="Actual financials or 12-18 month projections (PDF, Excel)."
           >
-            <Controller
-              name="documents.financialStatementsName"
-              control={control}
-              render={({ field }) => (
-                <FileUpload
-                  accept=".pdf,.xls,.xlsx"
-                  maxSize="5MB"
-                  fileName={field.value}
-                  onFileSelect={(file) => {
-                    field.onChange(file?.name || "");
-                  }}
-                  onFileKeyChange={(key) => {
-                    control._formValues.documents.financialStatementsKey =
-                      key || "";
-                  }}
-                  competition="sme-pitch"
-                  fieldName="financialStatements"
-                  error={!!errors.documents?.financialStatementsName}
-                />
-              )}
+            <Input
+              type="url"
+              {...register("documents.financialStatementsUrl")}
+              placeholder="https://"
+              error={!!errors.documents?.financialStatementsUrl}
             />
           </FormField>
 
           <FormField
-            label="Upload a One-Page Business Summary"
+            label="Google Drive Link to a One-Page Business Summary"
             required
-            error={errors.documents?.businessSummaryName as never}
-            hint="A concise overview of your business – problem, solution, team, financials, and ask. Max 10MB."
+            error={errors.documents?.businessSummaryUrl as never}
+            hint="Concise overview of your business – problem, solution, team, financials, and ask."
           >
-            <Controller
-              name="documents.businessSummaryName"
-              control={control}
-              render={({ field }) => (
-                <FileUpload
-                  accept=".pdf,.doc,.docx"
-                  maxSize="10MB"
-                  fileName={field.value}
-                  onFileSelect={(file) => {
-                    field.onChange(file?.name || "");
-                  }}
-                  onFileKeyChange={(key) => {
-                    control._formValues.documents.businessSummaryKey =
-                      key || "";
-                  }}
-                  competition="sme-pitch"
-                  fieldName="businessSummary"
-                  error={!!errors.documents?.businessSummaryName}
-                />
-              )}
+            <Input
+              type="url"
+              {...register("documents.businessSummaryUrl")}
+              placeholder="https://"
+              error={!!errors.documents?.businessSummaryUrl}
             />
           </FormField>
 
           <FormField
-            label="Shareable Video Pitch Link"
+            label="Google Drive Link to Shareable Video Pitch"
             required
             error={errors.documents?.videoPitchUrl}
-            hint="Please provide a link to your 60-120 second video pitch (YouTube, Google Drive, Dropbox, etc.)"
+            hint="Please provide a Google Drive link to your 60-120 second video pitch (YouTube, Google Drive, Dropbox, etc.)"
           >
             <Input
               type="url"
@@ -184,75 +133,31 @@ export default function DocumentsMediaForm({
             />
           </FormField>
 
-          <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-            <div className="flex gap-3">
-              <AlertTriangle className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
-              <div>
-                <p className="text-sm text-red-800">
-                  <strong>Disclaimer:</strong> Providing a video link that
-                  cannot be accessed by our reviewers (e.g., private video,
-                  broken link, requires login) will result in{" "}
-                  <strong>instant disqualification</strong>. Please ensure
-                  permissions are set to &quot;Anyone with the link can
-                  view.&quot;
-                </p>
-              </div>
-            </div>
-          </div>
-
           <FormField
-            label="Upload Conference Ticket Payment Evidence"
+            label="Google Drive Link to Conference Ticket Payment Evidence"
             required
-            error={errors.documents?.ticketEvidenceName as never}
-            hint="A valid conference ticket is required to participate. Upload proof of ticket purchase. Max 5MB."
+            error={errors.documents?.ticketEvidenceUrl as never}
+            hint="A valid conference ticket is required to participate. Provide proof of ticket purchase."
           >
-            <Controller
-              name="documents.ticketEvidenceName"
-              control={control}
-              render={({ field }) => (
-                <FileUpload
-                  accept=".pdf,.jpg,.jpeg,.png"
-                  maxSize="5MB"
-                  fileName={field.value}
-                  onFileSelect={(file) => {
-                    field.onChange(file?.name || "");
-                  }}
-                  onFileKeyChange={(key) => {
-                    control._formValues.documents.ticketEvidenceKey = key || "";
-                  }}
-                  competition="sme-pitch"
-                  fieldName="ticketEvidence"
-                  error={!!errors.documents?.ticketEvidenceName}
-                />
-              )}
+            <Input
+              type="url"
+              {...register("documents.ticketEvidenceUrl")}
+              placeholder="https://"
+              error={!!errors.documents?.ticketEvidenceUrl}
             />
           </FormField>
 
           <FormField
-            label="Upload Valid Government-Issued ID"
+            label="Google Drive Link to Valid Government-Issued ID"
             required
-            error={errors.documents?.governmentIdName as never}
-            hint="Max 5MB."
+            error={errors.documents?.governmentIdUrl as never}
+            hint="National ID, Voter's Card, International Passport, Driver's Licence."
           >
-            <Controller
-              name="documents.governmentIdName"
-              control={control}
-              render={({ field }) => (
-                <FileUpload
-                  accept=".pdf,.jpg,.jpeg,.png"
-                  maxSize="5MB"
-                  fileName={field.value}
-                  onFileSelect={(file) => {
-                    field.onChange(file?.name || "");
-                  }}
-                  onFileKeyChange={(key) => {
-                    control._formValues.documents.governmentIdKey = key || "";
-                  }}
-                  competition="sme-pitch"
-                  fieldName="governmentId"
-                  error={!!errors.documents?.governmentIdName}
-                />
-              )}
+            <Input
+              type="url"
+              {...register("documents.governmentIdUrl")}
+              placeholder="https://"
+              error={!!errors.documents?.governmentIdUrl}
             />
           </FormField>
         </div>

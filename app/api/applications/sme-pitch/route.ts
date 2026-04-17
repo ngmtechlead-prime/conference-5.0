@@ -27,7 +27,7 @@ export async function POST(request: Request) {
     }
 
     const body = await request.json();
-    const { formData, files } = body;
+    const { formData } = body;
 
     // Validate form data
     const validation = validateSMEPitchApplication(formData);
@@ -51,7 +51,6 @@ export async function POST(request: Request) {
       data: {
         competition: Competition.SME_PITCH,
         data: validation.data,
-        files: files || null,
       },
     });
 

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import FormProgress from "@/components/competitions/sme-pitch/FormProgress";
 import FounderBusinessForm from "@/components/competitions/sme-pitch/steps/FounderBusinessForm";
 import PitchFundingForm from "@/components/competitions/sme-pitch/steps/PitchFundingForm";
@@ -15,6 +16,7 @@ import type {
   Step3FormData,
   Step4FormData,
 } from "@/lib/schemas/sme-pitch";
+import TermsModal from "@/components/shared/TermsModal";
 
 interface FormData {
   step1?: Step1FormData;
@@ -24,11 +26,14 @@ interface FormData {
 }
 
 export default function SMEPitchApplyPage() {
+  const router = useRouter();
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState<FormData>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [showTermsModal, setShowTermsModal] = useState(true);
+  const [termsAccepted, setTermsAccepted] = useState(false);
 
   useEffect(() => {
     const saved = localStorage.getItem(LOCAL_STORAGE_KEY);
@@ -105,6 +110,15 @@ export default function SMEPitchApplyPage() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const handleAcceptTerms = () => {
+    setTermsAccepted(true);
+    setShowTermsModal(false);
+  };
+
+  const handleCancelTerms = () => {
+    router.push("/competitions/sme-pitch");
+  };
+
   if (!isLoaded) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -117,45 +131,56 @@ export default function SMEPitchApplyPage() {
     return <SuccessPage />;
   }
 
+  const shouldShowTermsModal = !termsAccepted && showTermsModal;
+
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 md:p-10">
+    <section className="flex flex-col min-h-screen">
+      <TermsModal
+        competition="SME Pitch Competition 2026"
+        isOpen={shouldShowTermsModal}
+        onAccept={handleAcceptTerms}
+        onCancel={handleCancelTerms}
+      />
+
+      <div className="flex-1 py-8 px-4 sm:px-6 lg:px-12">
+        <div className="max-w-4xl mx-auto">
           <FormProgress currentStep={currentStep} />
 
-          {currentStep === 1 && (
-            <FounderBusinessForm
-              defaultValues={formData.step1}
-              onSubmit={handleStep1Submit}
-            />
-          )}
+          <div className="bg-white rounded-br-2xl rounded-bl-2xl border border-t-0 border-gray-200 p-6 sm:p-8 lg:p-10">
+            {currentStep === 1 && (
+              <FounderBusinessForm
+                defaultValues={formData.step1}
+                onSubmit={handleStep1Submit}
+              />
+            )}
 
-          {currentStep === 2 && (
-            <PitchFundingForm
-              defaultValues={formData.step2}
-              onSubmit={handleStep2Submit}
-              onBack={goBack}
-            />
-          )}
+            {currentStep === 2 && (
+              <PitchFundingForm
+                defaultValues={formData.step2}
+                onSubmit={handleStep2Submit}
+                onBack={goBack}
+              />
+            )}
 
-          {currentStep === 3 && (
-            <DocumentsMediaForm
-              defaultValues={formData.step3}
-              onSubmit={handleStep3Submit}
-              onBack={goBack}
-            />
-          )}
+            {currentStep === 3 && (
+              <DocumentsMediaForm
+                defaultValues={formData.step3}
+                onSubmit={handleStep3Submit}
+                onBack={goBack}
+              />
+            )}
 
-          {currentStep === 4 && (
-            <DeclarationForm
-              defaultValues={formData.step4}
-              onSubmit={handleStep4Submit}
-              onBack={goBack}
-              isSubmitting={isSubmitting}
-            />
-          )}
+            {currentStep === 4 && (
+              <DeclarationForm
+                defaultValues={formData.step4}
+                onSubmit={handleStep4Submit}
+                onBack={goBack}
+                isSubmitting={isSubmitting}
+              />
+            )}
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

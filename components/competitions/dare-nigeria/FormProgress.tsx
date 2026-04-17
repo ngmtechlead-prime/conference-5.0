@@ -30,7 +30,7 @@ export default function FormProgress({ currentStep }: FormProgressProps) {
                         "w-10 h-10 rounded-full flex items-center justify-center transition-all",
                         isActive || isCompleted
                           ? "bg-[#0F1990] text-white"
-                          : "bg-white border-2 border-gray-300 text-[#0F1990]",
+                          : "bg-white border-2 border-gray-300 text-gray-500",
                       )}
                     >
                       <Icon className="w-4 h-4" strokeWidth={1.5} />

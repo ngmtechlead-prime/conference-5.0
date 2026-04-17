@@ -3,6 +3,10 @@ generator client {
   output   = "../lib/generated/prisma"
 }
 
+generator jsonTypes {
+  provider = "prisma-json-types-generator"
+}
+
 datasource db {
   provider = "postgresql"
 }
@@ -38,7 +42,9 @@ model Application {
   id          String            @id @default(cuid())
   competition Competition
   status      ApplicationStatus @default(PENDING)
+  /// [ApplicationData]
   data        Json
+  /// [ApplicationFiles]
   files       Json?
   adminNotes  String?
   decidedAt   DateTime?

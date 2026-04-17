@@ -9,7 +9,6 @@ import {
   Select,
   Textarea,
   CheckboxGroup,
-  FileUpload,
 } from "@/components/ui/FormField";
 import { FUNDING_RANGES, SUPPORT_TYPES } from "@/lib/constants/dare-nigeria";
 import { ArrowLeft, ArrowRight } from "lucide-react";
@@ -41,17 +40,11 @@ export default function FundingMediaForm({
         supportTypesNeeded: [],
       },
       documents: {
-        innovationSummaryName: "",
-        innovationSummaryKey: "",
-        pitchDeckName: "",
-        pitchDeckKey: "",
-        prototypeDemoName: "",
-        prototypeDemoKey: "",
-        videoPitchName: "",
-        videoPitchKey: "",
+        innovationSummaryUrl: "",
+        pitchDeckUrl: "",
+        prototypeDemoUrl: "",
         videoPitchUrl: "",
-        ticketEvidenceName: "",
-        ticketEvidenceKey: "",
+        ticketEvidenceUrl: "",
       },
       ...defaultValues,
     },
@@ -172,113 +165,74 @@ export default function FundingMediaForm({
           Document & Media Uploads
         </h2>
 
+        <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
+          <div className="flex items-start gap-3">
+            <svg
+              className="w-5 h-5 text-red-600 mt-0.5 flex-shrink-0"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fillRule="evenodd"
+                d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
+                clipRule="evenodd"
+              />
+            </svg>
+            <p className="text-sm text-red-700">
+              <strong>Important: </strong> Providing inaccessible video or
+              google drive links will result in instant disqualification. Please
+              ensure your link permissions are set to &quot;Anyone with the link
+              can view&quot; before submitting.
+            </p>
+          </div>
+        </div>
+
         <div className="space-y-6">
           <FormField
-            label="Upload Your Innovation Summary / One-Page Pitch"
+            label="Google Drive Link to Your Innovation Summary / One-Page Pitch"
             required
-            error={errors.documents?.innovationSummaryName as never}
+            error={errors.documents?.innovationSummaryUrl as never}
+            hint="A concise written overview: problem, solution, market, team, and funding ask."
           >
-            <Controller
-              name="documents.innovationSummaryName"
-              control={control}
-              render={({ field }) => (
-                <FileUpload
-                  accept=".pdf,.doc,.docx"
-                  maxSize="10MB"
-                  hint="A concise written overview: problem, solution, market, team, and funding ask. (PDF, DOC, DOCX)"
-                  fileName={field.value}
-                  onFileSelect={(file) => field.onChange(file?.name || "")}
-                  onFileKeyChange={(key) => {
-                    control._formValues.documents.innovationSummaryKey =
-                      key || "";
-                  }}
-                  competition="dare-nigeria"
-                  fieldName="innovationSummary"
-                  error={!!errors.documents?.innovationSummaryName}
-                />
-              )}
+            <Input
+              type="url"
+              {...register("documents.innovationSummaryUrl")}
+              placeholder="https://"
+              error={!!errors.documents?.innovationSummaryUrl}
             />
           </FormField>
 
           <FormField
-            label="Upload a Pitch Deck (Optional)"
-            error={errors.documents?.pitchDeckName as never}
+            label="Google Drive Link to a Pitch Deck (Optional)"
+            error={errors.documents?.pitchDeckUrl as never}
+            hint="Slides covering your idea, market, team, financials, and ask (if prepared)."
           >
-            <Controller
-              name="documents.pitchDeckName"
-              control={control}
-              render={({ field }) => (
-                <FileUpload
-                  accept=".pdf,.ppt,.pptx"
-                  maxSize="10MB"
-                  hint="Slides covering your idea, market, team, financials, and ask (if prepared). Max 15MB"
-                  fileName={field.value}
-                  onFileSelect={(file) => field.onChange(file?.name || "")}
-                  onFileKeyChange={(key) => {
-                    control._formValues.documents.pitchDeckKey = key || "";
-                  }}
-                  competition="dare-nigeria"
-                  fieldName="pitchDeck"
-                  error={!!errors.documents?.pitchDeckName}
-                />
-              )}
+            <Input
+              type="url"
+              {...register("documents.pitchDeckUrl")}
+              placeholder="https://"
+              error={!!errors.documents?.pitchDeckUrl}
             />
           </FormField>
 
           <FormField
-            label="Upload Prototype, Demo, or Supporting Evidence (Optional)"
-            error={errors.documents?.prototypeDemoName as never}
+            label="Google Drive Link to Prototype, Demo, or Supporting Evidence (Optional)"
+            error={errors.documents?.prototypeDemoUrl as never}
+            hint="Photos, screenshots, mockups, or documentation."
           >
-            <Controller
-              name="documents.prototypeDemoName"
-              control={control}
-              render={({ field }) => (
-                <FileUpload
-                  accept=".pdf,.jpg,.jpeg,.png,.mp4"
-                  maxSize="10MB"
-                  hint="Photos, screenshots, mockups, or documentation. Supported: PDF, JPG, PNG. Max 10MB"
-                  fileName={field.value}
-                  onFileSelect={(file) => field.onChange(file?.name || "")}
-                  onFileKeyChange={(key) => {
-                    control._formValues.documents.prototypeDemoKey = key || "";
-                  }}
-                  competition="dare-nigeria"
-                  fieldName="prototypeDemo"
-                  error={!!errors.documents?.prototypeDemoName}
-                />
-              )}
+            <Input
+              type="url"
+              {...register("documents.prototypeDemoUrl")}
+              placeholder="https://"
+              error={!!errors.documents?.prototypeDemoUrl}
             />
           </FormField>
 
           <FormField
-            label="Short Video Pitch (60-90 seconds)"
+            label="Google Drive/YouTube Link to Short Video Pitch (60-90 seconds)"
             required
-            error={errors.documents?.videoPitchName as never}
-          >
-            <Controller
-              name="documents.videoPitchName"
-              control={control}
-              render={({ field }) => (
-                <FileUpload
-                  accept=".mp4,.mov"
-                  maxSize="100MB"
-                  hint="Record yourself discussing or presenting pitch. A smartphone MP4, MOV. Max 100MB"
-                  fileName={field.value}
-                  onFileSelect={(file) => field.onChange(file?.name || "")}
-                  onFileKeyChange={(key) => {
-                    control._formValues.documents.videoPitchKey = key || "";
-                  }}
-                  competition="dare-nigeria"
-                  fieldName="videoPitch"
-                  error={!!errors.documents?.videoPitchName}
-                />
-              )}
-            />
-          </FormField>
-
-          <FormField
-            label="Or paste a shareable video link (YouTube / Google Drive / Dropbox)"
-            error={errors.documents?.videoPitchUrl}
+            error={errors.documents?.videoPitchUrl as never}
+            hint="Record yourself discussing or presenting pitch. A smartphone MP4, MOV."
           >
             <Input
               type="url"
@@ -289,28 +243,16 @@ export default function FundingMediaForm({
           </FormField>
 
           <FormField
-            label="Upload Conference Ticket Payment Evidence"
+            label="Google Drive Link to Conference Ticket Payment Evidence"
             required
-            error={errors.documents?.ticketEvidenceName as never}
-            hint="A valid conference ticket is required to participate. Upload proof of ticket purchase. Max 5MB"
+            error={errors.documents?.ticketEvidenceUrl as never}
+            hint="A valid conference ticket is required to participate. Provide proof of ticket purchase."
           >
-            <Controller
-              name="documents.ticketEvidenceName"
-              control={control}
-              render={({ field }) => (
-                <FileUpload
-                  accept=".pdf,.jpg,.jpeg,.png"
-                  maxSize="5MB"
-                  fileName={field.value}
-                  onFileSelect={(file) => field.onChange(file?.name || "")}
-                  onFileKeyChange={(key) => {
-                    control._formValues.documents.ticketEvidenceKey = key || "";
-                  }}
-                  competition="dare-nigeria"
-                  fieldName="ticketEvidence"
-                  error={!!errors.documents?.ticketEvidenceName}
-                />
-              )}
+            <Input
+              type="url"
+              {...register("documents.ticketEvidenceUrl")}
+              placeholder="https://"
+              error={!!errors.documents?.ticketEvidenceUrl}
             />
           </FormField>
         </div>

@@ -25,14 +25,14 @@ export async function sendApplicationReceivedEmail(
     if (error) {
       emailLogger.error(
         { error, to, type: "received" },
-        "Failed to send application received email",
+        "Failed to send 'Application Received' email",
       );
       return { success: false, error };
     }
 
     emailLogger.info(
       { to, competition, type: "received" },
-      "Application received email sent",
+      "'Application Received' email sent",
     );
     return { success: true };
   } catch (error) {
@@ -69,7 +69,7 @@ export async function sendApplicationAcceptedEmail(
 
     emailLogger.info(
       { to, competition, type: "accepted" },
-      "Application accepted email sent",
+      "'Application Accepted' email sent",
     );
     return { success: true };
   } catch (error) {
@@ -106,7 +106,7 @@ export async function sendApplicationDeclinedEmail(
 
     emailLogger.info(
       { to, competition, type: "declined" },
-      "Application declined email sent",
+      "'Application Declined' email sent",
     );
     return { success: true };
   } catch (error) {

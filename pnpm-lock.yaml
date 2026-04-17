@@ -108,6 +108,9 @@ importers:
       prisma:
         specifier: ^7.7.0
         version: 7.7.0(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(typescript@5.9.3)
+      prisma-json-types-generator:
+        specifier: ^4.1.1
+        version: 4.1.1(@prisma/client@7.7.0(prisma@7.7.0(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(typescript@5.9.3))(typescript@5.9.3))(prisma@7.7.0(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(typescript@5.9.3))(typescript@5.9.3)
       tailwindcss:
         specifier: ^4
         version: 4.2.2
@@ -900,6 +903,9 @@ packages:
   '@prisma/dev@0.24.3':
     resolution: {integrity: sha512-ffHlQuKXZiaDt9Go0OnCTdJZrHxK0k7omJKNV86/VjpsXu5EIHZLK0T7JSWgvNlJwh56kW9JFu9v0qJciFzepg==}
 
+  '@prisma/dmmf@7.7.0':
+    resolution: {integrity: sha512-YMoxhmnO4bEr+SnA8i8gY6ZII2KvLBoJVuaS5YPChFn/Ft92fq5GPMDoCBHZYFzTopj2zX3rgwq92/7AElXj0Q==}
+
   '@prisma/driver-adapter-utils@7.7.0':
     resolution: {integrity: sha512-gZXREeu6mOk7zXfGFJgh86p7Vhj0sXNKp+4Cg1tWYo7V2dfncP2qxS2BiTmbIIha8xPqItkl0WSw38RuSq1HoQ==}
 
@@ -911,6 +917,12 @@ packages:
 
   '@prisma/fetch-engine@7.7.0':
     resolution: {integrity: sha512-TfyzveBQoK4xALzsTpVhB/0KG1N8zOK0ap+RnBMkzGUu3f98fnQ4QtXa2wlKPhsO2X8a3N5ugFQgcKNoHGmDfw==}
+
+  '@prisma/generator-helper@7.7.0':
+    resolution: {integrity: sha512-uDx6dMuFz5ZeqsS6cHTvhBkuW9Pn6RssGCY3HitQojBNaPe2ml5D4ingFk1K6UQkWLBV7qvR3qjI0OHpvvPL2A==}
+
+  '@prisma/generator@7.7.0':
+    resolution: {integrity: sha512-IZlQlHAixKKPRRssE9KdVY4X/l4LwL6SlUG/7k4bX9/6WXyHElUZisaGcsgJuv9rbQ7p/UmU06f5xAkSlS3LIg==}
 
   '@prisma/get-platform@7.2.0':
     resolution: {integrity: sha512-k1V0l0Td1732EHpAfi2eySTezyllok9dXb6UQanajkJQzPUGi3vO2z7jdkz67SypFTdmbnyGYxvEvYZdZsMAVA==}
@@ -3002,6 +3014,15 @@ packages:
     engines: {node: '>=14'}
     hasBin: true
 
+  prisma-json-types-generator@4.1.1:
+    resolution: {integrity: sha512-oz0MYu1r2Jqu3qOGCEGulz6RjPsECVjyS3ZAz3HEmz0jkKbVkZEwQyksNJm0X5utV1TZCmaG/98EPExN7S22xw==}
+    engines: {node: '>=14.0'}
+    hasBin: true
+    peerDependencies:
+      '@prisma/client': ^7.2.0
+      prisma: ^7.2.0
+      typescript: ^5.9.3
+
   prisma@7.7.0:
     resolution: {integrity: sha512-HlgwRBt1uEFB9LStHL4HLYDvoi4BNu1rYA0hPG0zCAEyK9SaZBqp7E5Rjpc3Qh8Lex/ye/svoHZ0OWoFNhWxuQ==}
     engines: {node: ^20.19 || ^22.12 || >=24.0}
@@ -3327,6 +3348,9 @@ packages:
   to-regex-range@5.0.1:
     resolution: {integrity: sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==}
     engines: {node: '>=8.0'}
+
+  try@1.0.3:
+    resolution: {integrity: sha512-AHA8khVCII6zKyRkyPo6pRwoR9v5jb7QFw6e5avtaVSkxVfaEucYIo06xnwB+pJaEarfYNbs7W3Vq+LZLZiWyA==}
 
   ts-api-utils@2.5.0:
     resolution: {integrity: sha512-OJ/ibxhPlqrMM0UiNHJ/0CKQkoKF243/AEmplt3qpRgkW8VG7IfOS41h7V8TjITqdByHzrjcS/2si+y4lIh8NA==}
@@ -4449,6 +4473,8 @@ snapshots:
     transitivePeerDependencies:
       - typescript
 
+  '@prisma/dmmf@7.7.0': {}
+
   '@prisma/driver-adapter-utils@7.7.0':
     dependencies:
       '@prisma/debug': 7.7.0
@@ -4467,6 +4493,14 @@ snapshots:
       '@prisma/debug': 7.7.0
       '@prisma/engines-version': 7.6.0-1.75cbdc1eb7150937890ad5465d861175c6624711
       '@prisma/get-platform': 7.7.0
+
+  '@prisma/generator-helper@7.7.0':
+    dependencies:
+      '@prisma/debug': 7.7.0
+      '@prisma/dmmf': 7.7.0
+      '@prisma/generator': 7.7.0
+
+  '@prisma/generator@7.7.0': {}
 
   '@prisma/get-platform@7.2.0':
     dependencies:
@@ -6769,6 +6803,16 @@ snapshots:
 
   prettier@3.8.2: {}
 
+  prisma-json-types-generator@4.1.1(@prisma/client@7.7.0(prisma@7.7.0(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(typescript@5.9.3))(typescript@5.9.3))(prisma@7.7.0(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(typescript@5.9.3))(typescript@5.9.3):
+    dependencies:
+      '@prisma/client': 7.7.0(prisma@7.7.0(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(typescript@5.9.3))(typescript@5.9.3)
+      '@prisma/generator-helper': 7.7.0
+      prisma: 7.7.0(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(typescript@5.9.3)
+      semver: 7.7.4
+      try: 1.0.3
+      tslib: 2.8.1
+      typescript: 5.9.3
+
   prisma@7.7.0(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(typescript@5.9.3):
     dependencies:
       '@prisma/config': 7.7.0
@@ -7144,6 +7188,8 @@ snapshots:
   to-regex-range@5.0.1:
     dependencies:
       is-number: 7.0.0
+
+  try@1.0.3: {}
 
   ts-api-utils@2.5.0(typescript@5.9.3):
     dependencies:

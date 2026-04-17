@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const navColumns = [
@@ -28,12 +29,30 @@ export default function Footer() {
         <div className="flex flex-col lg:flex-row gap-10 lg:gap-16">
           {/* Brand column */}
           <div className="flex-shrink-0 flex flex-col gap-5 lg:w-56">
-            <Image
-              src="/icons/NGMLogo.svg"
-              alt="NGM Logo"
-              width={190}
-              height={40}
-            />
+            <div className="flex items-center gap-4">
+              <Link
+                href="https://ngmplatform.com"
+                target="_blank"
+                rel="noreferrer noopenner"
+              >
+                <Image
+                  src="/icons/ngm-logo-white.png"
+                  alt="NGM Logo"
+                  width={70}
+                  height={70}
+                />
+              </Link>
+              <div className="h-8 w-px bg-gray-300" />
+              {/* Logo */}
+              <Link href="/">
+                <Image
+                  src="/icons/NGMLogo.svg"
+                  alt="NGM Logo"
+                  width={190}
+                  height={40}
+                />
+              </Link>
+            </div>
             <p className="text-gray-500 text-sm leading-relaxed">
               The premier convergence of next-generation thinkers, builders, and
               creators.
