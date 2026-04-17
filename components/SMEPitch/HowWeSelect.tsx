@@ -1,64 +1,45 @@
 import Image from "next/image";
 import React from "react";
 
-interface StepProps {
-  number: string;
-  title: string;
-  description: string;
-  isLast?: boolean;
-}
-
-const Step = ({ number, title, description, isLast = false }: StepProps) => (
-  <div className="flex flex-col items-center text-center relative">
-    {/* Step Number */}
-    <div className="w-12 h-12 flex items-center justify-center rounded-full bg-[#0F1990] text-white font-bold text-lg mb-4 z-10">
-      {number}
-    </div>
-
-    {/* Connector Line */}
-    {!isLast && (
-      <div className="hidden lg:block absolute top-6 left-[calc(50%+24px)] w-[calc(100%-48px)] h-0.5 bg-[#0F1990]/20" />
-    )}
-
-    {/* Content */}
-    <h3 className="font-bold text-[#0F1990] text-base mb-2 font-epilogue">
-      {title}
-    </h3>
-    <p className="text-[#4a5565] text-sm leading-relaxed font-epilogue max-w-[200px]">
-      {description}
-    </p>
-  </div>
-);
+const steps = [
+  {
+    number: "1",
+    title: "Application & Document Submission",
+    description:
+      "Submit your business details, documents, and pitch concept online. Eligibility and documentation review by the NGM team.",
+    side: "right",
+    filled: true,
+  },
+  {
+    number: "2",
+    title: "Quarterfinals & Bootcamp",
+    description:
+      "Shortlisted applicants enter a quarterfinal screening. Selected SMEs attend the NGM SME Bootcamp – pitch training, mentorship, and workshops.",
+    side: "left",
+    filled: false,
+  },
+  {
+    number: "3",
+    title: "Virtual Pitch – Semifinals",
+    description:
+      "Semifinalists present virtually before an External Judging Panel. Top 3 finalists are selected.",
+    side: "right",
+    filled: false,
+  },
+  {
+    number: "4",
+    title: "Grand Finale Pitch",
+    description:
+      "The Top 3 pitch live at NGM Conference 5.0 on October 3, 2026. Winners announced. Grants disbursed. 12-month performance tracking begins.",
+    side: "left",
+    filled: false,
+  },
+];
 
 export default function HowWeSelect() {
-  const steps = [
-    {
-      number: "1",
-      title: "Application Review",
-      description:
-        "Submit your application and our team reviews for eligibility",
-    },
-    {
-      number: "2",
-      title: "Screening",
-      description:
-        "Shortlisted applicants undergo a detailed business assessment",
-    },
-    {
-      number: "3",
-      title: "Pitch Day",
-      description: "Present your business to our panel of judges and investors",
-    },
-    {
-      number: "4",
-      title: "Winner Selection",
-      description: "Top performers are selected based on innovation and impact",
-    },
-  ];
-
   return (
     <section className="w-full bg-white py-16 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto flex flex-col items-center gap-12 font-epilogue">
+      <div className="max-w-4xl mx-auto flex flex-col items-center gap-12 font-epilogue">
         {/* Heading */}
         <div className="text-center max-w-xl">
           <h2 className="text-3xl sm:text-4xl font-normal text-[#0F1990] leading-tight mb-3">
@@ -74,32 +55,57 @@ export default function HowWeSelect() {
               />
             </span>
           </h2>
-          <p className="text-gray-500 text-sm sm:text-base leading-relaxed mt-4">
-            Our rigorous but fair selection process ensures we find the best
-            businesses with the highest potential for growth and impact.
+          <p className="text-gray-500 text-sm sm:text-base leading-relaxed mt-6">
+            A Four-Stage Process designed to find and refine the best businesses.
           </p>
         </div>
 
-        {/* Steps Grid */}
-        <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-4">
+        {/* Zigzag Timeline */}
+        <div className="relative w-full flex flex-col items-center">
           {steps.map((step, index) => (
-            <Step key={index} {...step} isLast={index === steps.length - 1} />
+            <div
+              key={index}
+              className="relative w-full flex items-start justify-center py-8"
+            >
+              {/* Vertical line segment */}
+              {index < steps.length - 1 && (
+                <div className="absolute left-1/2 -translate-x-1/2 top-[52px] bottom-0 w-0.5 bg-gray-200 z-0" />
+              )}
+              {index > 0 && (
+                <div className="absolute left-1/2 -translate-x-1/2 top-0 h-[52px] w-0.5 bg-gray-200 z-0" />
+              )}
+
+              {/* Step Number Circle */}
+              <div
+                className={`absolute left-1/2 -translate-x-1/2 top-8 z-10 w-10 h-10 rounded-full flex items-center justify-center font-bold text-base border-2 shrink-0 ${
+                  step.filled
+                    ? "bg-[#0F1990] border-[#0F1990] text-white"
+                    : "bg-white border-gray-300 text-gray-500"
+                }`}
+              >
+                {step.number}
+              </div>
+
+              {/* Card */}
+              <div
+                className={`w-5/12 mt-2 ${
+                  step.side === "right"
+                    ? "ml-auto mr-0 pl-10"
+                    : "mr-auto ml-0 pr-10"
+                }`}
+              >
+                <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
+                  <h3 className="font-bold text-[#0F1990] text-base mb-2">
+                    {step.title}
+                  </h3>
+                  <p className="text-gray-500 text-sm leading-relaxed">
+                    {step.description}
+                  </p>
+                </div>
+              </div>
+            </div>
           ))}
         </div>
-
-        {/* CTA */}
-        <a
-          href="#apply"
-          className="inline-flex items-center gap-2 bg-[#0F1990] hover:bg-[#1d4ed8] text-white font-bold text-sm px-7 py-3 rounded-md transition-colors duration-200 tracking-wide shadow-md"
-        >
-          Start Your Application
-          <Image
-            src="/icons/rightArrow.svg"
-            alt="right"
-            width={16}
-            height={16}
-          />
-        </a>
       </div>
     </section>
   );
