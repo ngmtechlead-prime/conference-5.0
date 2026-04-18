@@ -1,60 +1,92 @@
-"use client";
-
 import Image from "next/image";
-import React, { useState } from "react";
+import React from "react";
 
-interface Testimonial {
-  id: number;
-  quote: string;
-  name: string;
-  business: string;
-  year: string;
-  image: string;
-}
-
-const testimonials: Testimonial[] = [
+const testimonials = [
   {
-    id: 1,
     quote:
       "Winning the SME Pitch Competition was a turning point for my business. The funding helped us expand to three new states, and the mentorship was invaluable.",
     name: "Adebayo Ogunleye",
-    business: "AgriTech Solutions",
-    year: "2024 Winner",
-    image: "/gallery/testimonial-1.png",
+    role: "AgriTech Solutions",
+    initials: "AO",
   },
   {
-    id: 2,
     quote:
-      "The connections I made through this program opened doors I never thought possible. We&apos;ve since secured additional funding from investors we met at the competition.",
-    name: "Fatima Ibrahim",
-    business: "EduPlatform NG",
-    year: "2023 Winner",
-    image: "/gallery/testimonial-2.png",
+      "The connections I made through this program opened doors I never thought possible. We've since secured additional funding from investors we met at the competition.",
+    name: "Sam Pizzo",
+    role: "CEO, CMS Max",
+    initials: "SP",
   },
   {
-    id: 3,
+    quote:
+      "In an era of constant threats, this program offers more than just funding; they offer peace of mind. Their proactive approach to business discovery is world-class.",
+    name: "Rafael Lunardelli",
+    role: "CTO, Devsquad",
+    initials: "RL",
+  },
+  {
+    quote:
+      "In an era of constant threats, this program offers more than just funding; they offer peace of mind. Their proactive approach to business discovery is world-class.",
+    name: "Bradley Bernard",
+    role: "Software Engineer, Snap",
+    initials: "BB",
+  },
+  {
+    quote:
+      "Working with this program was a turning point for our compliance journey. They didn't just find issues; they helped us build a more resilient infrastructure from the ground up.",
+    name: "Duncan McClean",
+    role: "Software Developer, Statamic",
+    initials: "DM",
+  },
+  {
+    quote:
+      "The level of detail in the post-assessment reports provided actionable insights that immediately strengthened our security posture. A truly professional partner.",
+    name: "Silvan Hagen",
+    role: "Developer & Consultant",
+    initials: "SH",
+  },
+  {
+    quote:
+      "The level of detail in the post-assessment reports provided actionable insights that immediately strengthened our security posture. A truly professional partner.",
+    name: "Tim Geisendoerfer",
+    role: "CEO & Founder, Innoge",
+    initials: "TG",
+  },
+  {
     quote:
       "Beyond the prize money, the business training and exposure transformed how we approach growth. Our revenue has tripled since winning.",
     name: "Chukwuemeka Nwosu",
-    business: "CleanEnergy Co",
-    year: "2024 Runner-up",
-    image: "/gallery/testimonial-3.png",
+    role: "CleanEnergy Co",
+    initials: "CN",
   },
 ];
 
+interface CardProps {
+  quote: string;
+  name: string;
+  role: string;
+  initials: string;
+}
+
+const TestimonialCard = ({ quote, name, role, initials }: CardProps) => (
+  <div className="bg-white border border-gray-200 rounded-2xl p-6 flex flex-col justify-between gap-4 break-inside-avoid mb-4">
+    <p className="text-gray-800 text-sm leading-relaxed font-epilogue">
+      &ldquo;{quote}&rdquo;
+    </p>
+    <div className="flex items-center gap-3 mt-2">
+      <div className="w-10 h-10 rounded-full bg-[#0F1990] shrink-0 flex items-center justify-center">
+        <span className="text-white text-xs font-bold font-epilogue">
+          {initials}
+        </span>
+      </div>
+      <div>
+        <p className="font-bold text-sm text-gray-900 font-epilogue">{name}</p>
+        <p className="text-gray-500 text-xs font-epilogue">{role}</p>
+      </div>
+    </div>
+  </div>
+);
+
 export default function PastWinners() {
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  const nextTestimonial = () => {
-    setActiveIndex((prev) => (prev + 1) % testimonials.length);
-  };
-
-  const prevTestimonial = () => {
-    setActiveIndex(
-      (prev) => (prev - 1 + testimonials.length) % testimonials.length,
-    );
-  };
-
   return (
     <section className="w-full bg-[#f8fafc] py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto flex flex-col items-center gap-10 font-epilogue">
@@ -73,101 +105,16 @@ export default function PastWinners() {
               />
             </span>
           </h2>
+          <p className="text-gray-400 text-sm sm:text-base mt-6">
+            Honest reviews from past SME Pitch Competition winners.
+          </p>
         </div>
 
-        {/* Testimonials */}
-        <div className="w-full flex flex-col lg:flex-row gap-6 items-stretch">
-          {/* Main Testimonial */}
-          <div className="flex-1 bg-[#0F1990] rounded-2xl p-8 text-white flex flex-col justify-between">
-            <div>
-              <svg
-                className="w-10 h-10 text-[#16a34a] mb-4"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-              </svg>
-              <p className="text-lg leading-relaxed mb-6">
-                {testimonials[activeIndex].quote}
-              </p>
-            </div>
-            <div className="flex items-center gap-4">
-              <div className="w-14 h-14 rounded-full bg-white/20 overflow-hidden">
-                <Image
-                  src={testimonials[activeIndex].image}
-                  alt={testimonials[activeIndex].name}
-                  width={56}
-                  height={56}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div>
-                <p className="font-bold">{testimonials[activeIndex].name}</p>
-                <p className="text-blue-200 text-sm">
-                  {testimonials[activeIndex].business}
-                </p>
-                <p className="text-[#16a34a] text-sm font-semibold">
-                  {testimonials[activeIndex].year}
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Testimonial Thumbnails */}
-          <div className="flex lg:flex-col gap-4">
-            {testimonials.map((testimonial, index) => (
-              <button
-                key={testimonial.id}
-                onClick={() => setActiveIndex(index)}
-                className={`relative w-24 h-24 lg:w-32 lg:h-32 rounded-xl overflow-hidden transition-all duration-200 ${
-                  activeIndex === index
-                    ? "ring-4 ring-[#16a34a] scale-105"
-                    : "opacity-60 hover:opacity-100"
-                }`}
-              >
-                <Image
-                  src={testimonial.image}
-                  alt={testimonial.name}
-                  fill
-                  className="object-cover"
-                />
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Navigation Arrows */}
-        <div className="flex gap-4">
-          <button
-            onClick={prevTestimonial}
-            className="w-10 h-10 rounded-full border-2 border-[#0F1990] flex items-center justify-center hover:bg-[#0F1990] hover:text-white transition-colors"
-          >
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-            >
-              <path d="M15 18l-6-6 6-6" />
-            </svg>
-          </button>
-          <button
-            onClick={nextTestimonial}
-            className="w-10 h-10 rounded-full border-2 border-[#0F1990] flex items-center justify-center hover:bg-[#0F1990] hover:text-white transition-colors"
-          >
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-            >
-              <path d="M9 18l6-6-6-6" />
-            </svg>
-          </button>
+        {/* Masonry Grid */}
+        <div className="w-full columns-1 sm:columns-2 lg:columns-3 gap-4">
+          {testimonials.map((testimonial, index) => (
+            <TestimonialCard key={index} {...testimonial} />
+          ))}
         </div>
       </div>
     </section>

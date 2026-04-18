@@ -10,7 +10,7 @@ export default function ApplyNow() {
     >
       <div
         className="relative overflow-hidden rounded-2xl py-16 px-4 sm:px-6"
-        style={{ backgroundColor: "#16a34a" }}
+        style={{ backgroundColor: "#0F1990" }}
       >
         <div
           className="absolute inset-0 opacity-20 bg-no-repeat bg-center bg-cover"
@@ -21,7 +21,7 @@ export default function ApplyNow() {
           <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">
             Your Business Has Come This Far.{" "}
             <span className="relative inline-block">
-              Let&apos;s Go Further.
+              to Stop Here.
               <span className="absolute left-0 -bottom-2 w-full flex justify-center">
                 <Image
                   src="/icons/dareZap.svg"
@@ -41,7 +41,7 @@ export default function ApplyNow() {
 
           <a
             href="#apply-form"
-            className="inline-flex items-center gap-2 bg-[#0F1990] hover:bg-[#1d4ed8] text-white font-semibold text-sm px-8 py-3.5 rounded-lg transition-colors duration-200"
+            className="inline-flex items-center gap-2 bg-[#16a34a] hover:bg-[#1d4ed8] text-white font-semibold text-sm px-8 py-3.5 rounded-lg transition-colors duration-200"
           >
             Apply now
             <Image
