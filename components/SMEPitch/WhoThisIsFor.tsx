@@ -22,7 +22,7 @@ const CheckCircleIcon = () => (
 
 export default function WhoThisIsFor() {
   const criteria = [
-    "You are running a Nigeria-based business aged 18-35.",
+    "You are running a Nigeria-based business aged 18-40.",
     "Your business is at idea, early revenue or growth stage.",
     "You operate outside all excluded sectors.",
     "You have not previously won an NGM SME grant.",

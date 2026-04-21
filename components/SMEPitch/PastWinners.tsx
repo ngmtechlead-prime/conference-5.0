@@ -101,7 +101,7 @@ export default function PastWinners() {
                 alt="Winners"
                 width={120}
                 height={100}
-                className="absolute left-0 bottom-[-8px]"
+                className="absolute left-0 bottom-[-10px]"
               />
             </span>
           </h2>

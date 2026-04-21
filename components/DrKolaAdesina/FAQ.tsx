@@ -69,8 +69,8 @@ const QuestionZap = ({ className }: { className?: string }) => (
     <path
       d="M1.40479 5.32958C39.8668 4.867 78.0779 2.74079 116.457 1.71063C122.349 1.55245 127.624 1.43434 133.442 1.40169C134.897 1.39352 138.796 1.30362 137.74 1.72534C134.891 2.86341 130.79 3.27081 127.221 3.96144C115.366 6.25534 118.942 5.51208 106.811 7.87461C100.195 9.16286 92.5563 10.3869 86.5403 12.185C86.1752 12.2941 83.6304 13.0991 85.9811 13.303C88.8156 13.5489 98.1008 13.1906 99.5413 13.1265C137.78 11.4247 175.21 7.38078 213.405 5.59438"
       stroke="#0DA04C"
-      stroke-width="2.77644"
-      stroke-linecap="square"
+      strokeWidth="2.77644"
+      strokeLinecap="square"
     />
   </svg>
 );
@@ -125,7 +125,7 @@ export default function FAQ() {
                     isOpen ? "max-h-96" : "max-h-0"
                   }`}
                 >
-                  <div className="bg-gray-[#f3f4f6] border-t border-gray-200 px-6 py-4">
+                  <div className="bg-[#f3f4f6] border-t border-gray-200 px-6 py-4">
                     <p className="text-gray-500 text-sm leading-relaxed">
                       {faq.answer}
                     </p>

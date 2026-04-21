@@ -106,7 +106,7 @@ export default function Footer() {
                     />
                   ),
                   label: "Facebook",
-                  href: "#",
+                  href: "https://www.facebook.com/share/14bg9cLvBbo/",
                 },
               ].map(({ icon, label, href }) => (
                 <a
@@ -150,7 +150,7 @@ export default function Footer() {
       <div className="pb-12">
         <div className="max-w-7xl mx-auto border-t border-gray-100 pt-8 px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-2">
           <p className="text-gray-400 text-xs">
-            © 2026 Nasir Giwa Mentorship. All Rights Reserved
+            &copy; 2026 Nasir Giwa Mentorship. All Rights Reserved
           </p>
           <div className="flex items-center gap-5">
             {["Privacy", "Terms"].map((item) => (
