@@ -1,6 +1,7 @@
 "use client";
 
 import { useForm, Controller } from "react-hook-form";
+import { useFormAutoSave } from "@/hooks/useFormAutoSave";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { step4Schema, Step4FormData } from "@/lib/schemas/dare-nigeria";
 import { FormField, Input, Select, Textarea } from "@/components/ui/FormField";
@@ -18,6 +19,7 @@ interface CommitmentFormProps {
   onSubmit: (data: Step4FormData) => void;
   onBack: () => void;
   isSubmitting?: boolean;
+  onAutoSave?: (data: Step4FormData) => void;
 }
 
 export default function CommitmentForm({
@@ -25,6 +27,7 @@ export default function CommitmentForm({
   onSubmit,
   onBack,
   isSubmitting = false,
+  onAutoSave,
 }: CommitmentFormProps) {
   const {
     register,
@@ -59,6 +62,8 @@ export default function CommitmentForm({
       ...defaultValues,
     },
   });
+
+  useFormAutoSave(watch, onAutoSave);
 
   const watchWhyDare = watch("declaration.whyDare", "");
 

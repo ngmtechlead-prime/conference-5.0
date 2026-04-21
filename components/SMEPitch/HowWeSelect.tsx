@@ -56,7 +56,8 @@ export default function HowWeSelect() {
             </span>
           </h2>
           <p className="text-gray-500 text-sm sm:text-base leading-relaxed mt-6">
-            A Four-Stage Process designed to find and refine the best businesses.
+            A Four-Stage Process designed to find and refine the best
+            businesses.
           </p>
         </div>
 
@@ -65,19 +66,19 @@ export default function HowWeSelect() {
           {steps.map((step, index) => (
             <div
               key={index}
-              className="relative w-full flex items-start justify-center py-8"
+              className="relative w-full flex items-start justify-start md:justify-center py-6 md:py-8"
             >
               {/* Vertical line segment */}
               {index < steps.length - 1 && (
-                <div className="absolute left-1/2 -translate-x-1/2 top-[52px] bottom-0 w-0.5 bg-gray-200 z-0" />
+                <div className="absolute left-5 md:left-1/2 -translate-x-1/2 top-[52px] bottom-0 w-0.5 bg-gray-200 z-0" />
               )}
               {index > 0 && (
-                <div className="absolute left-1/2 -translate-x-1/2 top-0 h-[52px] w-0.5 bg-gray-200 z-0" />
+                <div className="absolute left-5 md:left-1/2 -translate-x-1/2 top-0 h-[52px] w-0.5 bg-gray-200 z-0" />
               )}
 
               {/* Step Number Circle */}
               <div
-                className={`absolute left-1/2 -translate-x-1/2 top-8 z-10 w-10 h-10 rounded-full flex items-center justify-center font-bold text-base border-2 shrink-0 ${
+                className={`absolute left-5 md:left-1/2 -translate-x-1/2 top-6 md:top-8 z-10 w-10 h-10 rounded-full flex items-center justify-center font-bold text-base border-2 shrink-0 ${
                   step.filled
                     ? "bg-[#0F1990] border-[#0F1990] text-white"
                     : "bg-white border-gray-300 text-gray-500"
@@ -88,13 +89,13 @@ export default function HowWeSelect() {
 
               {/* Card */}
               <div
-                className={`w-5/12 mt-2 ${
+                className={`ml-14 mr-0 md:ml-0 md:mr-0 w-auto md:w-5/12 mt-0 md:mt-2 ${
                   step.side === "right"
-                    ? "ml-auto mr-0 pl-10"
-                    : "mr-auto ml-0 pr-10"
+                    ? "md:ml-auto md:pl-10"
+                    : "md:mr-auto md:pr-10"
                 }`}
               >
-                <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
+                <div className="bg-white border border-gray-200 rounded-2xl p-4 sm:p-6 shadow-sm">
                   <h3 className="font-bold text-[#0F1990] text-base mb-2">
                     {step.title}
                   </h3>

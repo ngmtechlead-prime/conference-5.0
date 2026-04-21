@@ -102,9 +102,8 @@ const getInitialFormData = (): DareNigeriaApplicationData => ({
 });
 
 export function useDareNigeriaForm() {
-  const [formData, setFormData] = useState<DareNigeriaApplicationData>(
-    getInitialFormData()
-  );
+  const [formData, setFormData] =
+    useState<DareNigeriaApplicationData>(getInitialFormData());
   const [isLoading, setIsLoading] = useState(true);
   const [termsAccepted, setTermsAccepted] = useState(false);
 
@@ -137,7 +136,7 @@ export function useDareNigeriaForm() {
         console.error("Error saving form data:", error);
       }
     },
-    [formData]
+    [formData],
   );
 
   const acceptTerms = useCallback(() => {
@@ -152,7 +151,7 @@ export function useDareNigeriaForm() {
         currentStep: 2,
       });
     },
-    [saveToLocalStorage]
+    [saveToLocalStorage],
   );
 
   const updateStep2 = useCallback(
@@ -162,7 +161,7 @@ export function useDareNigeriaForm() {
         currentStep: 3,
       });
     },
-    [saveToLocalStorage]
+    [saveToLocalStorage],
   );
 
   const updateStep3 = useCallback(
@@ -172,7 +171,7 @@ export function useDareNigeriaForm() {
         currentStep: 4,
       });
     },
-    [saveToLocalStorage]
+    [saveToLocalStorage],
   );
 
   const updateStep4 = useCallback(
@@ -181,14 +180,42 @@ export function useDareNigeriaForm() {
         step4: data,
       });
     },
-    [saveToLocalStorage]
+    [saveToLocalStorage],
+  );
+
+  const autoSaveStep1 = useCallback(
+    (data: ApplicantProfileData) => {
+      saveToLocalStorage({ step1: data });
+    },
+    [saveToLocalStorage],
+  );
+
+  const autoSaveStep2 = useCallback(
+    (data: InnovationPitchData) => {
+      saveToLocalStorage({ step2: data });
+    },
+    [saveToLocalStorage],
+  );
+
+  const autoSaveStep3 = useCallback(
+    (data: FundingMediaData) => {
+      saveToLocalStorage({ step3: data });
+    },
+    [saveToLocalStorage],
+  );
+
+  const autoSaveStep4 = useCallback(
+    (data: CommitmentData) => {
+      saveToLocalStorage({ step4: data });
+    },
+    [saveToLocalStorage],
   );
 
   const setCurrentStep = useCallback(
     (step: number) => {
       saveToLocalStorage({ currentStep: step });
     },
-    [saveToLocalStorage]
+    [saveToLocalStorage],
   );
 
   const clearFormData = useCallback(() => {
@@ -210,6 +237,10 @@ export function useDareNigeriaForm() {
     updateStep2,
     updateStep3,
     updateStep4,
+    autoSaveStep1,
+    autoSaveStep2,
+    autoSaveStep3,
+    autoSaveStep4,
     setCurrentStep,
     clearFormData,
   };

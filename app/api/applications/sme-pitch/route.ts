@@ -46,6 +46,30 @@ export async function POST(request: Request) {
     const applicantEmail = validation.data.step1.personalInfo.email;
     const applicantName = `${validation.data.step1.personalInfo.firstName} ${validation.data.step1.personalInfo.lastName}`;
 
+    // Check if the user has already registered for any competition
+    const existingApplication = await db.application.findFirst({
+      where: {
+        data: {
+          path: ["step1", "personalInfo", "email"],
+          equals: applicantEmail,
+        },
+      },
+      select: { id: true, competition: true },
+    });
+
+    if (existingApplication) {
+      const competitionName =
+        existingApplication.competition === Competition.DARE_NIGERIA
+          ? "DARE Nigeria Challenge"
+          : "SME Pitch Competition";
+      return NextResponse.json(
+        {
+          error: `You have already registered for the ${competitionName}. Each participant can only register for one competition.`,
+        },
+        { status: 409 },
+      );
+    }
+
     // Create application record
     const application = await db.application.create({
       data: {

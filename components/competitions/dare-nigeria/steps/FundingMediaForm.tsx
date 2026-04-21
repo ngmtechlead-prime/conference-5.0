@@ -1,6 +1,7 @@
 "use client";
 
 import { useForm, Controller } from "react-hook-form";
+import { useFormAutoSave } from "@/hooks/useFormAutoSave";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { step3Schema, Step3FormData } from "@/lib/schemas/dare-nigeria";
 import {
@@ -17,12 +18,14 @@ interface FundingMediaFormProps {
   defaultValues?: Partial<Step3FormData>;
   onSubmit: (data: Step3FormData) => void;
   onBack: () => void;
+  onAutoSave?: (data: Step3FormData) => void;
 }
 
 export default function FundingMediaForm({
   defaultValues,
   onSubmit,
   onBack,
+  onAutoSave,
 }: FundingMediaFormProps) {
   const {
     register,
@@ -49,6 +52,8 @@ export default function FundingMediaForm({
       ...defaultValues,
     },
   });
+
+  useFormAutoSave(watch, onAutoSave);
 
   const watchFundingUsePlan = watch("funding.fundingUsePlan", "");
 

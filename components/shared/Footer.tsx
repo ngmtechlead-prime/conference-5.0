@@ -5,19 +5,37 @@ import React from "react";
 const navColumns = [
   {
     heading: "CONFERENCE",
-    links: ["Speakers", "Agenda", "Gallery"],
+    links: [
+      { label: "Speakers", href: "/speakers" },
+      { label: "Agenda", href: "/agenda" },
+      { label: "Gallery", href: "/gallery" },
+    ],
   },
   {
     heading: "COMPETITIONS",
-    links: ["SME Pitch Competition", "NGM X Dr Kola Adesina Competition"],
+    links: [
+      { label: "SME Pitch Competition", href: "/competitions/sme-pitch" },
+      {
+        label: "NGM X Dr Kola Adesina Competition",
+        href: "/competitions/dare-nigeria",
+      },
+    ],
   },
   {
     heading: "GET INVOLVED",
-    links: ["Become a Sponsor", "Shop Merchandise", "Pricing"],
+    links: [
+      { label: "Become a Sponsor", href: "#" },
+      { label: "Shop Merchandise", href: "#" },
+      { label: "Pricing", href: "#" },
+    ],
   },
   {
     heading: "SUPPORT",
-    links: ["Contact", "Privacy Policy", "Terms & Conditions"],
+    links: [
+      { label: "Contact", href: "/contact" },
+      { label: "Privacy Policy", href: "#" },
+      { label: "Terms & Conditions", href: "#" },
+    ],
   },
 ];
 
@@ -130,13 +148,13 @@ export default function Footer() {
                 </p>
                 <ul className="flex flex-col gap-2.5">
                   {col.links.map((link) => (
-                    <li key={link}>
-                      <a
-                        href="#"
+                    <li key={link.label}>
+                      <Link
+                        href={link.href}
                         className="text-gray-500 text-sm hover:text-[#0F1990] transition-colors duration-150 leading-snug"
                       >
-                        {link}
-                      </a>
+                        {link.label}
+                      </Link>
                     </li>
                   ))}
                 </ul>

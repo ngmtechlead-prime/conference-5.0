@@ -1,6 +1,7 @@
 "use client";
 
 import { useForm, Controller } from "react-hook-form";
+import { useFormAutoSave } from "@/hooks/useFormAutoSave";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { step2Schema, Step2FormData } from "@/lib/schemas/dare-nigeria";
 import {
@@ -21,12 +22,14 @@ interface InnovationPitchFormProps {
   defaultValues?: Partial<Step2FormData>;
   onSubmit: (data: Step2FormData) => void;
   onBack: () => void;
+  onAutoSave?: (data: Step2FormData) => void;
 }
 
 export default function InnovationPitchForm({
   defaultValues,
   onSubmit,
   onBack,
+  onAutoSave,
 }: InnovationPitchFormProps) {
   const {
     register,
@@ -63,6 +66,8 @@ export default function InnovationPitchForm({
       ...defaultValues,
     },
   });
+
+  useFormAutoSave(watch, onAutoSave);
 
   const watchProblemStatement = watch("pitch.problemStatement", "");
   const watchBusinessDescription = watch("pitch.businessDescription", "");

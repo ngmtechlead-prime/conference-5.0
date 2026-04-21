@@ -1,6 +1,7 @@
 "use client";
 
 import { useForm, Controller } from "react-hook-form";
+import { useFormAutoSave } from "@/hooks/useFormAutoSave";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { step2Schema, Step2FormData } from "@/lib/schemas/sme-pitch";
 import { FormField, Textarea, CheckboxGroup } from "@/components/ui/FormField";
@@ -11,12 +12,14 @@ interface PitchFundingFormProps {
   defaultValues?: Partial<Step2FormData>;
   onSubmit: (data: Step2FormData) => void;
   onBack: () => void;
+  onAutoSave?: (data: Step2FormData) => void;
 }
 
 export default function PitchFundingForm({
   defaultValues,
   onSubmit,
   onBack,
+  onAutoSave,
 }: PitchFundingFormProps) {
   const {
     register,
@@ -46,6 +49,8 @@ export default function PitchFundingForm({
       ...defaultValues,
     },
   });
+
+  useFormAutoSave(watch, onAutoSave);
 
   const receivedFunding = watch("fundingSupport.receivedExternalFunding");
   const problemSolving = watch("businessPitch.problemSolving") || "";

@@ -1,6 +1,7 @@
 "use client";
 
 import { useForm } from "react-hook-form";
+import { useFormAutoSave } from "@/hooks/useFormAutoSave";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { step3Schema, Step3FormData } from "@/lib/schemas/sme-pitch";
 import { FormField, Input } from "@/components/ui/FormField";
@@ -10,16 +11,19 @@ interface DocumentsMediaFormProps {
   defaultValues?: Partial<Step3FormData>;
   onSubmit: (data: Step3FormData) => void;
   onBack: () => void;
+  onAutoSave?: (data: Step3FormData) => void;
 }
 
 export default function DocumentsMediaForm({
   defaultValues,
   onSubmit,
   onBack,
+  onAutoSave,
 }: DocumentsMediaFormProps) {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm<Step3FormData>({
     resolver: zodResolver(step3Schema),
@@ -36,6 +40,8 @@ export default function DocumentsMediaForm({
       ...defaultValues,
     },
   });
+
+  useFormAutoSave(watch, onAutoSave);
 
   return (
     <form

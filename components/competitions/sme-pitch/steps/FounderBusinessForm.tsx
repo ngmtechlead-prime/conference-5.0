@@ -1,6 +1,7 @@
 "use client";
 
 import { useForm, Controller } from "react-hook-form";
+import { useFormAutoSave } from "@/hooks/useFormAutoSave";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { step1Schema, Step1FormData } from "@/lib/schemas/sme-pitch";
 import { FormField, Input, Select, Textarea } from "@/components/ui/FormField";
@@ -20,11 +21,13 @@ import { ArrowRight } from "lucide-react";
 interface FounderBusinessFormProps {
   defaultValues?: Partial<Step1FormData>;
   onSubmit: (data: Step1FormData) => void;
+  onAutoSave?: (data: Step1FormData) => void;
 }
 
 export default function FounderBusinessForm({
   defaultValues,
   onSubmit,
+  onAutoSave,
 }: FounderBusinessFormProps) {
   const {
     register,
@@ -66,6 +69,8 @@ export default function FounderBusinessForm({
       ...defaultValues,
     },
   });
+
+  useFormAutoSave(watch, onAutoSave);
 
   const stateOptions = NIGERIAN_STATES.map((state) => ({
     value: state.toLowerCase().replace(/\s+/g, "_"),

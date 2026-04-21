@@ -31,6 +31,10 @@ export default function DareNigeriaApplyPage() {
     updateStep2,
     updateStep3,
     updateStep4,
+    autoSaveStep1,
+    autoSaveStep2,
+    autoSaveStep3,
+    autoSaveStep4,
     setCurrentStep,
     clearFormData,
   } = useDareNigeriaForm();
@@ -127,6 +131,7 @@ export default function DareNigeriaApplyPage() {
               <ApplicantProfileForm
                 defaultValues={formData.step1}
                 onSubmit={handleStep1Submit}
+                onAutoSave={autoSaveStep1}
               />
             )}
 
@@ -135,6 +140,7 @@ export default function DareNigeriaApplyPage() {
                 defaultValues={formData.step2}
                 onSubmit={handleStep2Submit}
                 onBack={handleBack}
+                onAutoSave={autoSaveStep2}
               />
             )}
 
@@ -143,6 +149,7 @@ export default function DareNigeriaApplyPage() {
                 defaultValues={formData.step3}
                 onSubmit={handleStep3Submit}
                 onBack={handleBack}
+                onAutoSave={autoSaveStep3}
               />
             )}
 
@@ -152,6 +159,7 @@ export default function DareNigeriaApplyPage() {
                 onSubmit={handleStep4Submit}
                 onBack={handleBack}
                 isSubmitting={isSubmitting}
+                onAutoSave={autoSaveStep4}
               />
             )}
           </div>

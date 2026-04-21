@@ -68,16 +68,32 @@ export default function SMEPitchApplyPage() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const autoSaveStep1 = (data: Step1FormData) => {
+    setFormData((prev) => ({ ...prev, step1: data }));
+  };
+
   const handleStep2Submit = (data: Step2FormData) => {
     setFormData((prev) => ({ ...prev, step2: data }));
     setCurrentStep(3);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const autoSaveStep2 = (data: Step2FormData) => {
+    setFormData((prev) => ({ ...prev, step2: data }));
+  };
+
   const handleStep3Submit = (data: Step3FormData) => {
     setFormData((prev) => ({ ...prev, step3: data }));
     setCurrentStep(4);
     window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const autoSaveStep3 = (data: Step3FormData) => {
+    setFormData((prev) => ({ ...prev, step3: data }));
+  };
+
+  const autoSaveStep4 = (data: Step4FormData) => {
+    setFormData((prev) => ({ ...prev, step4: data }));
   };
 
   const handleStep4Submit = async (data: Step4FormData) => {
@@ -150,6 +166,7 @@ export default function SMEPitchApplyPage() {
               <FounderBusinessForm
                 defaultValues={formData.step1}
                 onSubmit={handleStep1Submit}
+                onAutoSave={autoSaveStep1}
               />
             )}
 
@@ -158,6 +175,7 @@ export default function SMEPitchApplyPage() {
                 defaultValues={formData.step2}
                 onSubmit={handleStep2Submit}
                 onBack={goBack}
+                onAutoSave={autoSaveStep2}
               />
             )}
 
@@ -166,6 +184,7 @@ export default function SMEPitchApplyPage() {
                 defaultValues={formData.step3}
                 onSubmit={handleStep3Submit}
                 onBack={goBack}
+                onAutoSave={autoSaveStep3}
               />
             )}
 
@@ -175,6 +194,7 @@ export default function SMEPitchApplyPage() {
                 onSubmit={handleStep4Submit}
                 onBack={goBack}
                 isSubmitting={isSubmitting}
+                onAutoSave={autoSaveStep4}
               />
             )}
           </div>

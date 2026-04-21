@@ -1,6 +1,7 @@
 "use client";
 
 import { useForm, Controller } from "react-hook-form";
+import { useFormAutoSave } from "@/hooks/useFormAutoSave";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { step1Schema, Step1FormData } from "@/lib/schemas/dare-nigeria";
 import { FormField, Input, Select, Textarea } from "@/components/ui/FormField";
@@ -15,16 +16,19 @@ import { ArrowRight } from "lucide-react";
 interface ApplicantProfileFormProps {
   defaultValues?: Partial<Step1FormData>;
   onSubmit: (data: Step1FormData) => void;
+  onAutoSave?: (data: Step1FormData) => void;
 }
 
 export default function ApplicantProfileForm({
   defaultValues,
   onSubmit,
+  onAutoSave,
 }: ApplicantProfileFormProps) {
   const {
     register,
     handleSubmit,
     control,
+    watch,
     formState: { errors },
   } = useForm<Step1FormData>({
     resolver: zodResolver(step1Schema),
@@ -51,6 +55,8 @@ export default function ApplicantProfileForm({
       ...defaultValues,
     },
   });
+
+  useFormAutoSave(watch, onAutoSave);
 
   const stateOptions = NIGERIAN_STATES.map((state) => ({
     value: state.toLowerCase().replace(/\s+/g, "_"),

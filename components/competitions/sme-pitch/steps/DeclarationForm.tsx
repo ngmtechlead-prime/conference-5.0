@@ -1,6 +1,7 @@
 "use client";
 
 import { useForm, Controller } from "react-hook-form";
+import { useFormAutoSave } from "@/hooks/useFormAutoSave";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { step4Schema, Step4FormData } from "@/lib/schemas/sme-pitch";
 import { FormField, Input, Select, Textarea } from "@/components/ui/FormField";
@@ -15,6 +16,7 @@ interface DeclarationFormProps {
   onSubmit: (data: Step4FormData) => void;
   onBack: () => void;
   isSubmitting?: boolean;
+  onAutoSave?: (data: Step4FormData) => void;
 }
 
 const DECLARATION_ITEMS = [
@@ -59,6 +61,7 @@ export default function DeclarationForm({
   onSubmit,
   onBack,
   isSubmitting = false,
+  onAutoSave,
 }: DeclarationFormProps) {
   const {
     register,
@@ -90,6 +93,8 @@ export default function DeclarationForm({
       ...defaultValues,
     },
   });
+
+  useFormAutoSave(watch, onAutoSave);
 
   const additionalInfo = watch("availability.additionalInfo") || "";
 
