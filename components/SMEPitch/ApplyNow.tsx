@@ -19,10 +19,10 @@ export default function ApplyNow() {
 
         <div className="relative z-10 max-w-2xl mx-auto text-center">
           <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">
-            Your Business Has Come This Far.{" "}
+            Your Business Has Come This Far{" "}
             <span className="relative inline-block">
               to Stop Here.
-              <span className="absolute left-0 -bottom-2 w-full flex justify-center">
+              <span className="absolute left-0 -bottom-4 w-full flex justify-center">
                 <Image
                   src="/icons/dareZap.svg"
                   alt="Squiggle"

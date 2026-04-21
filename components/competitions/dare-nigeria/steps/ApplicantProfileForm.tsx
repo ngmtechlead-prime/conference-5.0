@@ -125,7 +125,7 @@ export default function ApplicantProfileForm({
             />
           </FormField>
 
-          <FormField
+          {/* <FormField
             label="Nationality"
             required
             error={errors.personalInfo?.nationality}
@@ -143,7 +143,7 @@ export default function ApplicantProfileForm({
                 />
               )}
             />
-          </FormField>
+          </FormField> */}
 
           <FormField
             label="State of Origin"
