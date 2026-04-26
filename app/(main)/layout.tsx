@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/next";
 import { Epilogue, Archivo } from "next/font/google";
 import "../globals.css";
 import Navbar from "@/components/shared/Navbar";
@@ -30,6 +32,8 @@ export default function RootLayout({
       lang="en"
       className={`${epilogue.variable} ${archivo.variable} h-full antialiased`}
     >
+      <Analytics />
+      <SpeedInsights />
       <body className="min-h-full flex flex-col">
         <Navbar />
         <main>{children}</main>

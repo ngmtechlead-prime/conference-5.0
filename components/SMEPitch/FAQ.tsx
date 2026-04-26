@@ -42,7 +42,7 @@ const faqs: FAQItem[] = [
   {
     question: "When is the application deadline?",
     answer:
-      "All applications must be submitted on or before the 31th of May, 2026.",
+      "All applications must be submitted on or before the 7th of June, 2026.",
   },
   {
     question: "Can I apply with more than one business?",
