@@ -67,7 +67,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`w-full h-[108px] py-4 bg-white border-gray-100 sticky top-0 z-50 transition-shadow duration-300 ${scrolled ? "shadow-sm" : "shadow-none"}`}
+      className={`w-full h-[92px] py-4 bg-white border-gray-100 sticky top-0 z-50 transition-shadow duration-300 ${scrolled ? "shadow-sm" : "shadow-none"}`}
     >
       <Wrapper className="h-full flex items-center">
         <div className="flex items-center justify-between w-full">

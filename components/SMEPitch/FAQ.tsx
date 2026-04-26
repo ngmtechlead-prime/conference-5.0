@@ -10,29 +10,62 @@ interface FAQItem {
 
 const faqs: FAQItem[] = [
   {
-    question: "What is the SME Pitch Competition about?",
+    question: "What is the NGM SME Competition about?",
     answer:
-      "The SME Pitch Competition is a platform designed to discover, celebrate, and empower small and medium enterprises with high growth potential. Winners receive seed funding, mentorship, and access to our investor network.",
+      "The NGM SME Competition is designed to identify, support, and showcase high-potential small and medium-sized enterprises (SMEs). It provides entrepreneurs with an opportunity to pitch their businesses to a panel of judges, gain visibility, and access funding, mentorship, and strategic partnerships.",
   },
   {
-    question: "Who is eligible to apply?",
+    question: "Is it open to only NGM members?",
     answer:
-      "The competition is open to registered SMEs in Nigeria with at least 1 year of operation, a clear revenue model, and demonstrated growth potential. Your business must have a unique value proposition and you must be ready to scale.",
+      "No. Non-NGM members can apply as well, provided they are willing to join the platform or the entrepreneurship club.",
   },
   {
-    question: "What is the current application deadline?",
+    question: "What is the applicant’s prerequisite?",
     answer:
-      "Applications for the 2026 SME Pitch Competition close on May 31, 2026. We encourage early applications as spots are limited and competitive.",
+      "Applicants must be founders or representatives of a registered SME and available to participate in all stages of the competition.",
   },
   {
-    question: "What does the registration fee cover?",
+    question: "What sectors are eligible for the competition?",
     answer:
-      "Registration is free. However, winners are required to attend the NGM 5.0 Conference where the final pitch takes place. Conference tickets are purchased separately.",
+      "SMEs across all sectors, including technology, agriculture, healthcare, manufacturing, and services, excluding unethical sectors.",
   },
   {
     question: "Is there a registration fee?",
     answer:
-      "No, the SME Pitch Competition is completely free to enter. We believe in removing barriers to opportunity for Nigerian entrepreneurs.",
+      "No, participation is free but you must have registered for the conference before applying.",
+  },
+  {
+    question: "How do I apply?",
+    answer:
+      "Interested participants must complete the application form via this website and submit all required documents before the deadline.",
+  },
+  {
+    question: "When is the application deadline?",
+    answer:
+      "All applications must be submitted on or before the 31th of May, 2026.",
+  },
+  {
+    question: "Can I apply with more than one business?",
+    answer: "No, each applicant will submit only one business entry.",
+  },
+  {
+    question: "Can business partners apply, or only individuals?",
+    answer:
+      "Both individuals and business partners can apply. However, a lead representative must be designated for communication purposes.",
+  },
+  {
+    question: "What are the stages of the competition?",
+    answer:
+      "The application stages are: Application & Screening Shortlisting, Quarterfinal/Pitch Desk, Semi-Final/Bootcamp, Final Pitch Event, Selection of Winners.",
+  },
+  {
+    question: "Can past beneficiaries apply?",
+    answer: "No, they cannot.",
+  },
+  {
+    question: "What do selected participants receive?",
+    answer:
+      "Benefits include: Seed capital funding, Access to investors and funding opportunities, Exclusive Bootcamp training, Mentorship and advisory support, Networking opportunities and Media exposure.",
   },
 ];
 
