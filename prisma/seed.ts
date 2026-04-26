@@ -11,9 +11,13 @@ const adapter = new PrismaPg(pool);
 const prisma = new PrismaClient({ adapter });
 
 async function main() {
-  const email = process.env.ADMIN_EMAIL || "admin@ngmconference.com";
-  const password = process.env.ADMIN_PASSWORD || "changeme123";
+  const email = process.env.ADMIN_EMAIL as string;
+  const password = process.env.ADMIN_PASSWORD as string;
   const name = process.env.ADMIN_NAME || "Admin User";
+
+  if (!email || !password) {
+    throw new Error("Admin email and password is required!");
+  }
 
   const existingAdmin = await prisma.admin.findUnique({
     where: { email },
