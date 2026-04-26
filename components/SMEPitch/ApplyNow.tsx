@@ -35,7 +35,7 @@ export default function ApplyNow() {
           </h2>
 
           <p className="text-green-100 text-base sm:text-md mb-8 mt-6">
-            Applications close May 31, 2026. Free to enter. Built to transform
+            Applications close June 7, 2026. Free to enter. Built to transform
             your business trajectory.
           </p>
 

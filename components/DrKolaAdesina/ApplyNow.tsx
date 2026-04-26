@@ -33,7 +33,7 @@ export default function ApplyNow() {
           </h2>
 
           <p className="text-white text-lg sm:text-xl mb-5">
-            Applications close May 31, 2026. Free to enter. Built to change your
+            Applications close June 7, 2026. Free to enter. Built to change your
             business trajectory.
           </p>
 
