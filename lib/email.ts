@@ -1,7 +1,6 @@
 import { Resend } from "resend";
-import ApplicationReceivedEmail from "@/emails/ApplicationReceived";
-import ApplicationAcceptedEmail from "@/emails/ApplicationAccepted";
-import ApplicationDeclinedEmail from "@/emails/ApplicationDeclined";
+import fs from "fs";
+import path from "path";
 import { emailLogger } from "@/lib/logger";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -9,17 +8,42 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 const FROM_EMAIL =
   process.env.RESEND_FROM_EMAIL || "NGM Conference 5.0 <info@ngmplatform.com>";
 
+function loadTemplate(
+  templateName: string,
+  variables: Record<string, string>,
+): string {
+  const templatePath = path.join(
+    process.cwd(),
+    "emails",
+    "html",
+    `${templateName}.html`,
+  );
+  let html = fs.readFileSync(templatePath, "utf-8");
+  for (const [key, value] of Object.entries(variables)) {
+    html = html.replaceAll(`{{${key}}}`, value);
+  }
+  return html;
+}
+
 export async function sendApplicationReceivedEmail(
   to: string,
   applicantName: string,
   competition: string,
+  competitionUrl?: string,
 ) {
   try {
+    const html = loadTemplate("received", {
+      first_name: applicantName,
+      competition_name: competition,
+      competition_url:
+        competitionUrl || "https://kaleidoscopic-stardust-3041fd.netlify.app",
+    });
+
     const { error } = await resend.emails.send({
       from: FROM_EMAIL,
       to,
       subject: `Application Received - ${competition}`,
-      react: ApplicationReceivedEmail({ applicantName, competition }),
+      html,
     });
 
     if (error) {
@@ -46,17 +70,20 @@ export async function sendApplicationAcceptedEmail(
   applicantName: string,
   competition: string,
   additionalInfo?: string,
+  competitionUrl?: string,
 ) {
   try {
+    const html = loadTemplate("accepted", {
+      first_name: applicantName,
+      competition_name: competition,
+      competition_url: competitionUrl || "#",
+    });
+
     const { error } = await resend.emails.send({
       from: FROM_EMAIL,
       to,
       subject: `Congratulations! Your ${competition} Application Has Been Accepted`,
-      react: ApplicationAcceptedEmail({
-        applicantName,
-        competition,
-        additionalInfo,
-      }),
+      html,
     });
 
     if (error) {
@@ -83,17 +110,20 @@ export async function sendApplicationDeclinedEmail(
   applicantName: string,
   competition: string,
   reason?: string,
+  competitionUrl?: string,
 ) {
   try {
+    const html = loadTemplate("declined", {
+      first_name: applicantName,
+      competition_name: competition,
+      competition_url: competitionUrl || "#",
+    });
+
     const { error } = await resend.emails.send({
       from: FROM_EMAIL,
       to,
       subject: `Update on Your ${competition} Application`,
-      react: ApplicationDeclinedEmail({
-        applicantName,
-        competition,
-        reason,
-      }),
+      html,
     });
 
     if (error) {
