@@ -1,0 +1,170 @@
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import TermsModal from "@/components/shared/TermsModal";
+import FormProgress from "@/components/competitions/dare-nigeria/FormProgress";
+import ApplicantProfileForm from "@/components/competitions/dare-nigeria/steps/ApplicantProfileForm";
+import InnovationPitchForm from "@/components/competitions/dare-nigeria/steps/InnovationPitchForm";
+import FundingMediaForm from "@/components/competitions/dare-nigeria/steps/FundingMediaForm";
+import CommitmentForm from "@/components/competitions/dare-nigeria/steps/CommitmentForm";
+import { useDareNigeriaForm } from "@/hooks/useDareNigeriaForm";
+import { submitDareNigeriaApplication } from "@/lib/api/submissions";
+import type {
+  Step1FormData,
+  Step2FormData,
+  Step3FormData,
+  Step4FormData,
+} from "@/lib/schemas/dare-nigeria";
+
+export default function DareNigeriaApplyPage() {
+  const router = useRouter();
+  const [showTermsModal, setShowTermsModal] = useState(true);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const {
+    formData,
+    isLoading,
+    termsAccepted,
+    acceptTerms,
+    updateStep1,
+    updateStep2,
+    updateStep3,
+    updateStep4,
+    autoSaveStep1,
+    autoSaveStep2,
+    autoSaveStep3,
+    autoSaveStep4,
+    setCurrentStep,
+    clearFormData,
+  } = useDareNigeriaForm();
+
+  const handleAcceptTerms = () => {
+    acceptTerms();
+    setShowTermsModal(false);
+  };
+
+  const handleCancelTerms = () => {
+    router.push("/competitions/dare-nigeria");
+  };
+
+  const handleStep1Submit = (data: Step1FormData) => {
+    updateStep1(data);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const handleStep2Submit = (data: Step2FormData) => {
+    updateStep2(data);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const handleStep3Submit = (data: Step3FormData) => {
+    updateStep3(data);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const handleStep4Submit = async (data: Step4FormData) => {
+    setIsSubmitting(true);
+    try {
+      updateStep4(data);
+
+      const finalFormData = {
+        step1: formData.step1,
+        step2: formData.step2,
+        step3: formData.step3,
+        step4: data,
+      };
+
+      const result = await submitDareNigeriaApplication(finalFormData);
+
+      if (!result.success) {
+        throw new Error(result.error);
+      }
+
+      clearFormData();
+      router.push("/competitions/dare-nigeria/apply/success");
+    } catch (error) {
+      console.error("Error submitting application:", error);
+      alert(
+        error instanceof Error
+          ? error.message
+          : "Failed to submit application. Please try again.",
+      );
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleBack = () => {
+    if (formData.currentStep > 1) {
+      setCurrentStep(formData.currentStep - 1);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
+  if (isLoading) {
+    return (
+      <div className="flex flex-col min-h-screen">
+        <main className="flex-1 flex items-center justify-center">
+          <div className="animate-pulse text-gray-500">Loading...</div>
+        </main>
+      </div>
+    );
+  }
+
+  const shouldShowTermsModal = !termsAccepted && showTermsModal;
+
+  return (
+    <section className="flex flex-col min-h-screen">
+      <TermsModal
+        competition="DARE Nigeria Challenge 2026"
+        isOpen={shouldShowTermsModal}
+        onAccept={handleAcceptTerms}
+        onCancel={handleCancelTerms}
+      />
+
+      <div className="flex-1 py-8 px-4 sm:px-6 lg:px-12">
+        <div className="max-w-4xl mx-auto">
+          <FormProgress currentStep={formData.currentStep} />
+
+          <div className="bg-white rounded-br-2xl rounded-bl-2xl border border-t-0 border-gray-200 p-6 sm:p-8 lg:p-10">
+            {formData.currentStep === 1 && (
+              <ApplicantProfileForm
+                defaultValues={formData.step1}
+                onSubmit={handleStep1Submit}
+                onAutoSave={autoSaveStep1}
+              />
+            )}
+
+            {formData.currentStep === 2 && (
+              <InnovationPitchForm
+                defaultValues={formData.step2}
+                onSubmit={handleStep2Submit}
+                onBack={handleBack}
+                onAutoSave={autoSaveStep2}
+              />
+            )}
+
+            {formData.currentStep === 3 && (
+              <FundingMediaForm
+                defaultValues={formData.step3}
+                onSubmit={handleStep3Submit}
+                onBack={handleBack}
+                onAutoSave={autoSaveStep3}
+              />
+            )}
+
+            {formData.currentStep === 4 && (
+              <CommitmentForm
+                defaultValues={formData.step4}
+                onSubmit={handleStep4Submit}
+                onBack={handleBack}
+                isSubmitting={isSubmitting}
+                onAutoSave={autoSaveStep4}
+              />
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

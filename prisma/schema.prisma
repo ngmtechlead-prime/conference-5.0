@@ -1,0 +1,58 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../lib/generated/prisma"
+}
+
+generator jsonTypes {
+  provider = "prisma-json-types-generator"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum Competition {
+  DARE_NIGERIA
+  SME_PITCH
+}
+
+enum ApplicationStatus {
+  PENDING
+  UNDER_REVIEW
+  ACCEPTED
+  DECLINED
+}
+
+model Admin {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  name         String
+  role         Role     @default(ADMIN)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Application {
+  id          String            @id @default(cuid())
+  competition Competition
+  status      ApplicationStatus @default(PENDING)
+  /// [ApplicationData]
+  data        Json
+  /// [ApplicationFiles]
+  files       Json?
+  adminNotes  String?
+  decidedAt   DateTime?
+  decidedBy   String?
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+
+  @@index([competition])
+  @@index([status])
+  @@index([createdAt])
+}

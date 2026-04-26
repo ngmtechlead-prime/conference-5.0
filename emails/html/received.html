@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>We've got your application — NGM</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #e7e8f4;
+        font-family: "Epilogue", Helvetica, Arial, sans-serif;
+        color: #4a5565;
+        -webkit-font-smoothing: antialiased;
+        line-height: 1.5;
+      }
+
+      .wrapper {
+        width: 100%;
+        padding: 40px 16px;
+        box-sizing: border-box;
+      }
+
+      .email {
+        max-width: 600px;
+        margin: 0 auto;
+        background: #ffffff;
+        border-radius: 4px;
+        overflow: hidden;
+        box-shadow: 0 4px 24px rgba(15, 25, 144, 0.06);
+      }
+
+      .logo-bar {
+        padding: 28px 40px;
+        border-bottom: 1px solid #f0f0f5;
+        text-align: center;
+      }
+
+      .logo-bar img {
+        height: 48px;
+        width: auto;
+        display: inline-block;
+      }
+
+      .logo-text {
+        font-weight: 900;
+        font-size: 22px;
+        letter-spacing: -0.02em;
+        color: #0f1990;
+      }
+
+      .footer-logo {
+        height: 44px;
+        width: auto;
+        margin-bottom: 24px;
+        display: inline-block;
+      }
+
+      .hero {
+        background: #0f1990;
+        color: #ffffff;
+        padding: 64px 40px 64px;
+      }
+
+      .hero h1 {
+        font-size: 44px;
+        font-weight: 800;
+        line-height: 1.1;
+        letter-spacing: -0.03em;
+        margin: 0;
+        color: #ffffff;
+      }
+
+      .body-content {
+        padding: 48px 40px 16px;
+      }
+
+      .body-content p {
+        font-size: 16px;
+        line-height: 1.65;
+        color: #4a5565;
+        margin: 0 0 20px;
+      }
+
+      .body-content strong {
+        color: #101828;
+        font-weight: 700;
+      }
+
+      .next-steps {
+        padding: 8px 40px 40px;
+      }
+
+      .next-steps h2 {
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        font-weight: 700;
+        color: #101828;
+        margin: 24px 0 24px;
+      }
+
+      .step {
+        display: flex;
+        align-items: flex-start;
+        gap: 20px;
+        padding: 20px 0;
+        border-top: 1px solid #f0f0f5;
+      }
+
+      .step:last-child {
+        border-bottom: 1px solid #f0f0f5;
+      }
+
+      .step-number {
+        font-family: "Epilogue", sans-serif;
+        font-size: 28px;
+        font-weight: 800;
+        color: #0f1990;
+        line-height: 1;
+        min-width: 36px;
+        letter-spacing: -0.02em;
+      }
+
+      .step-text h3 {
+        font-size: 16px;
+        font-weight: 700;
+        color: #101828;
+        margin: 0 0 4px;
+      }
+
+      .step-text p {
+        font-size: 14px;
+        color: #4a5565;
+        margin: 0;
+        line-height: 1.55;
+      }
+
+      .cta-wrap {
+        padding: 32px 40px 48px;
+      }
+
+      .cta {
+        display: block;
+        background: #0f1990;
+        color: #ffffff !important;
+        text-align: center;
+        text-decoration: none;
+        padding: 18px 24px;
+        font-weight: 700;
+        font-size: 15px;
+        letter-spacing: 0.01em;
+        border-radius: 2px;
+      }
+
+      .signoff {
+        padding: 8px 40px 40px;
+        font-size: 16px;
+        line-height: 1.65;
+        color: #4a5565;
+      }
+
+      .signoff p {
+        margin: 0 0 8px;
+      }
+
+      .ps {
+        padding: 24px 40px 40px;
+        border-top: 1px solid #f0f0f5;
+        font-size: 14px;
+        color: #4a5565;
+        line-height: 1.6;
+      }
+
+      .ps a {
+        color: #0f1990;
+        font-weight: 600;
+      }
+
+      .footer {
+        background: #fafbff;
+        color: #4a5565;
+        padding: 40px;
+        text-align: center;
+        font-size: 13px;
+        border-top: 1px solid #e7e8f4;
+      }
+
+      .footer-socials {
+        margin: 4px 0 24px;
+        font-size: 0;
+      }
+
+      .footer-socials a {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        margin: 0 6px;
+        border-radius: 50%;
+        background: #e7e8f4;
+        color: #0f1990;
+        text-align: center;
+        text-decoration: none;
+      }
+
+      .footer-socials svg {
+        width: 18px;
+        height: 18px;
+        vertical-align: middle;
+        fill: currentColor;
+      }
+
+      .footer-meta {
+        color: #4a5565;
+        line-height: 1.7;
+        font-size: 12px;
+      }
+
+      .footer-meta a {
+        color: #4a5565;
+        text-decoration: underline;
+      }
+
+      @media (max-width: 540px) {
+        .wrapper {
+          padding: 16px 8px;
+        }
+        .logo-bar,
+        .hero,
+        .body-content,
+        .next-steps,
+        .cta-wrap,
+        .signoff,
+        .ps,
+        .footer {
+          padding-left: 24px;
+          padding-right: 24px;
+        }
+        .hero {
+          padding-top: 40px;
+          padding-bottom: 36px;
+        }
+        .hero h1 {
+          font-size: 32px;
+        }
+        .body-content {
+          padding-top: 32px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="email">
+        <div class="logo-bar">
+          <!-- LOGO_URL: before sending, swap relative src for a public URL -->
+          <img
+            src="https://kaleidoscopic-stardust-3041fd.netlify.app/gallery/ngm-logo-blue.png"
+            alt="NGM Conference 5.0 — Nasir Giwa Mentorship Platform — 10th Anniversary"
+            onerror="
+              this.style.display = 'none';
+              this.nextElementSibling.style.display = 'inline';
+            "
+          /><span class="logo-text" style="display: none">NGM</span>
+        </div>
+
+        <div class="hero">
+          <h1>We've got your<br />bold idea.</h1>
+        </div>
+
+        <div class="body-content">
+          <p>Hi {{first_name}},</p>
+          <p>
+            Thanks for putting your name forward for the
+            <strong>{{competition_name}}</strong>. Your application is in our
+            hands, and we couldn't be more excited to read it.
+          </p>
+          <p>You dared. That already puts you ahead.</p>
+        </div>
+
+        <div class="next-steps">
+          <h2>What happens next</h2>
+          <div class="step">
+            <div class="step-number">01</div>
+            <div class="step-text">
+              <h3>We read every application</h3>
+              <p>
+                Our team carefully reviews each submission. No skimming, no
+                shortcuts.
+              </p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-number">02</div>
+            <div class="step-text">
+              <h3>You'll hear from us by email</h3>
+              <p>
+                We'll be in touch in the coming weeks with your application
+                status.
+              </p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-number">03</div>
+            <div class="step-text">
+              <h3>If shortlisted, we'll guide the next step</h3>
+              <p>
+                Selected applicants move into the next phase of the competition.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="cta-wrap">
+          <a href="{{competition_url}}" class="cta"
+            >Visit the competition page</a
+          >
+        </div>
+
+        <div class="signoff">
+          <p>Cheering you on,</p>
+          <p><strong style="color: #101828">The NGM Team</strong></p>
+        </div>
+
+        <div class="ps">
+          <p>
+            <strong>P.S.</strong> Got a question while you wait?
+            <a href="mailto:hello@ngm.com">Drop us a line</a> — we read every
+            email.
+          </p>
+        </div>
+
+        <div class="footer">
+          <img
+            src="https://kaleidoscopic-stardust-3041fd.netlify.app/gallery/ngm-logo-blue.png"
+            alt="NGM"
+            class="footer-logo"
+          />
+          <div class="footer-socials">
+            <a
+              href="https://linkedin.com/company/ngm-platform"
+              aria-label="LinkedIn"
+            >
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+                />
+              </svg>
+            </a>
+            <a href="https://instagram.com/ngm_platform" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+                />
+              </svg>
+            </a>
+            <a href="https://twitter.com/ngm_platform" aria-label="X (Twitter)">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+                />
+              </svg>
+            </a>
+            <a href="https://facebook.com/ngm_platform" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"
+                />
+              </svg>
+            </a>
+          </div>
+          <div class="footer-meta">
+            &copy; 2026 Nasir Giwa Mentorship. All rights reserved.<br />
+            <a href="#">Unsubscribe</a> &middot; <a href="#">View in browser</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
