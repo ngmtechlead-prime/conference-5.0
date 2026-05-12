@@ -151,7 +151,7 @@ export default function SMEPitchApplyPage() {
   return (
     <section className="flex flex-col min-h-screen">
       <TermsModal
-        competition="SME Pitch Competition 2026"
+        competition="sme_pitch"
         isOpen={shouldShowTermsModal}
         onAccept={handleAcceptTerms}
         onCancel={handleCancelTerms}

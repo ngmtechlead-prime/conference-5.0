@@ -116,7 +116,7 @@ export default function DareNigeriaApplyPage() {
   return (
     <section className="flex flex-col min-h-screen">
       <TermsModal
-        competition="DARE Nigeria Challenge 2026"
+        competition="dare_nigeria"
         isOpen={shouldShowTermsModal}
         onAccept={handleAcceptTerms}
         onCancel={handleCancelTerms}
