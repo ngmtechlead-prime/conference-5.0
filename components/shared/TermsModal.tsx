@@ -80,28 +80,7 @@ export default function TermsModal({
 
             <section>
               <h3 className="font-semibold text-gray-900 mb-2">
-                2. Membership Requirement
-              </h3>
-              <ul className="space-y-2 text-sm text-gray-600 list-disc pl-5">
-                <li>
-                  I confirm that I am an active NGM member, and my active
-                  membership is required to advance past the semi-final stage.
-                </li>
-                <li>
-                  If I am not yet a member, I understand that I must achieve
-                  active membership status before I am permitted to go past the
-                  semi-final stage.
-                </li>
-                <li>
-                  I accept that failure to do so will result in my
-                  disqualification from the Programme.
-                </li>
-              </ul>
-            </section>
-
-            <section>
-              <h3 className="font-semibold text-gray-900 mb-2">
-                3. Conference Ticket
+                2. Conference Ticket
               </h3>
               <ul className="space-y-2 text-sm text-gray-600 list-disc pl-5">
                 <li>
@@ -124,7 +103,7 @@ export default function TermsModal({
 
             <section>
               <h3 className="font-semibold text-gray-900 mb-2">
-                4. Single Application Requirement
+                3. Single Application Requirement
               </h3>
               <ul className="space-y-2 text-sm text-gray-600 list-disc pl-5">
                 <li>
@@ -145,7 +124,7 @@ export default function TermsModal({
 
             <section>
               <h3 className="font-semibold text-gray-900 mb-2">
-                5. Information Accuracy
+                4. Information Accuracy
               </h3>
               <ul className="space-y-2 text-sm text-gray-600 list-disc pl-5">
                 <li>
@@ -164,7 +143,7 @@ export default function TermsModal({
 
             <section>
               <h3 className="font-semibold text-gray-900 mb-2">
-                6. Ineligible Businesses
+                5. Ineligible Businesses
               </h3>
               <ul className="space-y-2 text-sm text-gray-600 list-disc pl-5">
                 <li>
@@ -184,7 +163,7 @@ export default function TermsModal({
 
             <section>
               <h3 className="font-semibold text-gray-900 mb-2">
-                7. Conflict of Interest Declaration
+                6. Conflict of Interest Declaration
               </h3>
               <ul className="space-y-2 text-sm text-gray-600 list-disc pl-5">
                 <li>
@@ -204,7 +183,7 @@ export default function TermsModal({
 
             <section>
               <h3 className="font-semibold text-gray-900 mb-2">
-                8. Selection Process
+                7. Selection Process
               </h3>
               <ul className="space-y-2 text-sm text-gray-600 list-disc pl-5">
                 <li>
@@ -225,7 +204,7 @@ export default function TermsModal({
             </section>
 
             <section>
-              <h3 className="font-semibold text-gray-900 mb-2">9. Judging</h3>
+              <h3 className="font-semibold text-gray-900 mb-2">                8. Judging</h3>
               <ul className="space-y-2 text-sm text-gray-600 list-disc pl-5">
                 <li>
                   I acknowledge that applications are scored by an independent
@@ -239,9 +218,7 @@ export default function TermsModal({
             </section>
 
             <section>
-              <h3 className="font-semibold text-gray-900 mb-2">
-                10. The Prize
-              </h3>
+              <h3 className="font-semibold text-gray-900 mb-2">                9. The Prize</h3>
               <ul className="space-y-2 text-sm text-gray-600 list-disc pl-5">
                 <li>
                   I understand that four winners will each receive direct cash
@@ -259,7 +236,7 @@ export default function TermsModal({
 
             <section>
               <h3 className="font-semibold text-gray-900 mb-2">
-                11. Grant Disbursement
+                10. Grant Disbursement
               </h3>
               <ul className="space-y-2 text-sm text-gray-600 list-disc pl-5">
                 <li>
@@ -295,7 +272,7 @@ export default function TermsModal({
 
             <section>
               <h3 className="font-semibold text-gray-900 mb-2">
-                12. Reporting Obligations
+                11. Reporting Obligations
               </h3>
               <ul className="space-y-2 text-sm text-gray-600 list-disc pl-5">
                 <li>
@@ -312,7 +289,7 @@ export default function TermsModal({
 
             <section>
               <h3 className="font-semibold text-gray-900 mb-2">
-                13. Use of Funds
+                12. Use of Funds
               </h3>
               <ul className="space-y-2 text-sm text-gray-600 list-disc pl-5">
                 <li>
@@ -331,7 +308,7 @@ export default function TermsModal({
 
             <section>
               <h3 className="font-semibold text-gray-900 mb-2">
-                14. Business Ownership
+                13. Business Ownership
               </h3>
               <ul className="space-y-2 text-sm text-gray-600 list-disc pl-5">
                 <li>
@@ -345,7 +322,7 @@ export default function TermsModal({
 
             <section>
               <h3 className="font-semibold text-gray-900 mb-2">
-                15. Publicity
+                14. Publicity
               </h3>
               <ul className="space-y-2 text-sm text-gray-600 list-disc pl-5">
                 <li>
@@ -358,7 +335,7 @@ export default function TermsModal({
 
             <section>
               <h3 className="font-semibold text-gray-900 mb-2">
-                16. Data Protection
+                15. Data Protection
               </h3>
               <ul className="space-y-2 text-sm text-gray-600 list-disc pl-5">
                 <li>
@@ -376,7 +353,7 @@ export default function TermsModal({
 
             <section>
               <h3 className="font-semibold text-gray-900 mb-2">
-                17. Mentorship
+                16. Mentorship
               </h3>
               <ul className="space-y-2 text-sm text-gray-600 list-disc pl-5">
                 <li>
@@ -392,7 +369,7 @@ export default function TermsModal({
 
             <section>
               <h3 className="font-semibold text-gray-900 mb-2">
-                18. Programme Changes
+                17. Programme Changes
               </h3>
               <ul className="space-y-2 text-sm text-gray-600 list-disc pl-5">
                 <li>
@@ -409,7 +386,7 @@ export default function TermsModal({
             </section>
 
             <section>
-              <h3 className="font-semibold text-gray-900 mb-2">19. Disputes</h3>
+              <h3 className="font-semibold text-gray-900 mb-2">                18. Disputes</h3>
               <ul className="space-y-2 text-sm text-gray-600 list-disc pl-5">
                 <li>
                   I agree that any concerns about the administration of the
@@ -422,7 +399,7 @@ export default function TermsModal({
 
             <section>
               <h3 className="font-semibold text-gray-900 mb-2">
-                20. Acceptance
+                19. Acceptance
               </h3>
               <ul className="space-y-2 text-sm text-gray-600 list-disc pl-5">
                 <li>
