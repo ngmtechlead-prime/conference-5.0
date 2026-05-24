@@ -137,7 +137,6 @@ export default function FundingMediaForm({
             <Textarea
               {...register("funding.fundingUsePlan")}
               rows={4}
-              maxLength={900}
               currentLength={watchFundingUsePlan?.length || 0}
               error={!!errors.funding?.fundingUsePlan}
             />
