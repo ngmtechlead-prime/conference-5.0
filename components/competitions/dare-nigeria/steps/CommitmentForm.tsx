@@ -250,7 +250,6 @@ export default function CommitmentForm({
             <Textarea
               {...register("declaration.whyDare")}
               rows={4}
-              maxLength={600}
               currentLength={watchWhyDare?.length || 0}
               error={!!errors.declaration?.whyDare}
             />
