@@ -4,7 +4,7 @@ import React from "react";
 
 const navColumns = [
   {
-    heading: "CONFERENCE",
+    heading: "Conference",
     links: [
       { label: "Speakers", href: "/speakers" },
       { label: "Agenda", href: "/agenda" },
@@ -12,17 +12,18 @@ const navColumns = [
     ],
   },
   {
-    heading: "COMPETITIONS",
+    heading: "Competitions",
     links: [
       { label: "SME Pitch Competition", href: "/competitions/sme-pitch" },
       {
-        label: "NGM X Dr Kola Adesina Competition",
+        label: "NGM X Kola Adesina Competition",
         href: "/competitions/dare-nigeria",
       },
+      { label: "Case Study Competition", href: "/competitions/case-study" },
     ],
   },
   {
-    heading: "GET INVOLVED",
+    heading: "Get involved",
     links: [
       { label: "Become a Sponsor", href: "#" },
       { label: "Shop Merchandise", href: "#" },
@@ -30,7 +31,7 @@ const navColumns = [
     ],
   },
   {
-    heading: "SUPPORT",
+    heading: "Support",
     links: [
       { label: "Contact", href: "/contact" },
       { label: "Privacy Policy", href: "#" },
@@ -41,9 +42,9 @@ const navColumns = [
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-white border-t border-gray-100 pt-24">
+    <footer className="w-full bg-white border-t border-gray-100 pt-16">
       {/* Main footer body */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
         <div className="flex flex-col lg:flex-row gap-10 lg:gap-16">
           {/* Brand column */}
           <div className="flex-shrink-0 flex flex-col gap-5 lg:w-56">
@@ -71,7 +72,7 @@ export default function Footer() {
                 />
               </Link>
             </div>
-            <p className="text-gray-500 text-sm leading-relaxed">
+            <p className="text-gray-500 text-base leading-relaxed font-epilogue tracking-[-0.03em]">
               The premier convergence of next-generation thinkers, builders, and
               creators.
             </p>
@@ -143,15 +144,15 @@ export default function Footer() {
           <div className="flex-1 grid grid-cols-2 sm:grid-cols-4 gap-8">
             {navColumns.map((col) => (
               <div key={col.heading} className="flex flex-col gap-3">
-                <p className="text-xs font-black text-gray-800 tracking-widest uppercase">
+                <p className="text-base font-bold text-gray-800 font-epilogue tracking-[-0.03em]">
                   {col.heading}
                 </p>
-                <ul className="flex flex-col gap-2.5">
+                <ul className="flex flex-col gap-3.5">
                   {col.links.map((link) => (
                     <li key={link.label}>
                       <Link
                         href={link.href}
-                        className="text-gray-500 text-sm hover:text-[#0F1990] transition-colors duration-150 leading-snug"
+                        className="text-gray-500 text-base font-epilogue tracking-[-0.03em] hover:text-[#0DA04C] transition-colors duration-150 leading-snug"
                       >
                         {link.label}
                       </Link>
@@ -167,15 +168,15 @@ export default function Footer() {
       {/* Bottom bar */}
       <div className="pb-12">
         <div className="max-w-7xl mx-auto border-t border-gray-100 pt-8 px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-2">
-          <p className="text-gray-400 text-xs">
+          <p className="text-gray-400 text-base font-epilogue tracking-[-0.03em]">
             &copy; 2026 Nasir Giwa Mentorship. All Rights Reserved
           </p>
-          <div className="flex items-center gap-5">
+          <div className="flex items-center gap-[14px]">
             {["Privacy", "Terms"].map((item) => (
               <a
                 key={item}
                 href="#"
-                className="text-gray-500 text-xs hover:text-[#0F1990] transition-colors duration-150"
+                className="text-gray-500 text-base font-epilogue tracking-[-0.03em] hover:text-[#0DA04C] transition-colors duration-150"
               >
                 {item}
               </a>

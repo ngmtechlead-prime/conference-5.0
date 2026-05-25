@@ -97,15 +97,15 @@ export const components = {
   // Button variants
   button: {
     primary:
-      "inline-flex items-center gap-2 bg-[#0F1990] hover:bg-[#0d1470] text-white font-semibold text-sm px-6 py-3 rounded-lg transition-colors duration-200",
+      "inline-flex items-center font-epilogue gap-2 bg-[#0F1990] hover:bg-[#0d1470] text-white font-semibold text-sm px-6 py-3 rounded-lg transition-colors duration-200",
     primaryLarge:
-      "inline-flex items-center gap-2 bg-[#0F1990] hover:bg-blue-950 text-white font-bold text-sm px-7 py-3 rounded-md transition-all duration-200 tracking-wide",
+      "inline-flex items-center font-epilogue gap-2 bg-[#0F1990] hover:bg-blue-950 text-white font-bold text-sm px-7 py-3 rounded-md transition-all duration-200 tracking-wide",
     secondary:
-      "inline-flex items-center gap-2 border-2 border-[#0F1990] text-[#0F1990] font-semibold text-sm px-6 py-3 rounded-lg hover:bg-[#0F1990] hover:text-white transition-colors duration-200",
+      "inline-flex items-center font-epilogue gap-2 border-2 border-[#0F1990] text-[#0F1990] font-semibold text-sm px-6 py-3 rounded-lg hover:bg-[#0F1990] hover:text-white transition-colors duration-200",
     green:
-      "inline-flex items-center gap-2 bg-[#16a34a] hover:bg-[#15803d] text-white font-semibold text-sm px-8 py-3.5 rounded-lg transition-colors duration-200",
+      "inline-flex items-center font-epilogue gap-2 bg-[#16a34a] hover:bg-[#15803d] text-white font-semibold text-sm px-8 py-3.5 rounded-lg transition-colors duration-200",
     outline:
-      "inline-flex items-center gap-2 border border-gray-300 text-gray-700 font-medium text-sm px-4 py-2 rounded-lg hover:bg-gray-50 transition-colors duration-200",
+      "inline-flex items-center font-epilogue gap-2 border border-gray-300 text-gray-700 font-medium text-sm px-4 py-2 rounded-lg hover:bg-gray-50 transition-colors duration-200",
   },
 
   // Card styles

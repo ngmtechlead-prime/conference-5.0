@@ -13,10 +13,11 @@ const navLinks = [
     hasDropdown: true,
     dropdownItems: [
       {
-        name: "NGM X Dr Kola Adesina Competition",
+        name: "NGM X Kola Adesina Competition",
         href: "/competitions/dare-nigeria",
       },
       { name: "SME Pitch Competition", href: "/competitions/sme-pitch" },
+      { name: "Case Study Competition", href: "/competitions/case-study" },
     ],
   },
   { name: "Gallery", href: "/gallery" },
@@ -67,7 +68,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`w-full h-[92px] py-4 bg-white border-gray-100 sticky top-0 z-50 transition-shadow duration-300 ${scrolled ? "shadow-sm" : "shadow-none"}`}
+      className={`w-full h-[88px] py-4 bg-white border-gray-100 sticky top-0 z-50 transition-shadow duration-300 ${scrolled ? "shadow-sm" : "shadow-none"}`}
     >
       <Wrapper className="h-full flex items-center">
         <div className="flex items-center justify-between w-full">
@@ -99,7 +100,16 @@ export default function Navbar() {
           {/* Desktop Nav Links */}
           <div ref={dropdownRef} className="hidden md:flex items-center gap-1">
             {navLinks.map((link) => (
-              <div key={link.name} className="relative">
+              <div
+                key={link.name}
+                className="relative"
+                onMouseEnter={() => {
+                  if (link.hasDropdown) setOpenDropdown(link.name);
+                }}
+                onMouseLeave={() => {
+                  if (link.hasDropdown) setOpenDropdown(null);
+                }}
+              >
                 <a
                   href={link.hasDropdown ? undefined : link.href}
                   onClick={() => {
@@ -109,7 +119,7 @@ export default function Navbar() {
                       );
                     }
                   }}
-                  className="relative px-4 py-2 text-[16px] font-medium font-epilogue leading-5 text-[#4a5565] tracking-wide group transition-colors duration-200 hover:text-[#0F1990] flex items-center gap-1 cursor-pointer"
+                  className="relative px-4 py-2 text-[16px] font-medium font-epilogue leading-5 text-[#4a5565] tracking-[-0.03em] transition-colors duration-200 hover:text-[#0DA04C] flex items-center gap-1 cursor-pointer"
                 >
                   {link.name}
                   {link.hasDropdown && (
@@ -121,7 +131,6 @@ export default function Navbar() {
                       className={`transition-transform duration-200 ${openDropdown === link.name ? "rotate-180" : ""}`}
                     />
                   )}
-                  <span className="absolute bottom-1 left-4 right-4 h-0.5 bg-[#2563eb] scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left rounded-full" />
                 </a>
 
                 {/* Desktop Dropdown */}
@@ -134,7 +143,7 @@ export default function Navbar() {
                         key={item.name}
                         href={item.href}
                         onClick={() => setOpenDropdown(null)}
-                        className={`flex items-center px-4 py-3.5 text-sm font-medium text-gray-700 hover:bg-blue-50 hover:text-[#0F1990] transition-colors duration-150 ${i !== link.dropdownItems!.length - 1 ? "border-b border-gray-100" : ""}`}
+                        className={`flex items-center px-4 py-3.5 text-sm font-medium font-epilogue text-gray-700 hover:text-[#0DA04C] transition-colors duration-150 ${i !== link.dropdownItems!.length - 1 ? "border-b border-gray-100" : ""}`}
                       >
                         {item.name}
                       </a>
@@ -220,7 +229,7 @@ export default function Navbar() {
                           setMenuOpen(false);
                           setOpenDropdown(null);
                         }}
-                        className={`flex items-center px-4 py-3.5 text-sm font-medium text-gray-700 hover:bg-blue-50 hover:text-[#0F1990] transition-colors duration-150 ${i !== link.dropdownItems!.length - 1 ? "border-b border-gray-100" : ""}`}
+                        className={`flex items-center px-4 py-3.5 text-sm font-medium font-epilogue text-gray-700 hover:text-[#0DA04C] transition-colors duration-150 ${i !== link.dropdownItems!.length - 1 ? "border-b border-gray-100" : ""}`}
                       >
                         {item.name}
                       </a>

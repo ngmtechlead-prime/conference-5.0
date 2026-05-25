@@ -30,11 +30,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${epilogue.variable} ${archivo.variable} h-full antialiased`}
     >
       <Analytics />
       <SpeedInsights />
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col" suppressHydrationWarning>
         <Navbar />
         <main>{children}</main>
         <Footer />

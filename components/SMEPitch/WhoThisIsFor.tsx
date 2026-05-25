@@ -49,7 +49,7 @@ export default function WhoThisIsFor() {
         <div className="flex-1 flex flex-col gap-6">
           {/* Heading */}
           <div className="font-epilogue">
-            <h2 className="text-3xl sm:text-4xl font-normal text-[#0F1990] leading-tight">
+            <h2 className="text-3xl sm:text-4xl font-normal text-[#0F1990] leading-none tracking-[-0.04em]">
               <span className="font-black text-[#0DA04C]">Who</span> This Is
               For?
             </h2>

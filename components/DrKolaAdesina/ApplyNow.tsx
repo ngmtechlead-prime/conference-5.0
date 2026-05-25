@@ -19,17 +19,7 @@ export default function ApplyNow() {
         <div className="relative z-10 max-w-2xl mx-auto text-center">
           <h2 className="text-2xl sm:text-4xl tracking-tight font-bold text-white mb-10">
             Ready to{" "}
-            <span className="relative inline-block">
-              Dare?
-              <span className="absolute left-0 -bottom-4 w-full flex justify-center">
-                <Image
-                  src="/icons/dareZap.svg"
-                  alt="Squiggle"
-                  width={80}
-                  height={16}
-                />
-              </span>
-            </span>
+            Dare?
           </h2>
 
           <p className="text-white text-lg sm:text-xl mb-5">
@@ -39,7 +29,7 @@ export default function ApplyNow() {
 
           <Link
             href="/competitions/dare-nigeria/apply"
-            className="inline-flex items-center gap-2 bg-[#16a34a] hover:bg-[#15803d] text-white font-semibold text-sm px-8 py-3.5 rounded-lg transition-colors duration-200"
+            className="inline-flex items-center font-epilogue gap-2 bg-[#16a34a] hover:bg-[#15803d] text-white font-semibold text-sm px-8 py-3.5 rounded-lg transition-colors duration-200"
           >
             Apply now
             <Image

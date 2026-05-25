@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import React, { useState } from "react";
 
 interface FAQItem {
@@ -20,7 +19,7 @@ const faqs: FAQItem[] = [
       "No. Non-NGM members can apply as well, provided they are willing to join the platform or the entrepreneurship club.",
   },
   {
-    question: "What is the applicant’s prerequisite?",
+    question: "What is the applicant's prerequisite?",
     answer:
       "Applicants must be founders or representatives of a registered SME and available to participate in all stages of the competition.",
   },
@@ -69,24 +68,33 @@ const faqs: FAQItem[] = [
   },
 ];
 
-function ChevronIcon({ open }: { open: boolean }) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="20"
-      height="20"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-      strokeWidth={2.5}
-      className={`shrink-0 transition-transform duration-300 text-[#0F1990] ${
-        open ? "rotate-180" : "rotate-0"
-      }`}
-    >
-      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-    </svg>
-  );
-}
+const PlusIcon = () => (
+  <svg
+    width="14"
+    height="14"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2.5"
+    strokeLinecap="round"
+  >
+    <path d="M12 5v14M5 12h14" />
+  </svg>
+);
+
+const MinusIcon = () => (
+  <svg
+    width="14"
+    height="14"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2.5"
+    strokeLinecap="round"
+  >
+    <path d="M5 12h14" />
+  </svg>
+);
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -96,59 +104,61 @@ export default function FAQ() {
   };
 
   return (
-    <section className="w-full bg-white py-16 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-3xl mx-auto flex flex-col items-center gap-10 font-epilogue">
+    <section className="w-full bg-white py-16 lg:py-24 px-4 sm:px-6 lg:px-[150px]">
+      <div className="max-w-4xl mx-auto font-epilogue">
         {/* Heading */}
-        <div className="text-center">
-          <h2 className="text-3xl sm:text-4xl font-normal text-[#0F1990] leading-tight mb-3">
+        <div className="mb-14 text-center">
+          <h2 className="text-3xl sm:text-4xl font-normal text-[#0F1990] leading-none tracking-[-0.04em] mb-3">
             Frequently Asked{" "}
-            <span className="relative inline-block font-black italic text-[#16a34a]">
-              Questions
-              <Image
-                src="/icons/zap.svg"
-                alt="FAQ"
-                width={150}
-                height={150}
-                className="absolute left-0 bottom-[-8px]"
-              />
-            </span>
+            <span className="font-black text-[#0DA04C]">Questions</span>
           </h2>
-          <p className="text-gray-400 text-sm sm:text-base mt-2">
+          <p className="text-[#4a5565] text-base mt-3">
             Everything you need to know about the SME Pitch Competition.
           </p>
         </div>
 
         {/* Accordion list */}
-        <div className="w-full flex flex-col gap-3">
+        <div className="divide-y divide-[#E5E5E5]">
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
             return (
-              <div
-                key={index}
-                className="border border-gray-200 rounded-xl overflow-hidden"
-              >
+              <div key={index} className="py-8">
                 {/* Question row */}
                 <button
                   onClick={() => toggle(index)}
-                  className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left bg-white hover:bg-gray-50 transition-colors duration-150 focus:outline-none"
+                  className="w-full flex items-start justify-between gap-8 text-left focus:outline-none group"
                 >
-                  <span className="text-black font-bold text-sm sm:text-base leading-snug">
-                    {faq.question}
-                  </span>
-                  <ChevronIcon open={isOpen} />
+                  <div className="flex items-start">
+                    <span
+                      className={`text-[20px] font-bold leading-snug transition-colors duration-200 ${
+                        isOpen ? "text-[#0F1990]" : "text-gray-800"
+                      }`}
+                    >
+                      {faq.question}
+                    </span>
+                  </div>
+
+                  {/* Toggle icon */}
+                  <div
+                    className={`shrink-0 w-8 h-8 rounded-full border flex items-center justify-center transition-all duration-200 mt-0.5 ${
+                      isOpen
+                        ? "bg-[#0F1990] border-[#0F1990] text-white"
+                        : "border-[#E5E5E5] text-gray-400 group-hover:border-[#0F1990] group-hover:text-[#0F1990]"
+                    }`}
+                  >
+                    {isOpen ? <MinusIcon /> : <PlusIcon />}
+                  </div>
                 </button>
 
                 {/* Answer panel */}
                 <div
                   className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                    isOpen ? "max-h-96" : "max-h-0"
+                    isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
                   }`}
                 >
-                  <div className="bg-gray-50 border-t border-gray-200 px-6 py-4">
-                    <p className="text-gray-500 text-sm leading-relaxed">
-                      {faq.answer}
-                    </p>
-                  </div>
+                  <p className="text-[#4a5565] text-base leading-relaxed pt-4 pr-16">
+                    {faq.answer}
+                  </p>
                 </div>
               </div>
             );

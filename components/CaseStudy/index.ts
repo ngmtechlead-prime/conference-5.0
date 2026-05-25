@@ -1,0 +1,10 @@
+export { default as Hero } from "./Hero";
+export { default as InCollaborationWith } from "./InCollaborationWith";
+export { default as MoreThanCompetition } from "./MoreThanCompetition";
+export { default as WhatYouWin } from "./WhatYouWin";
+export { default as EligibilityCriteria } from "./EligibilityCriteria";
+export { default as HowWeSelect } from "./HowWeSelect";
+export { default as JudgingCriteria } from "./JudgingCriteria";
+export { default as Testimonials } from "./Testimonials";
+export { default as FAQ } from "./FAQ";
+export { default as ApplyNow } from "./ApplyNow";

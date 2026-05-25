@@ -10,13 +10,6 @@ import DeclarationForm from "@/components/competitions/sme-pitch/steps/Declarati
 import SuccessPage from "@/components/competitions/sme-pitch/SuccessPage";
 import { LOCAL_STORAGE_KEY } from "@/lib/constants/sme-pitch";
 import { submitSMEPitchApplication } from "@/lib/api/submissions";
-import type {
-  Step1FormData,
-  Step2FormData,
-  Step3FormData,
-  Step4FormData,
-} from "@/lib/schemas/sme-pitch";
-import TermsModal from "@/components/shared/TermsModal";
 
 interface FormData {
   step1?: Step1FormData;
@@ -32,8 +25,6 @@ export default function SMEPitchApplyPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [showTermsModal, setShowTermsModal] = useState(true);
-  const [termsAccepted, setTermsAccepted] = useState(false);
 
   useEffect(() => {
     const saved = localStorage.getItem(LOCAL_STORAGE_KEY);
@@ -125,14 +116,6 @@ export default function SMEPitchApplyPage() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const handleAcceptTerms = () => {
-    setTermsAccepted(true);
-    setShowTermsModal(false);
-  };
-
-  const handleCancelTerms = () => {
-    router.push("/competitions/sme-pitch");
-  };
 
   if (!isLoaded) {
     return (
@@ -146,16 +129,8 @@ export default function SMEPitchApplyPage() {
     return <SuccessPage />;
   }
 
-  const shouldShowTermsModal = !termsAccepted && showTermsModal;
-
   return (
     <section className="flex flex-col min-h-screen">
-      <TermsModal
-        competition="SME Pitch Competition 2026"
-        isOpen={shouldShowTermsModal}
-        onAccept={handleAcceptTerms}
-        onCancel={handleCancelTerms}
-      />
 
       <div className="flex-1 py-8 px-4 sm:px-6 lg:px-12">
         <div className="max-w-4xl mx-auto">
