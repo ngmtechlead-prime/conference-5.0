@@ -44,17 +44,10 @@ export default function MoreThanPitch() {
         <div className="flex-1 flex flex-col gap-6 order-2 lg:order-1">
           {/* Heading */}
           <div className="font-epilogue">
-            <h2 className="text-3xl sm:text-4xl font-normal text-[#0F1990] leading-tight">
+            <h2 className="text-3xl sm:text-4xl font-normal text-[#0F1990] leading-none tracking-[-0.04em]">
               More Than a{" "}
-              <span className="relative inline-block font-black text-[#0DA04C]">
+              <span className="font-black text-[#0DA04C]">
                 Pitch Competition
-                <Image
-                  src="/icons/zapAbout.svg"
-                  alt="Green squiggle"
-                  width={280}
-                  height={12}
-                  className="absolute left-0 bottom-[-8px]"
-                />
               </span>
             </h2>
           </div>
@@ -88,7 +81,7 @@ export default function MoreThanPitch() {
           <div className="mt-2 font-epilogue">
             <a
               href="/competitions/sme-pitch/apply"
-              className="inline-flex items-center gap-2 bg-[#0F1990] hover:bg-blue-950 text-white font-bold text-sm px-6 py-3 rounded-md transition-colors duration-200 tracking-wide"
+              className="inline-flex items-center font-epilogue gap-2 bg-[#0F1990] hover:bg-blue-950 text-white font-bold text-sm px-6 py-3 rounded-md transition-colors duration-200 tracking-wide"
             >
               Apply Now
               <Image

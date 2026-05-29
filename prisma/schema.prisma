@@ -19,6 +19,7 @@ enum Role {
 enum Competition {
   DARE_NIGERIA
   SME_PITCH
+  CASE_STUDY
 }
 
 enum ApplicationStatus {

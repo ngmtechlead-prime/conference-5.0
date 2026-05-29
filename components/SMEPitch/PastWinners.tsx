@@ -1,4 +1,3 @@
-import Image from "next/image";
 import React from "react";
 
 const testimonials = [
@@ -92,17 +91,10 @@ export default function PastWinners() {
       <div className="max-w-6xl mx-auto flex flex-col items-center gap-10 font-epilogue">
         {/* Heading */}
         <div className="text-center max-w-xl">
-          <h2 className="text-3xl sm:text-4xl font-normal text-[#0F1990] leading-tight mb-3">
+          <h2 className="text-3xl sm:text-4xl font-normal text-[#0F1990] leading-none tracking-[-0.04em] mb-3">
             Hear from our past{" "}
-            <span className="relative inline-block font-black italic text-[#16a34a]">
+            <span className="font-black italic text-[#16a34a]">
               Winners
-              <Image
-                src="/icons/zapWin.svg"
-                alt="Winners"
-                width={120}
-                height={100}
-                className="absolute left-0 bottom-[-10px]"
-              />
             </span>
           </h2>
           <p className="text-gray-400 text-sm sm:text-base mt-6">

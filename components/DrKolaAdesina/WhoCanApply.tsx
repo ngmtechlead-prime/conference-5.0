@@ -98,7 +98,7 @@ export default function WhoCanApply() {
       <div className="max-w-5xl mx-auto flex flex-col items-center gap-10">
         {/* Heading */}
         <div className="text-center max-w-3xl">
-          <h2 className="text-3xl sm:text-5xl font-bold text-white leading-tight mb-6">
+          <h2 className="text-3xl sm:text-5xl font-bold text-white leading-none tracking-[-0.04em] mb-6">
             Who Can Apply?
           </h2>
           <p className="text-[#DBEAFE] font-normal text-lg text-center">

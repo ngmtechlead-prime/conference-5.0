@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import Hero from "@/components/SMEPitch/Hero";
+import InCollaborationWith from "@/components/CaseStudy/InCollaborationWith";
 import MoreThanPitch from "@/components/SMEPitch/MoreThanPitch";
 import WhatYouWin from "@/components/SMEPitch/WhatYouWin";
 import WhoThisIsFor from "@/components/SMEPitch/WhoThisIsFor";
 import HowWeSelect from "@/components/SMEPitch/HowWeSelect";
-import PastWinners from "@/components/SMEPitch/PastWinners";
 import FAQ from "@/components/SMEPitch/FAQ";
 import ApplyNow from "@/components/SMEPitch/ApplyNow";
+import Testimonials from "@/components/SMEPitch/Testimonials";
 
 export const metadata: Metadata = {
   title: "SME Pitch Competition | NGM 5.0 Conference",
@@ -19,11 +20,12 @@ export default function SMEPitchPage() {
     <div className="flex flex-col min-h-screen">
       <div>
         <Hero />
+        <InCollaborationWith />
         <MoreThanPitch />
         <WhatYouWin />
         <WhoThisIsFor />
         <HowWeSelect />
-        <PastWinners />
+        <Testimonials />
         <FAQ />
         <ApplyNow />
       </div>

@@ -7,29 +7,15 @@ export default function Hero() {
       <div className="max-w-6xl mx-auto flex flex-col items-center">
         {/* Heading */}
         <div className="max-w-4xl w-full text-center mb-4">
-          <h1 className="text-4xl sm:text-5xl lg:text-[56px] font-epilogue font-normal text-[#0F1990] leading-tight tracking-tight">
+          <h1 className="text-4xl sm:text-5xl lg:text-[56px] font-epilogue font-normal text-[#0F1990] leading-[1.1] tracking-[-0.06em]">
             Your Business Has{" "}
-            <span className="relative inline-block font-bold font-epilogue text-[#0DA04C]">
+            <span className="font-bold font-epilogue text-[#0DA04C]">
               Potential.
-              <Image
-                src="/icons/zap.svg"
-                alt="Green squiggle"
-                width={200}
-                height={12}
-                className="block -mt-1"
-              />
             </span>
             <br />
             Now Give It the{" "}
-            <span className="relative inline-block font-bold font-epilogue text-[#0DA04C]">
+            <span className="font-bold font-epilogue text-[#0DA04C]">
               Capital
-              <Image
-                src="/icons/zap.svg"
-                alt="Green squiggle"
-                width={150}
-                height={10}
-                className="block -mt-1"
-              />
             </span>{" "}
             to Prove It.
           </h1>
@@ -43,7 +29,7 @@ export default function Hero() {
         {/* CTA Button */}
         <a
           href="/competitions/sme-pitch/apply"
-          className="inline-flex items-center font-archivo gap-2 border-2 border-[#0F1990] text-white font-bold text-sm px-7 py-3 rounded-md bg-[#0F1990] hover:bg-blue-950 transition-all duration-200 tracking-wide mb-12"
+          className="inline-flex items-center font-epilogue gap-2 border-2 border-[#0F1990] text-white font-bold text-sm px-7 py-3 rounded-md bg-[#0F1990] hover:bg-blue-950 transition-all duration-200 tracking-wide mb-12"
         >
           Apply Now
           <Image
@@ -55,7 +41,7 @@ export default function Hero() {
         </a>
 
         {/* Hero Image */}
-        <div className="w-full max-w-5xl">
+        <div className="w-full">
           <div className="rounded-2xl overflow-hidden shadow-xl border border-gray-100">
             <Image
               src="/gallery/PitchYourselfWinners.png"

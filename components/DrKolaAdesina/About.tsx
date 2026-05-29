@@ -7,7 +7,7 @@ const DrKolaFrame = () => {
       <div className="mb-4">
         <Image
           src="/gallery/DrKolaAdesina.png"
-          alt="Dr Kola Adesina"
+          alt="Kola Adesina"
           className="w-full h-full object-cover object-top"
           width={429}
           height={450}
@@ -15,7 +15,7 @@ const DrKolaFrame = () => {
       </div>
       <div className="bg-[#E6F7EC] rounded-sm p-4">
         <p className="text-[#0F1990] font-semibold text-3xl tracking-tighter font-epilogue">
-          Dr Kola Adesina
+          Kola Adesina
         </p>
         <p className="text-[#0F1990] text-base tracking-tighter">
           MD/CEO, Sahara Group
@@ -25,25 +25,6 @@ const DrKolaFrame = () => {
   );
 };
 
-const Zzap = ({ className }: { className?: string }) => {
-  return (
-    <svg
-      width="172"
-      height="15"
-      viewBox="0 0 172 15"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className={className}
-    >
-      <path
-        d="M1.40894 5.32958C32.0697 4.867 62.5304 2.74079 93.1247 1.71063C97.8222 1.55245 102.027 1.43434 106.665 1.40169C107.825 1.39352 110.933 1.30362 110.092 1.72534C107.82 2.86341 104.551 3.27081 101.706 3.96144C92.2551 6.25534 95.1064 5.51208 85.4353 7.87461C80.1618 9.16286 74.0722 10.3869 69.2764 12.185C68.9853 12.2941 66.9567 13.0991 68.8306 13.303C71.0902 13.5489 78.4921 13.1906 79.6404 13.1265C110.123 11.4247 139.961 7.38078 170.409 5.59438"
-        stroke="#0DA04C"
-        strokeWidth="2.77644"
-        strokeLinecap="square"
-      />
-    </svg>
-  );
-};
 
 export default function About() {
   return (
@@ -58,13 +39,10 @@ export default function About() {
         <div className="w-full sm:w-[60%] flex-1 flex flex-col gap-5">
           {/* Heading */}
           <div className="font-epilogue">
-            <h2 className="text-2xl sm:text-3xl lg:text-[32px] text-[#0F1990] leading-tight">
+            <h2 className="text-3xl sm:text-4xl text-[#0F1990] leading-none tracking-[-0.04em]">
               What Is the{" "}
-              <span className="relative inline-block">
-                <span className="font-bold text-[#0DA04C]">
-                  DARE Nigeria Challenge?
-                </span>
-                <Zzap className="absolute -bottom-2 left-0 w-full" />
+              <span className="font-bold text-[#0DA04C]">
+                DARE Nigeria Challenge?
               </span>
             </h2>
 
@@ -119,7 +97,7 @@ export default function About() {
                 </h3>
                 <p className="text-gray-600 text-base leading-relaxed">
                   This initiative was born from a spontaneous ₦30,000,000 pledge
-                  made live at NGM Conference 4.0 by Dr. Kola Adesina. His
+                  made live at NGM Conference 4.0 by Kola Adesina. His
                   vision is clear: to put real resources behind young Nigerians
                   who have the courage to build sustainable businesses. Winning
                   means gaining not just capital, but the endorsement of one of
@@ -133,7 +111,7 @@ export default function About() {
           <div className="mt-4 font-epilogue">
             <a
               href="/competitions/dare-nigeria/apply"
-              className="inline-flex items-center gap-2 bg-[#0F1990] hover:bg-[#1d4ed8] text-white font-semibold text-sm px-7 py-3.5 rounded-md transition-colors duration-200"
+              className="inline-flex items-center font-epilogue gap-2 bg-[#0F1990] hover:bg-[#1d4ed8] text-white font-semibold text-sm px-7 py-3.5 rounded-md transition-colors duration-200"
             >
               Apply Now
               <svg

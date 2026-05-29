@@ -13,10 +13,11 @@ const navLinks = [
     hasDropdown: true,
     dropdownItems: [
       {
-        name: "NGM X Dr Kola Adesina Competition",
+        name: "NGM X Kola Adesina Competition",
         href: "/competitions/dare-nigeria",
       },
       { name: "SME Pitch Competition", href: "/competitions/sme-pitch" },
+      { name: "Case Study Competition", href: "/competitions/case-study" },
     ],
   },
   { name: "Gallery", href: "/gallery" },
@@ -44,6 +45,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 0);
@@ -54,6 +56,7 @@ export default function Navbar() {
   // Close desktop dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
+      if (window.innerWidth < 1024) return;
       if (
         dropdownRef.current &&
         !dropdownRef.current.contains(e.target as Node)
@@ -67,7 +70,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`w-full h-[92px] py-4 bg-white border-gray-100 sticky top-0 z-50 transition-shadow duration-300 ${scrolled ? "shadow-sm" : "shadow-none"}`}
+      className={`w-full h-[88px] py-4 bg-white border-gray-100 sticky top-0 z-50 transition-shadow duration-300 ${scrolled ? "shadow-sm" : "shadow-none"}`}
     >
       <Wrapper className="h-full flex items-center">
         <div className="flex items-center justify-between w-full">
@@ -97,9 +100,29 @@ export default function Navbar() {
           </div>
 
           {/* Desktop Nav Links */}
-          <div ref={dropdownRef} className="hidden md:flex items-center gap-1">
+          <div ref={dropdownRef} className="hidden lg:flex items-center gap-1">
             {navLinks.map((link) => (
-              <div key={link.name} className="relative">
+              <div
+                key={link.name}
+                className="relative"
+                onMouseEnter={() => {
+                  if (link.hasDropdown) {
+                    if (closeTimeoutRef.current) {
+                      clearTimeout(closeTimeoutRef.current);
+                      closeTimeoutRef.current = null;
+                    }
+                    setOpenDropdown(link.name);
+                  }
+                }}
+                onMouseLeave={() => {
+                  if (link.hasDropdown) {
+                    closeTimeoutRef.current = setTimeout(() => {
+                      setOpenDropdown(null);
+                      closeTimeoutRef.current = null;
+                    }, 150);
+                  }
+                }}
+              >
                 <a
                   href={link.hasDropdown ? undefined : link.href}
                   onClick={() => {
@@ -109,7 +132,7 @@ export default function Navbar() {
                       );
                     }
                   }}
-                  className="relative px-4 py-2 text-[16px] font-medium font-epilogue leading-5 text-[#4a5565] tracking-wide group transition-colors duration-200 hover:text-[#0F1990] flex items-center gap-1 cursor-pointer"
+                  className="relative px-4 py-2 text-[16px] font-medium font-epilogue leading-5 text-[#4a5565] tracking-[-0.03em] transition-colors duration-200 hover:text-[#0DA04C] flex items-center gap-1 cursor-pointer"
                 >
                   {link.name}
                   {link.hasDropdown && (
@@ -121,7 +144,6 @@ export default function Navbar() {
                       className={`transition-transform duration-200 ${openDropdown === link.name ? "rotate-180" : ""}`}
                     />
                   )}
-                  <span className="absolute bottom-1 left-4 right-4 h-0.5 bg-[#2563eb] scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left rounded-full" />
                 </a>
 
                 {/* Desktop Dropdown */}
@@ -134,7 +156,7 @@ export default function Navbar() {
                         key={item.name}
                         href={item.href}
                         onClick={() => setOpenDropdown(null)}
-                        className={`flex items-center px-4 py-3.5 text-sm font-medium text-gray-700 hover:bg-blue-50 hover:text-[#0F1990] transition-colors duration-150 ${i !== link.dropdownItems!.length - 1 ? "border-b border-gray-100" : ""}`}
+                        className={`flex items-center px-4 py-3.5 text-sm font-medium font-epilogue text-gray-700 hover:text-[#0DA04C] transition-colors duration-150 ${i !== link.dropdownItems!.length - 1 ? "border-b border-gray-100" : ""}`}
                       >
                         {item.name}
                       </a>
@@ -146,12 +168,12 @@ export default function Navbar() {
           </div>
 
           {/* Buy Tickets Button (desktop) */}
-          <div className="hidden md:flex items-center">
+          <div className="hidden lg:flex items-center">
             <a
               href="https://bitooqoh.com/explore/ngm-conference-5.0"
               target="_blank"
               rel="noreferrer noopenner"
-              className="flex items-center gap-2 bg-[#0f1990] hover:bg-blue-950 text-white text-sm font-bold px-5 py-2.5 rounded-md transition-colors duration-200 tracking-wide shadow-md hover:shadow-lg"
+              className="flex items-center gap-2 bg-[#0f1990] hover:bg-blue-950 text-white text-sm font-bold px-5 py-2.5 rounded-md transition-colors duration-200 tracking-wide shadow-md hover:shadow-lg shrink-0"
             >
               Buy Tickets
               <Image
@@ -165,7 +187,7 @@ export default function Navbar() {
 
           {/* Mobile hamburger */}
           <button
-            className="md:hidden p-2 rounded focus:outline-none"
+            className="lg:hidden p-2 rounded focus:outline-none"
             onClick={() => setMenuOpen((v) => !v)}
             aria-label="Toggle menu"
           >
@@ -176,7 +198,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${menuOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"}`}
+        className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${menuOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"}`}
       >
         <div className="bg-white border-t border-gray-100 px-4 pb-4 pt-2 flex flex-col gap-1">
           {navLinks.map((link) => (
@@ -220,7 +242,7 @@ export default function Navbar() {
                           setMenuOpen(false);
                           setOpenDropdown(null);
                         }}
-                        className={`flex items-center px-4 py-3.5 text-sm font-medium text-gray-700 hover:bg-blue-50 hover:text-[#0F1990] transition-colors duration-150 ${i !== link.dropdownItems!.length - 1 ? "border-b border-gray-100" : ""}`}
+                        className={`flex items-center px-4 py-3.5 text-sm font-medium font-epilogue text-gray-700 hover:text-[#0DA04C] transition-colors duration-150 ${i !== link.dropdownItems!.length - 1 ? "border-b border-gray-100" : ""}`}
                       >
                         {item.name}
                       </a>
@@ -234,7 +256,7 @@ export default function Navbar() {
           <a
             href="#tickets"
             onClick={() => setMenuOpen(false)}
-            className="mt-2 flex items-center justify-center gap-2 bg-[#0F1990] hover:bg-[#1d4ed8] text-white text-sm font-bold px-5 py-3 rounded-md transition-colors duration-200 tracking-wide shadow-md"
+            className="mt-2 flex items-center justify-center gap-2 bg-[#0F1990] hover:bg-[#1d4ed8] text-white text-sm font-bold px-5 py-3 rounded-md transition-colors duration-200 tracking-wide shadow-md shrink-0"
           >
             Buy Tickets
             <Image

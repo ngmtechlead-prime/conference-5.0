@@ -1,4 +1,3 @@
-import Image from "next/image";
 import React from "react";
 
 const steps = [
@@ -42,17 +41,10 @@ export default function HowWeSelect() {
       <div className="max-w-4xl mx-auto flex flex-col items-center gap-12 font-epilogue">
         {/* Heading */}
         <div className="text-center max-w-xl">
-          <h2 className="text-3xl sm:text-4xl font-normal text-[#0F1990] leading-tight mb-3">
+          <h2 className="text-3xl sm:text-4xl font-normal text-[#0F1990] leading-none tracking-[-0.04em] mb-3">
             How We Select Our{" "}
-            <span className="relative inline-block font-black italic text-[#16a34a]">
+            <span className="font-black italic text-[#16a34a]">
               Winners
-              <Image
-                src="/icons/zapWin.svg"
-                alt="Winners"
-                width={120}
-                height={100}
-                className="absolute left-0 bottom-[-8px]"
-              />
             </span>
           </h2>
           <p className="text-gray-500 text-sm sm:text-base leading-relaxed mt-6">

@@ -10,6 +10,7 @@ import type {
   Step3FormData as SMEStep3FormData,
   Step4FormData as SMEStep4FormData,
 } from "@/lib/schemas/sme-pitch";
+import type { CaseStudyFormData } from "@/lib/schemas/case-study";
 
 // This file must be a module, so we include an empty export.
 export {};
@@ -29,7 +30,8 @@ declare global {
           step2: SMEStep2FormData;
           step3: SMEStep3FormData;
           step4: SMEStep4FormData;
-        };
+        }
+      | CaseStudyFormData;
 
     type ApplicationFiles = Record<string, never>;
   }

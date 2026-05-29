@@ -1,21 +1,27 @@
-import About from "@/components/DrKolaAdesina/About";
-import ApplyNow from "@/components/DrKolaAdesina/ApplyNow";
-import FAQ from "@/components/DrKolaAdesina/FAQ";
-import Hero from "@/components/DrKolaAdesina/Hero";
-import Prizes from "@/components/DrKolaAdesina/Prizes";
-import WhoCanApply from "@/components/DrKolaAdesina/WhoCanApply";
+import Hero from "@/components/home/Hero";
+import WhatIsNGM from "@/components/home/WhatIsNGM";
+import Momentum from "@/components/home/Momentum";
+import Competitions from "@/components/home/Competitions";
+import Programme from "@/components/home/Programme";
+import Speakers from "@/components/home/Speakers";
+import Testimonials from "@/components/home/Testimonials";
+import PartnerWithUs from "@/components/home/PartnerWithUs";
+import TicketsCTA from "@/components/home/TicketsCTA";
+import FAQ from "@/components/home/FAQ";
 
-function HomePage() {
+export default function HomePage() {
   return (
-    <div className="flex flex-col min-h-screen">
+    <>
       <Hero />
-      <About />
-      {/* <Prizes /> */}
-      <WhoCanApply />
+      <WhatIsNGM />
+      <Momentum />
+      <Competitions />
+      <Programme />
+      <Speakers />
+      <Testimonials />
+      <PartnerWithUs />
       <FAQ />
-      <ApplyNow />
-    </div>
+      <TicketsCTA />
+    </>
   );
 }
-
-export default HomePage;

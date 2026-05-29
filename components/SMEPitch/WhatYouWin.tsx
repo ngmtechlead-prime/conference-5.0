@@ -139,10 +139,10 @@ export default function WhatYouWin() {
         }}
       />
 
-      <div className="relative z-10 max-w-6xl mx-auto flex flex-col items-center gap-12 font-epilogue">
+      <div className="relative z-10 max-w-6xl mx-auto flex flex-col items-start gap-12 font-epilogue">
         {/* Heading */}
-        <div className="text-center max-w-2xl">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white leading-tight mb-4">
+        <div className="text-left max-w-2xl">
+          <h2 className="text-3xl sm:text-4xl font-normal text-white leading-none tracking-[-0.04em] mb-4">
             What You Stand to Win
           </h2>
           <p className="text-blue-200 text-sm sm:text-base leading-relaxed">
@@ -151,18 +151,11 @@ export default function WhatYouWin() {
           </p>
         </div>
 
-        {/* Benefits Grid - 3 on top, 2 centered on bottom */}
-        <div className="w-full">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
-            {benefits.slice(0, 3).map((benefit, index) => (
-              <BenefitCard key={index} {...benefit} />
-            ))}
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
-            {benefits.slice(3).map((benefit, index) => (
-              <BenefitCard key={index + 3} {...benefit} />
-            ))}
-          </div>
+        {/* Benefits Grid */}
+        <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {benefits.map((benefit, index) => (
+            <BenefitCard key={index} {...benefit} />
+          ))}
         </div>
       </div>
     </section>

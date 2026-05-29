@@ -6,32 +6,21 @@ export default function ApplyNow() {
   return (
     <section
       id="apply"
-      className="w-full py-8 px-4 sm:px-6 lg:px-12 font-epilogue"
+      className="w-full py-8 lg:py-24 px-4 sm:px-6 lg:px-[150px] font-epilogue"
     >
       <div
         className="relative overflow-hidden rounded-2xl py-16 px-4 sm:px-6"
         style={{ backgroundColor: "#0F1990" }}
       >
         <div
-          className="absolute inset-0 opacity-20 bg-no-repeat bg-center bg-cover"
-          style={{ backgroundImage: `url("/gallery/CTA.png")` }}
+          className="absolute inset-0 opacity-40 bg-no-repeat bg-center bg-cover"
+          style={{ backgroundImage: `url("/gallery/Pattern.png")` }}
         />
 
         <div className="relative z-10 max-w-2xl mx-auto text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">
-            Your Business Has Come This Far{" "}
-            <span className="relative inline-block">
-              to Stop Here.
-              <span className="absolute left-0 -bottom-4 w-full flex justify-center">
-                <Image
-                  src="/icons/dareZap.svg"
-                  alt="Squiggle"
-                  width={120}
-                  height={16}
-                  className="brightness-0 invert"
-                />
-              </span>
-            </span>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white leading-none tracking-[-0.04em] mb-4">
+            Your Business Has Come Too Far{" "}
+            <span className="text-[#0DA04C]">to Stop Here.</span>
           </h2>
 
           <p className="text-green-100 text-base sm:text-md mb-8 mt-6">
@@ -40,8 +29,8 @@ export default function ApplyNow() {
           </p>
 
           <a
-            href="#apply-form"
-            className="inline-flex items-center gap-2 bg-[#16a34a] hover:bg-[#1d4ed8] text-white font-semibold text-sm px-8 py-3.5 rounded-lg transition-colors duration-200"
+            href="/competitions/sme-pitch/apply"
+            className="inline-flex items-center font-epilogue gap-2 bg-[#16a34a] hover:bg-[#15803d] text-white font-semibold text-sm px-8 py-3.5 rounded-lg transition-colors duration-200"
           >
             Apply now
             <Image
