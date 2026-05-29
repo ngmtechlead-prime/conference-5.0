@@ -5,9 +5,17 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import TermsModal from "@/components/shared/TermsModal";
-import { FormField, Input, RadioGroup, Textarea } from "@/components/ui/FormField";
+import {
+  FormField,
+  Input,
+  RadioGroup,
+  Textarea,
+} from "@/components/ui/FormField";
 import { CASE_STUDY_LOCAL_STORAGE_KEY } from "@/lib/constants/case-study";
-import { caseStudySchema, type CaseStudyFormData } from "@/lib/schemas/case-study";
+import {
+  caseStudySchema,
+  type CaseStudyFormData,
+} from "@/lib/schemas/case-study";
 import { submitCaseStudyApplication } from "@/lib/api/submissions";
 import Image from "next/image";
 
@@ -51,7 +59,10 @@ export default function CaseStudyApplyPage() {
   // Auto-save form data when it changes
   useEffect(() => {
     if (isLoaded) {
-      localStorage.setItem(CASE_STUDY_LOCAL_STORAGE_KEY, JSON.stringify(formData));
+      localStorage.setItem(
+        CASE_STUDY_LOCAL_STORAGE_KEY,
+        JSON.stringify(formData),
+      );
     }
   }, [formData, isLoaded]);
 
@@ -66,7 +77,7 @@ export default function CaseStudyApplyPage() {
 
       // Clear saved data on success
       localStorage.removeItem(CASE_STUDY_LOCAL_STORAGE_KEY);
-      
+
       router.push("/competitions/case-study/apply/success");
     } catch (error) {
       console.error("Submission failed:", error);
@@ -106,12 +117,12 @@ export default function CaseStudyApplyPage() {
 
   return (
     <section className="flex flex-col min-h-screen bg-gray-50">
-      <TermsModal
+      {/* <TermsModal
         competition="Case Study & Research Analysis Competition 2026"
         isOpen={shouldShowTermsModal}
         onAccept={handleAcceptTerms}
         onCancel={handleCancelTerms}
-      />
+      /> */}
 
       <div className="flex-1 py-12 px-4 sm:px-6 lg:px-12 font-epilogue">
         <div className="max-w-3xl mx-auto">
@@ -137,7 +148,11 @@ export default function CaseStudyApplyPage() {
                 </FormField>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <FormField label="Email Address" required error={errors.email}>
+                  <FormField
+                    label="Email Address"
+                    required
+                    error={errors.email}
+                  >
                     <Input
                       {...register("email")}
                       type="email"
@@ -146,7 +161,11 @@ export default function CaseStudyApplyPage() {
                     />
                   </FormField>
 
-                  <FormField label="Phone Number" required error={errors.phoneNumber}>
+                  <FormField
+                    label="Phone Number"
+                    required
+                    error={errors.phoneNumber}
+                  >
                     <Input
                       {...register("phoneNumber")}
                       type="tel"
@@ -165,7 +184,9 @@ export default function CaseStudyApplyPage() {
                         { value: "Male", label: "Male" },
                       ]}
                       value={formData.gender}
-                      onChange={(val) => setValue("gender", val as "Female" | "Male")}
+                      onChange={(val) =>
+                        setValue("gender", val as "Female" | "Male")
+                      }
                       error={!!errors.gender}
                     />
                   </FormField>
@@ -181,7 +202,10 @@ export default function CaseStudyApplyPage() {
                       ]}
                       value={formData.age}
                       onChange={(val) =>
-                        setValue("age", val as "16 - 20" | "20 - 25" | "25 - 30" | "30 - 35")
+                        setValue(
+                          "age",
+                          val as "16 - 20" | "20 - 25" | "25 - 30" | "30 - 35",
+                        )
                       }
                       error={!!errors.age}
                     />
@@ -198,7 +222,9 @@ export default function CaseStudyApplyPage() {
                       name="hasAnalysedCase"
                       options={yesNoOptions}
                       value={formData.hasAnalysedCase}
-                      onChange={(val) => setValue("hasAnalysedCase", val as "Yes" | "No")}
+                      onChange={(val) =>
+                        setValue("hasAnalysedCase", val as "Yes" | "No")
+                      }
                       error={!!errors.hasAnalysedCase}
                     />
                   </FormField>
@@ -213,7 +239,10 @@ export default function CaseStudyApplyPage() {
                       options={yesNoOptions}
                       value={formData.hasParticipatedInNGMCaseStudy}
                       onChange={(val) =>
-                        setValue("hasParticipatedInNGMCaseStudy", val as "Yes" | "No")
+                        setValue(
+                          "hasParticipatedInNGMCaseStudy",
+                          val as "Yes" | "No",
+                        )
                       }
                       error={!!errors.hasParticipatedInNGMCaseStudy}
                     />
@@ -228,7 +257,9 @@ export default function CaseStudyApplyPage() {
                       name="isCommittingToMeetings"
                       options={yesNoOptions}
                       value={formData.isCommittingToMeetings}
-                      onChange={(val) => setValue("isCommittingToMeetings", val as "Yes" | "No")}
+                      onChange={(val) =>
+                        setValue("isCommittingToMeetings", val as "Yes" | "No")
+                      }
                       error={!!errors.isCommittingToMeetings}
                     />
                   </FormField>
@@ -243,7 +274,10 @@ export default function CaseStudyApplyPage() {
                       options={yesNoOptions}
                       value={formData.hasRegisteredForConference}
                       onChange={(val) =>
-                        setValue("hasRegisteredForConference", val as "Yes" | "No")
+                        setValue(
+                          "hasRegisteredForConference",
+                          val as "Yes" | "No",
+                        )
                       }
                       error={!!errors.hasRegisteredForConference}
                     />

@@ -45,6 +45,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 0);
@@ -55,6 +56,7 @@ export default function Navbar() {
   // Close desktop dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
+      if (window.innerWidth < 1024) return;
       if (
         dropdownRef.current &&
         !dropdownRef.current.contains(e.target as Node)
@@ -98,16 +100,27 @@ export default function Navbar() {
           </div>
 
           {/* Desktop Nav Links */}
-          <div ref={dropdownRef} className="hidden md:flex items-center gap-1">
+          <div ref={dropdownRef} className="hidden lg:flex items-center gap-1">
             {navLinks.map((link) => (
               <div
                 key={link.name}
                 className="relative"
                 onMouseEnter={() => {
-                  if (link.hasDropdown) setOpenDropdown(link.name);
+                  if (link.hasDropdown) {
+                    if (closeTimeoutRef.current) {
+                      clearTimeout(closeTimeoutRef.current);
+                      closeTimeoutRef.current = null;
+                    }
+                    setOpenDropdown(link.name);
+                  }
                 }}
                 onMouseLeave={() => {
-                  if (link.hasDropdown) setOpenDropdown(null);
+                  if (link.hasDropdown) {
+                    closeTimeoutRef.current = setTimeout(() => {
+                      setOpenDropdown(null);
+                      closeTimeoutRef.current = null;
+                    }, 150);
+                  }
                 }}
               >
                 <a
@@ -155,12 +168,12 @@ export default function Navbar() {
           </div>
 
           {/* Buy Tickets Button (desktop) */}
-          <div className="hidden md:flex items-center">
+          <div className="hidden lg:flex items-center">
             <a
               href="https://bitooqoh.com/explore/ngm-conference-5.0"
               target="_blank"
               rel="noreferrer noopenner"
-              className="flex items-center gap-2 bg-[#0f1990] hover:bg-blue-950 text-white text-sm font-bold px-5 py-2.5 rounded-md transition-colors duration-200 tracking-wide shadow-md hover:shadow-lg"
+              className="flex items-center gap-2 bg-[#0f1990] hover:bg-blue-950 text-white text-sm font-bold px-5 py-2.5 rounded-md transition-colors duration-200 tracking-wide shadow-md hover:shadow-lg shrink-0"
             >
               Buy Tickets
               <Image
@@ -174,7 +187,7 @@ export default function Navbar() {
 
           {/* Mobile hamburger */}
           <button
-            className="md:hidden p-2 rounded focus:outline-none"
+            className="lg:hidden p-2 rounded focus:outline-none"
             onClick={() => setMenuOpen((v) => !v)}
             aria-label="Toggle menu"
           >
@@ -185,7 +198,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${menuOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"}`}
+        className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${menuOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"}`}
       >
         <div className="bg-white border-t border-gray-100 px-4 pb-4 pt-2 flex flex-col gap-1">
           {navLinks.map((link) => (
@@ -243,7 +256,7 @@ export default function Navbar() {
           <a
             href="#tickets"
             onClick={() => setMenuOpen(false)}
-            className="mt-2 flex items-center justify-center gap-2 bg-[#0F1990] hover:bg-[#1d4ed8] text-white text-sm font-bold px-5 py-3 rounded-md transition-colors duration-200 tracking-wide shadow-md"
+            className="mt-2 flex items-center justify-center gap-2 bg-[#0F1990] hover:bg-[#1d4ed8] text-white text-sm font-bold px-5 py-3 rounded-md transition-colors duration-200 tracking-wide shadow-md shrink-0"
           >
             Buy Tickets
             <Image
