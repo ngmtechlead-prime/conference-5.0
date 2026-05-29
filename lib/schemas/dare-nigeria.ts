@@ -63,39 +63,66 @@ export const innovationProfileSchema = z.object({
 export const pitchSchema = z.object({
   problemStatement: z
     .string()
-    .min(50, "Please provide more detail (min 50 characters)")
+    .min(
+      50,
+      "Please provide more details (min. 50 characters and max. 1500 characters)",
+    )
     .max(1500, "Maximum 1500 characters"),
   businessDescription: z
     .string()
-    .min(50, "Please provide more detail (min 50 characters)")
+    .min(
+      50,
+      "Please provide more details (min. 50 characters and max. 1500 characters)",
+    )
     .max(1500, "Maximum 1500 characters"),
   solution: z
     .string()
-    .min(50, "Please provide more detail (min 50 characters)")
+    .min(
+      50,
+      "Please provide more details (min. 50 characters and max. 1500 characters)",
+    )
     .max(1500, "Maximum 1500 characters"),
   targetBeneficiaries: z
     .string()
-    .min(30, "Please provide more detail (min 30 characters)")
+    .min(
+      30,
+      "Please provide more details (min. 30 characters and max. 900 characters)",
+    )
     .max(900, "Maximum 900 characters"),
   impactPotential: z
     .string()
-    .min(30, "Please provide more detail (min 30 characters)")
+    .min(
+      30,
+      "Please provide more details (min. 30 characters and max. 900 characters)",
+    )
     .max(900, "Maximum 900 characters"),
   successMetrics: z
     .string()
-    .min(30, "Please provide more detail (min 30 characters)")
+    .min(
+      30,
+      "Please provide more details (min. 30 characters and max. 900 characters)",
+    )
     .max(900, "Maximum 900 characters"),
   revenueModel: z
     .string()
-    .min(30, "Please provide more detail (min 30 characters)")
+    .min(
+      30,
+      "Please provide more details (min. 30 characters and max. 900 characters)",
+    )
     .max(900, "Maximum 900 characters"),
   scalability: z
     .string()
-    .min(30, "Please provide more detail (min 30 characters)")
+    .min(
+      30,
+      "Please provide more details (min. 30 characters and max. 900 characters)",
+    )
     .max(900, "Maximum 900 characters"),
   uniqueness: z
     .string()
-    .min(30, "Please provide more detail (min 30 characters)")
+    .min(
+      30,
+      "Please provide more details (min. 30 characters and max. 600 characters)",
+    )
     .max(600, "Maximum 600 characters"),
 });
 
@@ -105,15 +132,24 @@ export const teamSchema = z.object({
   }),
   background: z
     .string()
-    .min(30, "Please provide more detail (min 30 characters)")
+    .min(
+      30,
+      "Please provide more details (min. 30 characters and max. 900 characters)",
+    )
     .max(900, "Maximum 900 characters"),
   progressSoFar: z
     .string()
-    .min(30, "Please provide more detail (min 30 characters)")
+    .min(
+      30,
+      "Please provide more details (min. 30 characters and max. 900 characters)",
+    )
     .max(900, "Maximum 900 characters"),
   biggestChallenge: z
     .string()
-    .min(30, "Please provide more detail (min 30 characters)")
+    .min(
+      30,
+      "Please provide more details (min. 30 characters and max. 900 characters)",
+    )
     .max(900, "Maximum 900 characters"),
 });
 
@@ -132,7 +168,10 @@ export const fundingSchema = z.object({
     .min(1, "Please select estimated funding need"),
   fundingUsePlan: z
     .string()
-    .min(30, "Please provide more detail (min 30 characters)")
+    .min(
+      30,
+      "Please provide more details (min. 30 characters and max. 900 characters)",
+    )
     .max(900, "Maximum 900 characters"),
   supportTypesNeeded: z
     .array(z.string())
@@ -182,7 +221,10 @@ export const declarationSchema = z.object({
   howHeardAbout: z.string().min(1, "Please select an option"),
   whyDare: z
     .string()
-    .min(30, "Please provide more detail (min 30 characters)")
+    .min(
+      30,
+      "Please provide more details (min. 30 characters and max. 600 characters)",
+    )
     .max(600, "Maximum 600 characters"),
   agreements: z.object({
     isNigerianCitizen: z

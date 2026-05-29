@@ -167,7 +167,6 @@ export default function DeclarationForm({
             <Textarea
               {...register("availability.additionalInfo")}
               rows={4}
-              maxLength={600}
               currentLength={additionalInfo.length}
               placeholder="Optional additional information..."
               error={!!errors.availability?.additionalInfo}

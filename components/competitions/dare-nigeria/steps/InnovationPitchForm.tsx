@@ -180,7 +180,6 @@ export default function InnovationPitchForm({
             <Textarea
               {...register("pitch.problemStatement")}
               rows={4}
-              maxLength={1500}
               currentLength={watchProblemStatement?.length || 0}
               error={!!errors.pitch?.problemStatement}
             />
@@ -194,7 +193,6 @@ export default function InnovationPitchForm({
             <Textarea
               {...register("pitch.businessDescription")}
               rows={4}
-              maxLength={1500}
               currentLength={watchBusinessDescription?.length || 0}
               error={!!errors.pitch?.businessDescription}
             />
@@ -208,7 +206,6 @@ export default function InnovationPitchForm({
             <Textarea
               {...register("pitch.solution")}
               rows={4}
-              maxLength={1500}
               currentLength={watchSolution?.length || 0}
               error={!!errors.pitch?.solution}
             />
@@ -223,7 +220,6 @@ export default function InnovationPitchForm({
             <Textarea
               {...register("pitch.targetBeneficiaries")}
               rows={3}
-              maxLength={900}
               currentLength={watchTargetBeneficiaries?.length || 0}
               error={!!errors.pitch?.targetBeneficiaries}
             />
@@ -237,7 +233,6 @@ export default function InnovationPitchForm({
             <Textarea
               {...register("pitch.impactPotential")}
               rows={3}
-              maxLength={900}
               currentLength={watchImpactPotential?.length || 0}
               error={!!errors.pitch?.impactPotential}
             />
@@ -251,7 +246,6 @@ export default function InnovationPitchForm({
             <Textarea
               {...register("pitch.successMetrics")}
               rows={3}
-              maxLength={900}
               currentLength={watchSuccessMetrics?.length || 0}
               error={!!errors.pitch?.successMetrics}
             />
@@ -265,7 +259,6 @@ export default function InnovationPitchForm({
             <Textarea
               {...register("pitch.revenueModel")}
               rows={3}
-              maxLength={900}
               currentLength={watchRevenueModel?.length || 0}
               error={!!errors.pitch?.revenueModel}
             />
@@ -279,7 +272,6 @@ export default function InnovationPitchForm({
             <Textarea
               {...register("pitch.scalability")}
               rows={3}
-              maxLength={900}
               currentLength={watchScalability?.length || 0}
               error={!!errors.pitch?.scalability}
             />
@@ -293,7 +285,6 @@ export default function InnovationPitchForm({
             <Textarea
               {...register("pitch.uniqueness")}
               rows={3}
-              maxLength={600}
               currentLength={watchUniqueness?.length || 0}
               error={!!errors.pitch?.uniqueness}
             />
@@ -350,7 +341,6 @@ export default function InnovationPitchForm({
             <Textarea
               {...register("team.background")}
               rows={3}
-              maxLength={900}
               currentLength={watchBackground?.length || 0}
               error={!!errors.team?.background}
             />
@@ -364,7 +354,6 @@ export default function InnovationPitchForm({
             <Textarea
               {...register("team.progressSoFar")}
               rows={3}
-              maxLength={900}
               currentLength={watchProgress?.length || 0}
               error={!!errors.team?.progressSoFar}
             />
@@ -378,7 +367,6 @@ export default function InnovationPitchForm({
             <Textarea
               {...register("team.biggestChallenge")}
               rows={3}
-              maxLength={900}
               currentLength={watchChallenge?.length || 0}
               error={!!errors.team?.biggestChallenge}
             />
