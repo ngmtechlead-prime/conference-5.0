@@ -9,6 +9,7 @@ interface Stats {
     all: number;
     dareNigeria: number;
     smePitch: number;
+    caseStudy: number;
   };
   byStatus: {
     pending: number;
@@ -118,7 +119,7 @@ export default function AdminDashboard() {
       </div>
 
       {/* Competition Breakdown */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <div className="bg-white rounded-xl border border-gray-200 p-6">
           <div className="flex items-center gap-3 mb-4">
             <Users className="w-5 h-5 text-[#0F1990]" />
@@ -141,6 +142,19 @@ export default function AdminDashboard() {
           </div>
           <p className="text-3xl font-bold text-[#0F1990]">
             {stats.totals.smePitch}
+          </p>
+          <p className="text-sm text-gray-600 mt-1">applications</p>
+        </div>
+
+        <div className="bg-white rounded-xl border border-gray-200 p-6">
+          <div className="flex items-center gap-3 mb-4">
+            <Users className="w-5 h-5 text-[#0F1990]" />
+            <h2 className="text-lg font-semibold text-gray-900">
+              Case Study Competition
+            </h2>
+          </div>
+          <p className="text-3xl font-bold text-[#0F1990]">
+            {stats.totals.caseStudy}
           </p>
           <p className="text-sm text-gray-600 mt-1">applications</p>
         </div>
@@ -172,11 +186,15 @@ export default function AdminDashboard() {
                 className="px-6 py-4 flex items-center justify-between hover:bg-gray-50 transition-colors"
               >
                 <div>
-                  <p className="font-medium text-gray-900">{app.applicantName || "Unknown"}</p>
+                  <p className="font-medium text-gray-900">
+                    {app.applicantName || "Unknown"}
+                  </p>
                   <p className="text-sm text-gray-500">
                     {app.competition === "DARE_NIGERIA"
                       ? "DARE Nigeria"
-                      : "SME Pitch"}
+                      : app.competition === "SME_PITCH"
+                        ? "SME Pitch"
+                        : "Case Study"}
                   </p>
                 </div>
                 <div className="text-right">
