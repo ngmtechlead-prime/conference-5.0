@@ -100,6 +100,7 @@ export default function ApplicationsPage() {
                 <option value="">All Competitions</option>
                 <option value="DARE_NIGERIA">DARE Nigeria</option>
                 <option value="SME_PITCH">SME Pitch</option>
+                <option value="CASE_STUDY">Case Study</option>
               </select>
             </div>
 
@@ -171,7 +172,9 @@ export default function ApplicationsPage() {
                         <span className="text-sm text-gray-900">
                           {app.competition === "DARE_NIGERIA"
                             ? "DARE Nigeria"
-                            : "SME Pitch"}
+                            : app.competition === "SME_PITCH"
+                              ? "SME Pitch"
+                              : "Case Study"}
                         </span>
                       </td>
                       <td className="px-6 py-4">

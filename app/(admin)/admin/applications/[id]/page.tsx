@@ -36,6 +36,15 @@ interface Application {
 }
 
 const FIELD_LABELS: Record<string, string> = {
+  age: "Age",
+  comments: "Comments",
+  full: "Full",
+  ticket: "Ticket",
+  id: "ID",
+  hasAnalysedCase: "Has Analysed Case?",
+  isCommittingToMeetings: "Is Committing to Meetings?",
+  hasRegisteredForConference: "Has Registered for Conference?",
+  hasParticipatedInNGMCaseStudy: "Has Participated in NGM Case Study?",
   firstName: "First Name",
   lastName: "Last Name",
   dateOfBirth: "Date of Birth",
@@ -359,6 +368,7 @@ export default function ApplicationDetailPage({
   };
 
   const isDareNigeria = application.competition === "DARE_NIGERIA";
+  const isCaseStudy = application.competition === "CASE_STUDY";
   const personalInfo = (data?.step1?.personalInfo as {
     firstName: string;
     lastName: string;
@@ -387,7 +397,9 @@ export default function ApplicationDetailPage({
             <p className="text-gray-600">
               {application.competition === "DARE_NIGERIA"
                 ? "DARE Nigeria Challenge"
-                : "SME Pitch Competition"}
+                : application.competition === "SME_PITCH"
+                  ? "SME Pitch Competition"
+                  : "Case Study Competition"}
             </p>
           </div>
         </div>
@@ -539,6 +551,11 @@ export default function ApplicationDetailPage({
         icon={ClipboardCheck}
         data={data?.step4?.declaration as Record<string, unknown>}
       />
+
+      {/* Case Study Application */}
+      {isCaseStudy && (
+        <DataSection title="Case Study Details" icon={FileText} data={data} />
+      )}
 
       {/* Files */}
       {application.filesWithUrls && application.filesWithUrls.length > 0 && (

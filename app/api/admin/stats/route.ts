@@ -10,6 +10,7 @@ export async function GET() {
       totalApplications,
       dareNigeriaCount,
       smePitchCount,
+      caseStudyCount,
       pendingCount,
       underReviewCount,
       acceptedCount,
@@ -22,6 +23,9 @@ export async function GET() {
       }),
       db.application.count({
         where: { competition: Competition.SME_PITCH },
+      }),
+      db.application.count({
+        where: { competition: Competition.CASE_STUDY },
       }),
       db.application.count({
         where: { status: ApplicationStatus.PENDING },
@@ -74,6 +78,7 @@ export async function GET() {
         all: totalApplications,
         dareNigeria: dareNigeriaCount,
         smePitch: smePitchCount,
+        caseStudy: caseStudyCount,
       },
       byStatus: {
         pending: pendingCount,

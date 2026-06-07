@@ -7,6 +7,7 @@ type Speaker = {
   name: string;
   title: string;
   org: string;
+  // image: string;
 };
 
 const speakers: Speaker[] = [
@@ -19,6 +20,7 @@ const speakers: Speaker[] = [
     name: "Kola Adesina",
     title: "Group Managing Director",
     org: "Sahara Power Group",
+    // image: "/gallery/DrKolaAdesina.png"
   },
   {
     name: "Dr. Omobola Johnson",
@@ -65,7 +67,8 @@ function getPlaceholderColors(name: string) {
     { bg: "#0E1580", text: "rgba(255,255,255,0.10)" },
   ];
   let hash = 0;
-  for (let i = 0; i < name.length; i++) hash = name.charCodeAt(i) + ((hash << 5) - hash);
+  for (let i = 0; i < name.length; i++)
+    hash = name.charCodeAt(i) + ((hash << 5) - hash);
   return palettes[Math.abs(hash) % palettes.length];
 }
 
@@ -139,7 +142,8 @@ export default function Speakers() {
     const el = scrollRef.current;
     if (!el) return;
     // Scroll by one card width + gap
-    const cardWidth = el.querySelector<HTMLElement>(":scope > div")?.offsetWidth ?? 340;
+    const cardWidth =
+      el.querySelector<HTMLElement>(":scope > div")?.offsetWidth ?? 340;
     const amount = direction === "left" ? -(cardWidth + 24) : cardWidth + 24;
     el.scrollBy({ left: amount, behavior: "smooth" });
   };
