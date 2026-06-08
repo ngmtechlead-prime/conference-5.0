@@ -69,7 +69,9 @@ export async function GET() {
         status: app.status,
         createdAt: app.createdAt,
         applicantName:
-          `${data?.step1?.personalInfo?.firstName || ""} ${data?.step1?.personalInfo?.lastName || ""}`.trim(),
+          app.competition === "CASE_STUDY"
+            ? (app.data as any).fullName
+            : `${data?.step1?.personalInfo?.firstName || ""} ${data?.step1?.personalInfo?.lastName || ""}`.trim(),
       };
     });
 

@@ -1,8 +1,17 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { Search, Filter, ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  Search,
+  Filter,
+  ChevronLeft,
+  ChevronRight,
+  Download,
+  ChevronDown,
+  Loader2,
+} from "lucide-react";
+import { flattenApplication, exportToCSV, exportToExcel } from "@/lib/export";
 
 interface Application {
   id: string;
@@ -11,6 +20,7 @@ interface Application {
   createdAt: string;
   applicantName: string;
   applicantEmail: string;
+  data?: unknown;
 }
 
 interface Pagination {
@@ -28,6 +38,56 @@ export default function ApplicationsPage() {
   const [competition, setCompetition] = useState("");
   const [status, setStatus] = useState("");
   const [page, setPage] = useState(1);
+  const [isExporting, setIsExporting] = useState(false);
+  const [showExportMenu, setShowExportMenu] = useState(false);
+  const exportMenuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (
+        exportMenuRef.current &&
+        !exportMenuRef.current.contains(e.target as Node)
+      ) {
+        setShowExportMenu(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const isFiltered = !!(search || competition || status);
+
+  async function handleExport(format: "csv" | "excel") {
+    setIsExporting(true);
+    setShowExportMenu(false);
+    try {
+      const params = new URLSearchParams();
+      params.set("export", "true");
+      if (isFiltered) {
+        if (search) params.set("search", search);
+        if (competition) params.set("competition", competition);
+        if (status) params.set("status", status);
+      }
+      const res = await fetch(`/api/admin/applications?${params}`);
+      const data = await res.json();
+      const rows = (data.applications as typeof applications).map(
+        flattenApplication,
+      );
+      const competitionSlug = competition
+        ? competition.toLowerCase().replace(/_/g, "-") + "-"
+        : "";
+      const filename = `${competitionSlug}applications-${isFiltered ? "filtered-" : ""}${new Date().toISOString().slice(0, 10)}`;
+      if (format === "csv") {
+        exportToCSV(rows, filename);
+      } else {
+        exportToExcel(rows, filename);
+      }
+    } catch (error) {
+      console.error("Export failed:", error);
+    } finally {
+      setIsExporting(false);
+    }
+  }
 
   useEffect(() => {
     async function fetchApplications() {
@@ -62,11 +122,49 @@ export default function ApplicationsPage() {
 
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-bold text-gray-900">Applications</h1>
-        <p className="text-gray-600 mt-1">
-          Manage and review competition applications
-        </p>
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-2xl font-bold text-gray-900">Applications</h1>
+          <p className="text-gray-600 mt-1">
+            Manage and review competition applications
+          </p>
+        </div>
+
+        <div className="relative" ref={exportMenuRef}>
+          <button
+            onClick={() => setShowExportMenu((v) => !v)}
+            disabled={isExporting}
+            className="flex items-center gap-2 px-4 py-2 bg-[#0F1990] text-white rounded-lg hover:bg-[#0d1680] disabled:opacity-60 disabled:cursor-not-allowed transition-colors"
+          >
+            {isExporting ? (
+              <Loader2 className="w-4 h-4 animate-spin" />
+            ) : (
+              <Download className="w-4 h-4" />
+            )}
+            Export
+            <ChevronDown className="w-4 h-4" />
+          </button>
+
+          {showExportMenu && (
+            <div className="absolute right-0 mt-2 w-52 bg-white border border-gray-200 rounded-xl shadow-lg z-10 overflow-hidden">
+              <div className="px-3 py-2 text-xs font-semibold text-gray-400 uppercase tracking-wider border-b border-gray-100">
+                {isFiltered ? "Export Filtered" : "Export All"}
+              </div>
+              <button
+                onClick={() => handleExport("csv")}
+                className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+              >
+                Download as CSV
+              </button>
+              <button
+                onClick={() => handleExport("excel")}
+                className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+              >
+                Download as Excel
+              </button>
+            </div>
+          )}
+        </div>
       </div>
 
       {/* Filters */}

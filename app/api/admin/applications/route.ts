@@ -11,9 +11,12 @@ export async function GET(request: Request) {
     const competition = searchParams.get("competition") as Competition | null;
     const status = searchParams.get("status") as ApplicationStatus | null;
     const search = searchParams.get("search");
+    const isExport = searchParams.get("export") === "true";
     const page = parseInt(searchParams.get("page") || "1");
-    const limit = parseInt(searchParams.get("limit") || "20");
-    const skip = (page - 1) * limit;
+    const limit = isExport
+      ? 10000
+      : parseInt(searchParams.get("limit") || "20");
+    const skip = isExport ? 0 : (page - 1) * limit;
 
     // Build where clause
     const where: {
@@ -89,8 +92,13 @@ export async function GET(request: Request) {
       return {
         ...app,
         applicantName:
-          `${data?.step1?.personalInfo?.firstName || ""} ${data?.step1?.personalInfo?.lastName || ""}`.trim(),
-        applicantEmail: data?.step1?.personalInfo?.email || "",
+          app.competition === "CASE_STUDY"
+            ? (app.data as any).fullName
+            : `${data?.step1?.personalInfo?.firstName || ""} ${data?.step1?.personalInfo?.lastName || ""}`.trim(),
+        applicantEmail:
+          app.competition === "CASE_STUDY"
+            ? (app.data as any).email
+            : data?.step1?.personalInfo?.email || "",
       };
     });
 

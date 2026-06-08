@@ -39,6 +39,8 @@ const FIELD_LABELS: Record<string, string> = {
   age: "Age",
   comments: "Comments",
   full: "Full",
+  fullName: "Full Name",
+  ticketId: "Ticket ID",
   ticket: "Ticket",
   id: "ID",
   hasAnalysedCase: "Has Analysed Case?",
@@ -121,6 +123,14 @@ const FIELD_LABELS: Record<string, string> = {
   additionalInfo: "Additional Information",
   digitalSignature: "Digital Signature",
   signatureDate: "Signature Date",
+  acceptsTerms: "Accept Terms",
+  accurateInformation: "Accurate Information",
+  commitsToParticipate: "Commits to Participate",
+  consentsToDataUse: "Consents to Data Use",
+  ideaStage: "Idea Stage",
+  isNigerianCitizen: "Is Nigerian Citizen",
+  originalCreator: "Original Creator",
+  understandsDisqualification: "Understands Disqualification",
 };
 
 function formatValue(value: unknown): string {
