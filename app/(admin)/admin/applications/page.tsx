@@ -283,7 +283,13 @@ export default function ApplicationsPage() {
                         </span>
                       </td>
                       <td className="px-6 py-4 text-sm text-gray-500">
-                        {new Date(app.createdAt).toLocaleDateString()}
+                        {new Date(app.createdAt).toLocaleDateString("en-US", {
+                          year: "numeric",
+                          month: "short",
+                          day: "numeric",
+                          hour: "2-digit",
+                          minute: "2-digit",
+                        })}
                       </td>
                       <td className="px-6 py-4 text-right">
                         <Link
