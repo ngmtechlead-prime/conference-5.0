@@ -91,7 +91,7 @@ export async function POST(request: Request) {
     await sendApplicationReceivedEmail(
       applicantEmail,
       applicantName,
-      "Case Study & Research Analysis Competition",
+      "case_study",
     );
 
     apiLogger.info(
