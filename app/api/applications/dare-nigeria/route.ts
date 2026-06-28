@@ -82,7 +82,7 @@ export async function POST(request: Request) {
     await sendApplicationReceivedEmail(
       applicantEmail,
       applicantName,
-      "DARE Nigeria Challenge",
+      "dare_nigeria",
     );
 
     apiLogger.info(

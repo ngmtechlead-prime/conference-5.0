@@ -3,6 +3,7 @@ import { getToken } from "next-auth/jwt";
 import { db } from "@/lib/db";
 import { ApplicationStatus } from "@/lib/generated/prisma/client";
 import {
+  Competition,
   sendApplicationAcceptedEmail,
   sendApplicationDeclinedEmail,
 } from "@/lib/email";
@@ -12,9 +13,10 @@ interface RouteParams {
   params: Promise<{ id: string }>;
 }
 
-const COMPETITION_NAMES: Record<string, string> = {
-  DARE_NIGERIA: "DARE Nigeria Challenge",
-  SME_PITCH: "SME Pitch Competition",
+const COMPETITION_NAMES: Record<string, Competition> = {
+  DARE_NIGERIA: "dare_nigeria",
+  SME_PITCH: "sme_pitch",
+  CASE_STUDY: "case_study",
 };
 
 export async function POST(request: Request, { params }: RouteParams) {

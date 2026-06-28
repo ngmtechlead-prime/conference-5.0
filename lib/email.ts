@@ -3,6 +3,21 @@ import fs from "fs";
 import path from "path";
 import { emailLogger } from "@/lib/logger";
 
+export type Competition = "dare_nigeria" | "sme_pitch" | "case_study";
+
+const getCompetionName = (competition: Competition) => {
+  switch (competition) {
+    case "dare_nigeria":
+      return "DARE Nigeria Challenge";
+    case "sme_pitch":
+      return "SME Pitch Competition";
+    case "case_study":
+      return "Case Study & Research Analysis Competition";
+    default:
+      return "";
+  }
+};
+
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 const FROM_EMAIL =
@@ -10,12 +25,14 @@ const FROM_EMAIL =
 
 function loadTemplate(
   templateName: string,
+  competitionType: Competition,
   variables: Record<string, string>,
 ): string {
   const templatePath = path.join(
     process.cwd(),
     "emails",
     "html",
+    competitionType,
     `${templateName}.html`,
   );
   let html = fs.readFileSync(templatePath, "utf-8");
@@ -28,11 +45,12 @@ function loadTemplate(
 export async function sendApplicationReceivedEmail(
   to: string,
   applicantName: string,
-  competition: string,
+  competitionType: Competition,
   competitionUrl?: string,
 ) {
   try {
-    const html = loadTemplate("received", {
+    const competition = getCompetionName(competitionType);
+    const html = loadTemplate("received", competitionType, {
       first_name: applicantName,
       competition_name: competition,
       competition_url:
@@ -68,12 +86,13 @@ export async function sendApplicationReceivedEmail(
 export async function sendApplicationAcceptedEmail(
   to: string,
   applicantName: string,
-  competition: string,
+  competitionType: Competition,
   additionalInfo?: string,
   competitionUrl?: string,
 ) {
   try {
-    const html = loadTemplate("accepted", {
+    const competition = getCompetionName(competitionType);
+    const html = loadTemplate("accepted", competitionType, {
       first_name: applicantName,
       competition_name: competition,
       competition_url: competitionUrl || "#",
@@ -108,12 +127,13 @@ export async function sendApplicationAcceptedEmail(
 export async function sendApplicationDeclinedEmail(
   to: string,
   applicantName: string,
-  competition: string,
+  competitionType: Competition,
   reason?: string,
   competitionUrl?: string,
 ) {
   try {
-    const html = loadTemplate("declined", {
+    const competition = getCompetionName(competitionType);
+    const html = loadTemplate("declined", competitionType, {
       first_name: applicantName,
       competition_name: competition,
       competition_url: competitionUrl || "#",

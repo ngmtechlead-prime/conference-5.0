@@ -82,7 +82,7 @@ export async function POST(request: Request) {
     await sendApplicationReceivedEmail(
       applicantEmail,
       applicantName,
-      "SME Pitch Competition",
+      "sme_pitch",
     );
 
     apiLogger.info(

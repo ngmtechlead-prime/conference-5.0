@@ -3,7 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>An update on your application — NGM</title>
+    <meta name="color-scheme" content="light dark" />
+    <meta name="supported-color-schemes" content="light dark" />
+    <title>You're in — NGM</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -31,7 +33,7 @@
         background: #ffffff;
         border-radius: 4px;
         overflow: hidden;
-        box-shadow: 0 4px 24px rgba(15, 25, 144, 0.06);
+        box-shadow: 0 4px 24px rgba(13, 160, 76, 0.08);
       }
       .logo-bar {
         padding: 28px 40px;
@@ -57,7 +59,7 @@
       }
 
       .hero {
-        background: #3347b0;
+        background: #0da04c;
         color: #ffffff;
         padding: 64px 40px 64px;
       }
@@ -68,6 +70,19 @@
         letter-spacing: -0.03em;
         margin: 0;
         color: #ffffff;
+      }
+
+      .accepted-badge {
+        display: inline-block;
+        background: #e6f7ec;
+        color: #0da04c;
+        padding: 6px 14px;
+        border-radius: 100px;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        margin-top: 24px;
       }
 
       .body-content {
@@ -81,6 +96,10 @@
       }
       .body-content strong {
         color: #101828;
+        font-weight: 700;
+      }
+      .body-content .accent {
+        color: #0da04c;
         font-weight: 700;
       }
 
@@ -109,7 +128,7 @@
         font-family: "Epilogue", sans-serif;
         font-size: 28px;
         font-weight: 800;
-        color: #3347b0;
+        color: #0da04c;
         line-height: 1;
         min-width: 36px;
         letter-spacing: -0.02em;
@@ -132,7 +151,7 @@
       }
       .cta {
         display: block;
-        background: #0f1990;
+        background: #0da04c;
         color: #ffffff !important;
         text-align: center;
         text-decoration: none;
@@ -161,7 +180,7 @@
         line-height: 1.6;
       }
       .ps a {
-        color: #0f1990;
+        color: #0da04c;
         font-weight: 600;
       }
 
@@ -184,8 +203,8 @@
         line-height: 40px;
         margin: 0 6px;
         border-radius: 50%;
-        background: #e7e8f4;
-        color: #0f1990;
+        background: #e6f7ec;
+        color: #0da04c;
         text-align: center;
         text-decoration: none;
       }
@@ -231,6 +250,62 @@
           padding-top: 32px;
         }
       }
+
+      .logo-dark {
+        display: none;
+      }
+
+      /* ---------- Dark mode ---------- */
+      @media (prefers-color-scheme: dark) {
+        body {
+          background-color: #0b0b14 !important;
+          color: #c7cad6 !important;
+        }
+        .email {
+          background: #14141f !important;
+          box-shadow: 0 4px 24px rgba(0, 0, 0, 0.45) !important;
+        }
+        .logo-light {
+          display: none !important;
+        }
+        .logo-dark {
+          display: inline-block !important;
+        }
+        .logo-bar {
+          border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+        }
+        .body-content p,
+        .signoff,
+        .signoff p,
+        .step-text p,
+        .ps,
+        .footer,
+        .footer-meta {
+          color: #c7cad6 !important;
+        }
+        .body-content strong,
+        .signoff strong,
+        .next-steps h2,
+        .step-text h3 {
+          color: #f3f4f9 !important;
+        }
+        .step,
+        .step:last-child,
+        .ps {
+          border-color: rgba(255, 255, 255, 0.1) !important;
+        }
+        .footer {
+          background: #101019 !important;
+          border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+        }
+        .footer-meta a {
+          color: #c7cad6 !important;
+        }
+        .footer-socials a {
+          background: rgba(255, 255, 255, 0.12) !important;
+          color: #ffffff !important;
+        }
+      }
     </style>
   </head>
   <body>
@@ -240,90 +315,89 @@
           <img
             src="https://conference.ngmplatform.com/gallery/ngm-logo-blue.png"
             alt="NGM Conference 5.0 — Nasir Giwa Mentorship Platform — 10th Anniversary"
-            onerror="
-              this.style.display = 'none';
-              this.nextElementSibling.style.display = 'inline';
-            "
-          /><span class="logo-text" style="display: none">NGM</span>
+            class="logo-light"
+          />
+          <img
+            src="https://conference.ngmplatform.com/gallery/ngm-logo-dark.png"
+            alt="NGM Conference 5.0 — Nasir Giwa Mentorship Platform — 10th Anniversary"
+            class="logo-dark"
+          />
         </div>
 
         <div class="hero">
-          <h1>Thank you for<br />daring.</h1>
+          <h1>You're in.<br />Let's dare together.</h1>
+          <span class="accepted-badge">Application Accepted</span>
         </div>
 
         <div class="body-content">
           <p>Hi {{first_name}},</p>
           <p>
-            Thank you for applying to the <strong>{{competition_name}}</strong>.
-            We received an extraordinary volume of bold, ambitious ideas this
-            round — and after careful consideration, your application wasn't
-            selected to move forward this time.
+            It's official — your application to the
+            <strong>{{competition_name}}</strong> has been
+            <span class="accent">accepted</span>.
           </p>
           <p>
-            This isn't a verdict on your idea. It's a snapshot of one decision,
-            in one moment, against a very strong field.
-          </p>
-          <p>
-            The hardest part of building anything worthwhile is putting it
-            forward. You did that. That counts.
+            Your submission stood out. We believe you have what it takes to make
+            a real impact, and we're excited to back you on the next leg of this
+            journey.
           </p>
         </div>
 
         <div class="next-steps">
-          <h2>Stay close to NGM</h2>
+          <h2>What happens next</h2>
           <div class="step">
             <div class="step-number">01</div>
             <div class="step-text">
-              <h3>Get our newsletter</h3>
+              <h3>Look out for our follow-up</h3>
               <p>
-                Stories, opportunities, and tools for builders — straight to
-                your inbox.
+                We'll send orientation details and what to prepare in the coming
+                days.
               </p>
             </div>
           </div>
           <div class="step">
             <div class="step-number">02</div>
             <div class="step-text">
-              <h3>See you at the next NGM Conference</h3>
-              <p>
-                Our competitions run during the annual NGM Conference. That's
-                when applications reopen — make sure you don't miss it.
-              </p>
+              <h3>Block out time on your calendar</h3>
+              <p>The next phase will require focus. Make space for it now.</p>
             </div>
           </div>
           <div class="step">
             <div class="step-number">03</div>
             <div class="step-text">
-              <h3>Connect with our community</h3>
-              <p>
-                Follow us on social — that's where the next opportunity will be
-                announced first.
-              </p>
+              <h3>Bring your boldest version</h3>
+              <p>You earned this seat. Show up ready to use it.</p>
             </div>
           </div>
         </div>
 
         <div class="cta-wrap">
-          <a href="{{competition_url}}" class="cta">Explore NGM mentorship</a>
+          <a href="{{competition_url}}" class="cta">View your next steps</a>
         </div>
 
         <div class="signoff">
-          <p>Keep building,</p>
+          <p>Congratulations — let's go,</p>
           <p><strong style="color: #101828">The NGM Team</strong></p>
         </div>
 
         <div class="ps">
           <p>
-            <strong>P.S.</strong> The best founders we know got plenty of "not
-            this time" emails before they got the right "yes." Keep daring.
+            <strong>P.S.</strong> Questions about what comes next?
+            <a href="mailto:hello@ngm.com">Reply to this email</a> and we'll get
+            back to you.
           </p>
         </div>
 
         <div class="footer">
           <img
-            src="https://conference.ngmplatform.com/gallery/ngm-logo-blue.png"
+            src="https://conference.ngmplatform.com/gallery/assets/ngm-logo-blue.png"
             alt="NGM"
-            class="footer-logo"
+            class="footer-logo logo-light"
+          />
+          <img
+            src="https://conference.ngmplatform.com/gallery/assets/ngm-logo-dark.png"
+            alt="NGM"
+            class="footer-logo logo-dark"
           />
           <div class="footer-socials">
             <a
