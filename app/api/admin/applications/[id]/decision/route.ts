@@ -91,9 +91,15 @@ export async function POST(request: Request, { params }: RouteParams) {
       };
     };
 
-    const applicantEmail = data?.step1?.personalInfo?.email;
+    const applicantEmail =
+      updatedApplication.competition === "CASE_STUDY"
+        ? (updatedApplication.data as any).email
+        : data?.step1?.personalInfo?.email;
     const applicantName =
-      `${data?.step1?.personalInfo?.firstName || ""} ${data?.step1?.personalInfo?.lastName || ""}`.trim();
+      updatedApplication.competition === "CASE_STUDY"
+        ? (updatedApplication.data as any).fullName
+        : `${data?.step1?.personalInfo?.firstName || ""} ${data?.step1?.personalInfo?.lastName || ""}`.trim();
+
     const competitionName =
       COMPETITION_NAMES[application.competition] || application.competition;
 
