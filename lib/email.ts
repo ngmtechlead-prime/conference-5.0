@@ -53,8 +53,7 @@ export async function sendApplicationReceivedEmail(
     const html = loadTemplate("received", competitionType, {
       first_name: applicantName,
       competition_name: competition,
-      competition_url:
-        competitionUrl || "https://kaleidoscopic-stardust-3041fd.netlify.app",
+      competition_url: competitionUrl || "https://conference.ngmplatform.com",
     });
 
     const { error } = await resend.emails.send({
@@ -95,7 +94,7 @@ export async function sendApplicationAcceptedEmail(
     const html = loadTemplate("accepted", competitionType, {
       first_name: applicantName,
       competition_name: competition,
-      competition_url: competitionUrl || "#",
+      competition_url: competitionUrl || "https://conference.ngmplatform.com",
     });
 
     const { error } = await resend.emails.send({
@@ -136,7 +135,7 @@ export async function sendApplicationDeclinedEmail(
     const html = loadTemplate("declined", competitionType, {
       first_name: applicantName,
       competition_name: competition,
-      competition_url: competitionUrl || "#",
+      competition_url: competitionUrl || "https://conference.ngmplatform.com",
     });
 
     const { error } = await resend.emails.send({
