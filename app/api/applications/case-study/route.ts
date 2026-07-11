@@ -66,13 +66,17 @@ export async function POST(request: Request) {
       select: { id: true, competition: true },
     });
 
-    if (existingApplication) {
-      const competitionName =
-        existingApplication.competition === Competition.DARE_NIGERIA
-          ? "DARE Nigeria Challenge"
-          : existingApplication.competition === Competition.SME_PITCH
-            ? "SME Pitch Competition"
-            : "Case Study & Research Analysis Competition";
+    if (
+      existingApplication &&
+      existingApplication.competition === Competition.CASE_STUDY
+    ) {
+      // const competitionName =
+      //   existingApplication.competition === Competition.DARE_NIGERIA
+      //     ? "DARE Nigeria Challenge"
+      //     : existingApplication.competition === Competition.SME_PITCH
+      //       ? "SME Pitch Competition"
+      //       : "Case Study & Research Analysis Competition";
+      const competitionName = "Case Study & Research Analysis Competition";
       return NextResponse.json(
         {
           error: `You have already registered for the ${competitionName}. Each participant can only register for one competition.`,
