@@ -26,7 +26,11 @@ const navColumns = [
     heading: "Get involved",
     links: [
       { label: "Become a Sponsor", href: "#" },
-      { label: "Shop Merchandise", href: "#" },
+      {
+        label: "Shop Merchandise",
+        href: "https://selar.com/m/ngm-conference1",
+        isExternal: true,
+      },
       { label: "Pricing", href: "#" },
     ],
   },
@@ -133,6 +137,8 @@ export default function Footer() {
                   href={href}
                   aria-label={label}
                   className="text-gray-400 hover:text-[#0F1990] transition-colors duration-150"
+                  target="_blank"
+                  rel="noreferrer nopenner"
                 >
                   {icon}
                 </a>
@@ -153,6 +159,10 @@ export default function Footer() {
                       <Link
                         href={link.href}
                         className="text-gray-500 text-base font-epilogue tracking-[-0.03em] hover:text-[#0DA04C] transition-colors duration-150 leading-snug"
+                        {...(link.isExternal && {
+                          target: "_blank",
+                          rel: "noreferrer nopenner",
+                        })}
                       >
                         {link.label}
                       </Link>
