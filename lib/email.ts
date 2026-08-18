@@ -31,7 +31,9 @@ const FROM_EMAIL =
 const CONTACT_RECIPIENT_EMAIL =
   process.env.CONTACT_RECIPIENT_EMAIL || "info@ngmplatform.com";
 
-export type EmailResult = { success: true } | { success: false; error: unknown };
+export type EmailResult =
+  | { success: true }
+  | { success: false; error: unknown };
 
 function escapeHtml(value: string): string {
   return value
@@ -44,14 +46,14 @@ function escapeHtml(value: string): string {
 
 function loadTemplate(
   templateName: string,
-  competition: Competition,
+  folder: string,
   variables: Record<string, string>,
 ): string {
   const templatePath = path.join(
     process.cwd(),
     "emails",
     "html",
-    competition,
+    folder,
     `${templateName}.html`,
   );
   let html = fs.readFileSync(templatePath, "utf-8");
@@ -182,35 +184,63 @@ function renderContactMessageHtml({
   subject,
   message,
 }: ContactMessageParams): string {
-  return `
-      <div style="font-family: Arial, sans-serif; color: #171717; line-height: 1.6;">
-        <h2 style="color: #0f1990; margin-bottom: 16px;">New Contact Message</h2>
-        <p><strong>Name:</strong> ${escapeHtml(name)}</p>
-        <p><strong>Email:</strong> ${escapeHtml(email)}</p>
-        <p><strong>Subject:</strong> ${escapeHtml(subject)}</p>
-        <p style="margin-top: 16px;"><strong>Message:</strong></p>
-        <p style="white-space: pre-wrap; padding: 12px 16px; background: #f5f5f5; border-radius: 8px;">${escapeHtml(
-          message,
-        )}</p>
-      </div>
-    `;
+  return loadTemplate("message", "contact", {
+    name: escapeHtml(name),
+    email: escapeHtml(email),
+    subject: escapeHtml(subject),
+    message: escapeHtml(message),
+  });
 }
 
-export function sendContactMessageEmail(
+/**
+ * Sends a notification message email to the admin
+ * @param params - The contact message parameters
+ * @returns A promise that resolves to an EmailResult
+ */
+export function sendContactMessageToAdmin(
   params: ContactMessageParams,
 ): Promise<EmailResult> {
   return dispatchEmail(
     {
-      from: params.email,
+      from: FROM_EMAIL,
       to: CONTACT_RECIPIENT_EMAIL,
       replyTo: params.email,
-      subject: `New contact message: ${params.subject}`,
+      subject: `Re: NGM Conference 5.0 - ${params.subject}`,
       html: renderContactMessageHtml(params),
     },
     {
       context: { from: params.email, type: "contact" },
       failureMessage: "Failed to send contact message email",
       successMessage: "Contact message email sent",
+    },
+  );
+}
+
+/**
+ * Sends a confirmation email to the user acknowledging receipt of their message
+ * @param params - The contact message parameters
+ * @returns A promise that resolves to an EmailResult
+ */
+export function sendContactMessageConfirmation(
+  params: ContactMessageParams,
+): Promise<EmailResult> {
+  const html = loadTemplate("received", "contact", {
+    name: escapeHtml(params.name),
+    subject: escapeHtml(params.subject),
+    message: escapeHtml(params.message),
+  });
+
+  return dispatchEmail(
+    {
+      from: FROM_EMAIL,
+      to: params.email,
+      subject: `We've received your message — NGM Conference 5.0`,
+      html,
+    },
+    {
+      context: { to: params.email, type: "contact-confirmation" },
+      failureMessage: "Failed to send contact confirmation email",
+      successMessage: "Contact confirmation email sent",
     },
   );
 }

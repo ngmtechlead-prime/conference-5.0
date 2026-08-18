@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Epilogue, Archivo } from "next/font/google";
 import Link from "next/link";
-import { LayoutDashboard, FileText, LogOut } from "lucide-react";
+import { LayoutDashboard, FileText, LogOut, MessageSquare } from "lucide-react";
 import "../../globals.css";
 
 const epilogue = Epilogue({
@@ -51,6 +51,13 @@ export default function AdminLayout({
                   >
                     <FileText className="w-4 h-4" />
                     Applications
+                  </Link>
+                  <Link
+                    href="/admin/contact"
+                    className="flex items-center gap-2 text-sm hover:text-gray-200 transition-colors"
+                  >
+                    <MessageSquare className="w-4 h-4" />
+                    Messages
                   </Link>
                 </div>
               </div>
