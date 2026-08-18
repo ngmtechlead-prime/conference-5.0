@@ -1,12 +1,9 @@
 import { NextResponse } from "next/server";
 import { validateContactMessage } from "@/lib/validation";
 import { sendContactMessageEmail } from "@/lib/email";
-import {
-  contactRatelimit,
-  checkRateLimit,
-  getClientIp,
-} from "@/lib/ratelimit";
+import { contactRatelimit, checkRateLimit, getClientIp } from "@/lib/ratelimit";
 import { apiLogger } from "@/lib/logger";
+import { db } from "@/lib/db";
 
 export async function POST(request: Request) {
   try {
@@ -50,6 +47,10 @@ export async function POST(request: Request) {
         { status: 502 },
       );
     }
+
+    await db.contactMessage.create({
+      data: { fullName, email, subject, message },
+    });
 
     apiLogger.info({ subject }, "Contact message submitted successfully");
 

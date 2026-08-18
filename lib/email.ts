@@ -31,7 +31,9 @@ const FROM_EMAIL =
 const CONTACT_RECIPIENT_EMAIL =
   process.env.CONTACT_RECIPIENT_EMAIL || "info@ngmplatform.com";
 
-export type EmailResult = { success: true } | { success: false; error: unknown };
+export type EmailResult =
+  | { success: true }
+  | { success: false; error: unknown };
 
 function escapeHtml(value: string): string {
   return value
@@ -44,14 +46,14 @@ function escapeHtml(value: string): string {
 
 function loadTemplate(
   templateName: string,
-  competition: Competition,
+  folder: string,
   variables: Record<string, string>,
 ): string {
   const templatePath = path.join(
     process.cwd(),
     "emails",
     "html",
-    competition,
+    folder,
     `${templateName}.html`,
   );
   let html = fs.readFileSync(templatePath, "utf-8");
@@ -182,18 +184,12 @@ function renderContactMessageHtml({
   subject,
   message,
 }: ContactMessageParams): string {
-  return `
-      <div style="font-family: Arial, sans-serif; color: #171717; line-height: 1.6;">
-        <h2 style="color: #0f1990; margin-bottom: 16px;">New Contact Message</h2>
-        <p><strong>Name:</strong> ${escapeHtml(name)}</p>
-        <p><strong>Email:</strong> ${escapeHtml(email)}</p>
-        <p><strong>Subject:</strong> ${escapeHtml(subject)}</p>
-        <p style="margin-top: 16px;"><strong>Message:</strong></p>
-        <p style="white-space: pre-wrap; padding: 12px 16px; background: #f5f5f5; border-radius: 8px;">${escapeHtml(
-          message,
-        )}</p>
-      </div>
-    `;
+  return loadTemplate("message", "contact", {
+    name: escapeHtml(name),
+    email: escapeHtml(email),
+    subject: escapeHtml(subject),
+    message: escapeHtml(message),
+  });
 }
 
 export function sendContactMessageEmail(
@@ -204,7 +200,7 @@ export function sendContactMessageEmail(
       from: FROM_EMAIL,
       to: CONTACT_RECIPIENT_EMAIL,
       replyTo: params.email,
-      subject: `New contact message: ${params.subject}`,
+      subject: `Re: NGM Conference 5.0 - ${params.subject}`,
       html: renderContactMessageHtml(params),
     },
     {

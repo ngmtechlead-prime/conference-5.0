@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="supported-color-schemes" content="light dark" />
+    <title>New Contact Message — NGM</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #e7e8f4;
+        font-family: "Epilogue", Helvetica, Arial, sans-serif;
+        color: #4a5565;
+        -webkit-font-smoothing: antialiased;
+        line-height: 1.5;
+      }
+
+      .wrapper {
+        width: 100%;
+        padding: 40px 16px;
+        box-sizing: border-box;
+      }
+
+      .email {
+        max-width: 600px;
+        margin: 0 auto;
+        background: #ffffff;
+        border-radius: 4px;
+        overflow: hidden;
+        box-shadow: 0 4px 24px rgba(15, 25, 144, 0.06);
+      }
+
+      .logo-bar {
+        padding: 28px 40px;
+        border-bottom: 1px solid #f0f0f5;
+        text-align: center;
+      }
+
+      .logo-bar img {
+        height: 48px;
+        width: auto;
+        display: inline-block;
+      }
+
+      .footer-logo {
+        height: 44px;
+        width: auto;
+        margin-bottom: 24px;
+        display: inline-block;
+      }
+
+      .hero {
+        background: #0f1990;
+        color: #ffffff;
+        padding: 64px 40px;
+      }
+
+      .hero h1 {
+        font-size: 44px;
+        font-weight: 800;
+        line-height: 1.1;
+        letter-spacing: -0.03em;
+        margin: 0;
+        color: #ffffff;
+      }
+
+      .body-content {
+        padding: 48px 40px 16px;
+      }
+
+      .body-content p {
+        font-size: 16px;
+        line-height: 1.65;
+        color: #4a5565;
+        margin: 0 0 20px;
+      }
+
+      .body-content strong {
+        color: #101828;
+        font-weight: 700;
+      }
+
+      .message-details {
+        padding: 8px 40px 40px;
+      }
+
+      .message-details h2 {
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        font-weight: 700;
+        color: #101828;
+        margin: 24px 0 24px;
+      }
+
+      .detail-row {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        padding: 16px 0;
+        border-top: 1px solid #f0f0f5;
+        font-size: 15px;
+      }
+
+      .detail-row:last-child {
+        border-bottom: 1px solid #f0f0f5;
+      }
+
+      .detail-label {
+        font-weight: 700;
+        color: #101828;
+        min-width: 80px;
+        flex-shrink: 0;
+      }
+
+      .detail-value {
+        color: #4a5565;
+        line-height: 1.6;
+        word-break: break-word;
+      }
+
+      .message-body {
+        padding: 8px 40px 40px;
+      }
+
+      .message-body h2 {
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        font-weight: 700;
+        color: #101828;
+        margin: 0 0 16px;
+      }
+
+      .message-box {
+        background: #f5f6ff;
+        border-left: 4px solid #0f1990;
+        border-radius: 2px;
+        padding: 20px 24px;
+        font-size: 15px;
+        line-height: 1.7;
+        color: #4a5565;
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+
+      .footer {
+        background: #fafbff;
+        color: #4a5565;
+        padding: 40px;
+        text-align: center;
+        font-size: 13px;
+        border-top: 1px solid #e7e8f4;
+      }
+
+      .footer-socials {
+        margin: 4px 0 24px;
+        font-size: 0;
+      }
+
+      .footer-socials a {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        margin: 0 6px;
+        border-radius: 50%;
+        background: #e7e8f4;
+        color: #0f1990;
+        text-align: center;
+        text-decoration: none;
+      }
+
+      .footer-socials svg {
+        width: 18px;
+        height: 18px;
+        vertical-align: middle;
+        fill: currentColor;
+      }
+
+      .footer-meta {
+        color: #4a5565;
+        line-height: 1.7;
+        font-size: 12px;
+      }
+
+      .footer-meta a {
+        color: #4a5565;
+        text-decoration: underline;
+      }
+
+      .logo-dark {
+        display: none !important;
+      }
+
+      @media (max-width: 540px) {
+        .wrapper {
+          padding: 16px 8px;
+        }
+        .logo-bar,
+        .hero,
+        .body-content,
+        .message-details,
+        .message-body,
+        .footer {
+          padding-left: 24px;
+          padding-right: 24px;
+        }
+        .hero {
+          padding-top: 40px;
+          padding-bottom: 36px;
+        }
+        .hero h1 {
+          font-size: 32px;
+        }
+        .body-content {
+          padding-top: 32px;
+        }
+      }
+
+      /* ---------- Dark mode ---------- */
+      @media (prefers-color-scheme: dark) {
+        body {
+          background-color: #0b0b14 !important;
+          color: #c7cad6 !important;
+        }
+        .email {
+          background: #14141f !important;
+          box-shadow: 0 4px 24px rgba(0, 0, 0, 0.45) !important;
+        }
+        .logo-light {
+          display: none !important;
+        }
+        .logo-dark {
+          display: inline-block !important;
+        }
+        .logo-bar {
+          border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+        }
+        .body-content p,
+        .detail-value,
+        .footer,
+        .footer-meta {
+          color: #c7cad6 !important;
+        }
+        .body-content strong,
+        .detail-label,
+        .message-details h2,
+        .message-body h2 {
+          color: #f3f4f9 !important;
+        }
+        .detail-row,
+        .detail-row:last-child {
+          border-color: rgba(255, 255, 255, 0.1) !important;
+        }
+        .message-box {
+          background: #1a1a2e !important;
+          color: #c7cad6 !important;
+        }
+        .footer {
+          background: #101019 !important;
+          border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+        }
+        .footer-meta a {
+          color: #c7cad6 !important;
+        }
+        .footer-socials a {
+          background: rgba(255, 255, 255, 0.12) !important;
+          color: #ffffff !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="email">
+        <div class="logo-bar">
+          <img
+            src="https://conference.ngmplatform.com/gallery/ngm-logo-blue.png"
+            alt="NGM Conference 5.0 — Nasir Giwa Mentorship Platform — 10th Anniversary"
+            class="logo-light"
+          />
+          <img
+            src="https://conference.ngmplatform.com/gallery/ngm-logo-dark.png"
+            alt="NGM Conference 5.0 — Nasir Giwa Mentorship Platform — 10th Anniversary"
+            class="logo-dark"
+          />
+        </div>
+
+        <div class="hero">
+          <h1>New contact<br />message.</h1>
+        </div>
+
+        <div class="body-content">
+          <p>
+            Someone reached out via the NGM Conference 5.0 contact form. Their
+            details are below.
+          </p>
+        </div>
+
+        <div class="message-details">
+          <h2>Sender details</h2>
+          <div class="detail-row">
+            <span class="detail-label">Name</span>
+            <span class="detail-value">{{name}}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Email</span>
+            <span class="detail-value">{{email}}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Subject</span>
+            <span class="detail-value">{{subject}}</span>
+          </div>
+        </div>
+
+        <div class="message-body">
+          <h2>Message</h2>
+          <div class="message-box">{{message}}</div>
+        </div>
+
+        <div class="footer">
+          <img
+            src="https://conference.ngmplatform.com/gallery/ngm-logo-blue.png"
+            alt="NGM"
+            class="footer-logo logo-light"
+          />
+          <img
+            src="https://conference.ngmplatform.com/gallery/ngm-logo-dark.png"
+            alt="NGM"
+            class="footer-logo logo-dark"
+          />
+          <div class="footer-socials">
+            <a
+              href="https://linkedin.com/company/ngm-platform"
+              aria-label="LinkedIn"
+            >
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+                />
+              </svg>
+            </a>
+            <a href="https://instagram.com/ngm_platform" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+                />
+              </svg>
+            </a>
+            <a href="https://twitter.com/ngm_platform" aria-label="X (Twitter)">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+                />
+              </svg>
+            </a>
+            <a href="https://facebook.com/ngm_platform" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"
+                />
+              </svg>
+            </a>
+          </div>
+          <div class="footer-meta">
+            &copy; 2026 Nasir Giwa Mentorship. All rights reserved.
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

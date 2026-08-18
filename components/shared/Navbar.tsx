@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { ChevronDown } from "lucide-react";
 import React, { useState, useEffect, useRef } from "react";
 import Wrapper from "./Wrapper";
 import Link from "next/link";
@@ -136,11 +137,8 @@ export default function Navbar() {
                 >
                   {link.name}
                   {link.hasDropdown && (
-                    <Image
-                      src="/icons/down.svg"
-                      alt="dropdown"
-                      width={14}
-                      height={14}
+                    <ChevronDown
+                      size={16}
                       className={`transition-transform duration-200 ${openDropdown === link.name ? "rotate-180" : ""}`}
                     />
                   )}
