@@ -197,7 +197,7 @@ export function sendContactMessageEmail(
 ): Promise<EmailResult> {
   return dispatchEmail(
     {
-      from: FROM_EMAIL,
+      from: params.email,
       to: CONTACT_RECIPIENT_EMAIL,
       replyTo: params.email,
       subject: `Re: NGM Conference 5.0 - ${params.subject}`,
