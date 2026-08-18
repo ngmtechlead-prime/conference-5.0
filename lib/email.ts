@@ -192,7 +192,12 @@ function renderContactMessageHtml({
   });
 }
 
-export function sendContactMessageEmail(
+/**
+ * Sends a notification message email to the admin
+ * @param params - The contact message parameters
+ * @returns A promise that resolves to an EmailResult
+ */
+export function sendContactMessageToAdmin(
   params: ContactMessageParams,
 ): Promise<EmailResult> {
   return dispatchEmail(
@@ -207,6 +212,35 @@ export function sendContactMessageEmail(
       context: { from: params.email, type: "contact" },
       failureMessage: "Failed to send contact message email",
       successMessage: "Contact message email sent",
+    },
+  );
+}
+
+/**
+ * Sends a confirmation email to the user acknowledging receipt of their message
+ * @param params - The contact message parameters
+ * @returns A promise that resolves to an EmailResult
+ */
+export function sendContactMessageConfirmation(
+  params: ContactMessageParams,
+): Promise<EmailResult> {
+  const html = loadTemplate("received", "contact", {
+    name: escapeHtml(params.name),
+    subject: escapeHtml(params.subject),
+    message: escapeHtml(params.message),
+  });
+
+  return dispatchEmail(
+    {
+      from: FROM_EMAIL,
+      to: params.email,
+      subject: `We've received your message — NGM Conference 5.0`,
+      html,
+    },
+    {
+      context: { to: params.email, type: "contact-confirmation" },
+      failureMessage: "Failed to send contact confirmation email",
+      successMessage: "Contact confirmation email sent",
     },
   );
 }

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="color-scheme" content="light dark" />
     <meta name="supported-color-schemes" content="light dark" />
-    <title>New Contact Message — NGM Conference 5.0</title>
+    <title>We've Received Your Message — NGM Conference 5.0</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -296,26 +296,23 @@
         </div>
 
         <div class="hero">
-          <h1>New contact<br />message.</h1>
+          <h1>Message<br />received.</h1>
         </div>
 
         <div class="body-content">
           <p>
-            Someone reached out via the NGM Conference 5.0 contact form. Their
-            details are below.
+            Hi <strong>{{name}}</strong>, thank you for reaching out to us. We've received
+            your message and our team will get back to you as soon as possible.
+          </p>
+          <p>
+            In the meantime, feel free to explore the
+            <a href="https://conference.ngmplatform.com" style="color: #0f1990;">NGM Conference 5.0</a>
+            website for more information about the event.
           </p>
         </div>
 
         <div class="message-details">
-          <h2>Sender details</h2>
-          <div class="detail-row">
-            <span class="detail-label">Name</span>
-            <span class="detail-value">{{name}}</span>
-          </div>
-          <div class="detail-row">
-            <span class="detail-label">Email</span>
-            <span class="detail-value">{{email}}</span>
-          </div>
+          <h2>Your message summary</h2>
           <div class="detail-row">
             <span class="detail-label">Subject</span>
             <span class="detail-value">{{subject}}</span>
@@ -323,7 +320,7 @@
         </div>
 
         <div class="message-body">
-          <h2>Message</h2>
+          <h2>Your message</h2>
           <div class="message-box">{{message}}</div>
         </div>
 

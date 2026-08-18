@@ -1,6 +1,9 @@
 import { NextResponse } from "next/server";
 import { validateContactMessage } from "@/lib/validation";
-import { sendContactMessageEmail } from "@/lib/email";
+import {
+  sendContactMessageToAdmin,
+  sendContactMessageConfirmation,
+} from "@/lib/email";
 import { contactRatelimit, checkRateLimit, getClientIp } from "@/lib/ratelimit";
 import { apiLogger } from "@/lib/logger";
 import { db } from "@/lib/db";
@@ -34,12 +37,14 @@ export async function POST(request: Request) {
 
     const { fullName, email, subject, message } = validation.data;
 
-    const result = await sendContactMessageEmail({
+    const result = await sendContactMessageToAdmin({
       name: fullName,
       email,
       subject,
       message,
     });
+
+    // TODO: Send confirmation email to user telling their message has been received and will get feedback soon.
 
     if (!result.success) {
       return NextResponse.json(
@@ -50,6 +55,13 @@ export async function POST(request: Request) {
 
     await db.contactMessage.create({
       data: { fullName, email, subject, message },
+    });
+
+    await sendContactMessageConfirmation({
+      name: fullName,
+      email,
+      subject,
+      message,
     });
 
     apiLogger.info({ subject }, "Contact message submitted successfully");
