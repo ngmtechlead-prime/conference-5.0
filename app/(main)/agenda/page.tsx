@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ComingSoon from "@/components/shared/ComingSoon";
+import Programme from "@/components/home/Programme";
 
 export const metadata: Metadata = {
   title: "Agenda | NGM Conference 5.0",
@@ -9,9 +10,11 @@ export const metadata: Metadata = {
 
 export default function AgendaPage() {
   return (
-    <ComingSoon
-      title="Agenda"
-      description="We're finalizing an exciting schedule of sessions, workshops, and networking events. The full agenda will be available soon."
-    />
+    // <ComingSoon
+    //   title="Agenda"
+    //   description="We're finalizing an exciting schedule of sessions, workshops, and networking events. The full agenda will be available soon."
+    // />
+
+    <Programme />
   );
 }
