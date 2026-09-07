@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import ComingSoon from "@/components/shared/ComingSoon";
+import SpeakersGrid from "@/components/speakers/SpeakersGrid";
 
 export const metadata: Metadata = {
   title: "Speakers | NGM Conference 5.0",
@@ -8,10 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default function SpeakersPage() {
-  return (
-    <ComingSoon
-      title="Speakers"
-      description="We're curating an incredible lineup of speakers for NGM Conference 5.0. Check back soon to discover the industry leaders and innovators who will be sharing their insights."
-    />
-  );
+  return <SpeakersGrid />;
 }

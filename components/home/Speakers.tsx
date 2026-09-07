@@ -1,56 +1,64 @@
 "use client";
 
 import { motion } from "motion/react";
+import Image from "next/image";
 import { useRef, useState, useCallback, useEffect } from "react";
 
 type Speaker = {
   name: string;
   title: string;
   org: string;
-  // image: string;
+  image: string;
 };
 
 const speakers: Speaker[] = [
-  {
-    name: "Dr. Akintoye Akindele",
-    title: "Chairman",
-    org: "Platform Capital Investment Partners",
-  },
+  // {
+  //   name: "Dr. Akintoye Akindele",
+  //   title: "Chairman",
+  //   org: "Platform Capital Investment Partners",
+  //   image: ""
+  // },
   {
     name: "Kola Adesina",
     title: "Group Managing Director",
     org: "Sahara Power Group",
-    // image: "/gallery/DrKolaAdesina.png"
+    image: "/speakers/kola-adesina.webp",
   },
   {
     name: "Dr. Omobola Johnson",
     title: "Senior Partner",
     org: "TLcom Capital",
+    image: "/speakers/omobola-johnson.webp",
   },
   {
     name: "Mrs. Amal Hassan",
     title: "Founder",
     org: "Outsource Global",
+    image: "/speakers/amal-hassan.webp",
   },
   {
     name: "Modupe Kadiri",
     title: "Chief Financial Officer",
     org: "MTN Nigeria",
+    image: "/speakers/modupe-kadiri.webp",
   },
   {
     name: "Chikezie Nwosu",
     title: "Chief Executive Officer",
     org: "Waltersmith Petroman Oil Limited",
+    image: "/speakers/chikezie-nwosu.webp",
   },
   {
     name: "Mrs. Kafilat Araoye",
     title: "Managing Director & CEO",
     org: "Lotus Bank",
+    image: "/speakers/kafilat-araoye.webp",
   },
   {
     name: "Mohammed Abdul-Razaq",
     title: "Senior Vice President",
     org: "Africa Finance Corporation",
+    image: "/speakers/mohammed-abdul-razaq.webp",
   },
 ];
 
@@ -84,21 +92,33 @@ function getInitials(name: string) {
 function SpeakerCard({ speaker }: { speaker: Speaker }) {
   const colors = getPlaceholderColors(speaker.name);
   const initials = getInitials(speaker.name);
+  const [imgError, setImgError] = useState(false);
+  const showImage = speaker.image && !imgError;
 
   return (
     <div className="bg-[#0F1990] rounded-lg p-3 sm:p-4 h-full flex flex-col">
-      {/* Image placeholder with initials */}
+      {/* Speaker image with initials fallback */}
       <div
         className="relative w-full aspect-[4/5] rounded-sm overflow-hidden flex items-center justify-center mb-3 sm:mb-4"
         style={{ backgroundColor: colors.bg }}
       >
-        <span
-          className="text-[clamp(3.5rem,8vw,6rem)] font-bold tracking-[-0.06em] select-none leading-none"
-          style={{ color: colors.text }}
-          aria-hidden
-        >
-          {initials}
-        </span>
+        {showImage ? (
+          <Image
+            src={speaker.image}
+            alt={speaker.name}
+            fill
+            className="object-cover object-top"
+            onError={() => setImgError(true)}
+          />
+        ) : (
+          <span
+            className="text-[clamp(3.5rem,8vw,6rem)] font-bold tracking-[-0.06em] select-none leading-none"
+            style={{ color: colors.text }}
+            aria-hidden
+          >
+            {initials}
+          </span>
+        )}
       </div>
 
       {/* Info strip */}

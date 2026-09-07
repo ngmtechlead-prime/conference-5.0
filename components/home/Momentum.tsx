@@ -20,7 +20,7 @@ const editions: Edition[] = [
 
 function Counter({ to, suffix }: { to: number; suffix: string }) {
   const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const inView = useInView(ref, { once: true, amount: 0.1 });
   const mv = useMotionValue(0);
   const [display, setDisplay] = useState(0);
 
@@ -84,7 +84,7 @@ export default function Momentum() {
                 key={e.label}
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
+                viewport={{ once: true, amount: 0.1 }}
                 transition={{
                   duration: 0.9,
                   delay: i * 0.05,
@@ -104,7 +104,7 @@ export default function Momentum() {
                 </div>
                 <div className="col-span-12 sm:col-span-9 lg:col-span-10">
                   <p
-                    className={`font-bold leading-[0.85] tracking-[-0.06em] ${
+                    className={`font-bold leading-[0.85] tracking-[-0.06em] whitespace-nowrap ${
                       sizes[i]
                     } ${isFinal ? "text-[#0DA04C]" : "text-white"}`}
                   >
