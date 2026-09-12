@@ -29,6 +29,11 @@ enum ApplicationStatus {
   DECLINED
 }
 
+enum ConferenceTicketType {
+  UNDERGRADUATE
+  GRADUATE_PROFESSIONAL
+}
+
 model Admin {
   id           String   @id @default(cuid())
   email        String   @unique
@@ -50,6 +55,40 @@ model ContactMessage {
 
   @@index([isRead])
   @@index([createdAt])
+}
+
+model ConferenceRegistration {
+  id                      String               @id @default(cuid())
+  publicReference         String               @unique
+  ticketType              ConferenceTicketType
+  firstName               String
+  lastName                String
+  email                   String
+  normalizedEmail         String               @unique
+  phoneNumber             String
+  gender                  String
+  maritalStatus           String
+  maritalStatusOther      String?
+  residentialAddress      String
+  activityOfInterest      String
+  discoverySource         String
+  discoverySourceOther    String?
+  referral                String?
+  institutionName         String?
+  fieldOfStudy            String?
+  studentStatusConfirmed  Boolean?
+  professionalInformation String?
+  industrySector          String?
+  professionalCategory    String?
+  privacyConsentAt        DateTime
+  privacyNoticeVersion    String
+  submissionKeyHash       String               @unique
+  createdAt               DateTime             @default(now())
+  updatedAt               DateTime             @updatedAt
+
+  @@index([ticketType])
+  @@index([createdAt])
+  @@index([discoverySource])
 }
 
 model Application {

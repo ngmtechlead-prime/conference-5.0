@@ -10,6 +10,7 @@ interface Stats {
     dareNigeria: number;
     smePitch: number;
     caseStudy: number;
+    conferenceRegistrations: number;
   };
   byStatus: {
     pending: number;
@@ -94,7 +95,7 @@ export default function AdminDashboard() {
       <div>
         <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
         <p className="text-gray-600 mt-1">
-          Overview of competition applications
+          Overview of competition applications and conference registrations
         </p>
       </div>
 
@@ -159,6 +160,25 @@ export default function AdminDashboard() {
           <p className="text-sm text-gray-600 mt-1">applications</p>
         </div>
       </div>
+
+      {/* Conference Registrations */}
+      <Link
+        href="/admin/registrations"
+        className="block bg-white rounded-xl border border-gray-200 p-6 hover:border-[#0F1990]/30 hover:shadow-sm transition-all"
+      >
+        <div className="flex items-center justify-between gap-4">
+          <div>
+            <p className="text-sm text-gray-600">Conference Registrations</p>
+            <p className="text-3xl font-bold text-[#0F1990] mt-1">
+              {stats.totals.conferenceRegistrations}
+            </p>
+          </div>
+          <Users className="w-8 h-8 text-[#0DA04C]" />
+        </div>
+        <p className="text-sm text-[#0F1990] mt-4 font-medium">
+          View attendee registrations →
+        </p>
+      </Link>
 
       {/* Recent Applications */}
       <div className="bg-white rounded-xl border border-gray-200">

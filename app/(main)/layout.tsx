@@ -5,6 +5,7 @@ import { Epilogue, Archivo } from "next/font/google";
 import "../globals.css";
 import Navbar from "@/components/shared/Navbar";
 import Footer from "@/components/shared/Footer";
+import { Toaster } from "@/components/ui/sonner";
 
 const epilogue = Epilogue({
   variable: "--font-epilogue",
@@ -39,6 +40,7 @@ export default function RootLayout({
         <Navbar />
         <main>{children}</main>
         <Footer />
+        <Toaster position="bottom-center" richColors closeButton />
       </body>
     </html>
   );
