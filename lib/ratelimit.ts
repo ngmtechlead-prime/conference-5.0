@@ -27,9 +27,16 @@ export const contactRatelimit = new Ratelimit({
   prefix: "ratelimit:contact",
 });
 
+export const registrationRatelimit = new Ratelimit({
+  redis,
+  limiter: Ratelimit.slidingWindow(5, "1 m"),
+  analytics: true,
+  prefix: "ratelimit:conference-registration",
+});
+
 export async function checkRateLimit(
   limiter: Ratelimit,
-  identifier: string
+  identifier: string,
 ): Promise<{ success: boolean; remaining: number }> {
   const { success, remaining } = await limiter.limit(identifier);
   return { success, remaining };

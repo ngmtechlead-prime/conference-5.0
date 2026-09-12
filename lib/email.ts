@@ -244,3 +244,52 @@ export function sendContactMessageConfirmation(
     },
   );
 }
+
+export interface ConferenceRegistrationEmailParams {
+  to: string;
+  firstName: string;
+  publicReference: string;
+  ticketType: "UNDERGRADUATE" | "GRADUATE_PROFESSIONAL";
+}
+
+export function sendConferenceRegistrationConfirmation({
+  to,
+  firstName,
+  publicReference,
+  ticketType,
+}: ConferenceRegistrationEmailParams): Promise<EmailResult> {
+  const ticketLabel =
+    ticketType === "UNDERGRADUATE"
+      ? "Undergraduate"
+      : "Graduate / Professional / Other";
+  const studentReminder =
+    ticketType === "UNDERGRADUATE"
+      ? "Please bring valid proof of your current student status on the conference day."
+      : "";
+
+  const html = loadTemplate("received", "registration", {
+    first_name: escapeHtml(firstName),
+    registration_reference: escapeHtml(publicReference),
+    ticket_type: escapeHtml(ticketLabel),
+    student_reminder: escapeHtml(studentReminder),
+    conference_url: DEFAULT_COMPETITION_URL,
+  });
+
+  return dispatchEmail(
+    {
+      from: FROM_EMAIL,
+      to,
+      subject: "Registration Confirmed — NGM Conference 5.0",
+      html,
+    },
+    {
+      context: {
+        publicReference,
+        ticketType,
+        type: "conference-registration-confirmation",
+      },
+      failureMessage: "Failed to send conference registration confirmation",
+      successMessage: "Conference registration confirmation sent",
+    },
+  );
+}

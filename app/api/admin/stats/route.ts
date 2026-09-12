@@ -16,6 +16,7 @@ export async function GET() {
       acceptedCount,
       declinedCount,
       recentApplications,
+      conferenceRegistrations,
     ] = await Promise.all([
       db.application.count(),
       db.application.count({
@@ -50,11 +51,13 @@ export async function GET() {
           data: true,
         },
       }),
+      db.conferenceRegistration.count(),
     ]);
 
     // Transform recent applications
     const transformedRecent = recentApplications.map((app) => {
       const data = app.data as {
+        fullName?: string;
         step1?: {
           personalInfo?: {
             firstName?: string;
@@ -70,8 +73,8 @@ export async function GET() {
         createdAt: app.createdAt,
         applicantName:
           app.competition === "CASE_STUDY"
-            ? (app.data as any).fullName
-            : `${data?.step1?.personalInfo?.firstName || ""} ${data?.step1?.personalInfo?.lastName || ""}`.trim(),
+            ? data.fullName || ""
+            : `${data.step1?.personalInfo?.firstName || ""} ${data.step1?.personalInfo?.lastName || ""}`.trim(),
       };
     });
 
@@ -81,6 +84,7 @@ export async function GET() {
         dareNigeria: dareNigeriaCount,
         smePitch: smePitchCount,
         caseStudy: caseStudyCount,
+        conferenceRegistrations,
       },
       byStatus: {
         pending: pendingCount,
