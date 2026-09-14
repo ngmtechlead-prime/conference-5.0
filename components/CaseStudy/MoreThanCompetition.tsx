@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React from "react";
+import Wrapper from "@/components/shared/Wrapper";
 
 const CheckCircleIcon = () => (
   <svg
@@ -38,8 +39,9 @@ export default function MoreThanCompetition() {
   ];
 
   return (
-    <section className="w-full bg-white py-16 lg:py-24 px-4 sm:px-6 lg:px-[150px]">
-      <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-10 lg:gap-16 items-center">
+    <section className="w-full bg-white py-16 lg:py-24">
+      <Wrapper>
+        <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-10 lg:gap-16 items-center">
         {/* Left – Content */}
         <div className="flex-1 flex flex-col gap-6 order-2 lg:order-1">
           {/* Heading */}
@@ -102,7 +104,8 @@ export default function MoreThanCompetition() {
             />
           </div>
         </div>
-      </div>
+        </div>
+      </Wrapper>
     </section>
   );
 }

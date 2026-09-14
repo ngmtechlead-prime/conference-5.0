@@ -1,4 +1,5 @@
 import React from "react";
+import Wrapper from "@/components/shared/Wrapper";
 
 const steps = [
   {
@@ -37,8 +38,9 @@ const steps = [
 
 export default function HowWeSelect() {
   return (
-    <section className="w-full bg-white py-16 lg:py-24 px-4 sm:px-6 lg:px-[150px]">
-      <div className="max-w-4xl mx-auto flex flex-col items-center gap-12 font-epilogue">
+    <section className="w-full bg-white py-16 lg:py-24">
+      <Wrapper>
+        <div className="max-w-4xl mx-auto flex flex-col items-center gap-12 font-epilogue">
         {/* Heading */}
         <div className="text-center max-w-xl">
           <h2 className="text-3xl sm:text-4xl font-normal text-[#0F1990] leading-none tracking-[-0.04em] mb-3">
@@ -96,7 +98,8 @@ export default function HowWeSelect() {
             </div>
           ))}
         </div>
-      </div>
+        </div>
+      </Wrapper>
     </section>
   );
 }

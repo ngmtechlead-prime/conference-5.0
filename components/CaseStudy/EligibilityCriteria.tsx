@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React from "react";
+import Wrapper from "@/components/shared/Wrapper";
 
 const CheckCircleIcon = () => (
   <svg
@@ -31,8 +32,9 @@ export default function EligibilityCriteria() {
   ];
 
   return (
-    <section className="w-full bg-white py-20 lg:py-24 px-4 sm:px-6 lg:px-[150px]">
-      <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
+    <section className="w-full bg-white py-20 lg:py-24">
+      <Wrapper>
+        <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
         {/* Left – Image */}
         <div className="w-full lg:w-5/12 shrink-0">
           <div className="rounded-2xl overflow-hidden shadow-lg h-[500px]">
@@ -72,7 +74,8 @@ export default function EligibilityCriteria() {
             ))}
           </div>
         </div>
-      </div>
+        </div>
+      </Wrapper>
     </section>
   );
 }

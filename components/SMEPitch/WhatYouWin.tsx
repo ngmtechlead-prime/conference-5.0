@@ -1,4 +1,5 @@
 import React from "react";
+import Wrapper from "@/components/shared/Wrapper";
 
 interface BenefitCardProps {
   icon: React.ReactNode;
@@ -128,7 +129,7 @@ export default function WhatYouWin() {
   ];
 
   return (
-    <section className="w-full bg-[#0F1990] py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <section className="w-full bg-[#0F1990] py-20 relative overflow-hidden">
       {/* Background Pattern */}
       <div
         className="absolute inset-0 opacity-10"
@@ -139,25 +140,27 @@ export default function WhatYouWin() {
         }}
       />
 
-      <div className="relative z-10 max-w-6xl mx-auto flex flex-col items-start gap-12 font-epilogue">
-        {/* Heading */}
-        <div className="text-left max-w-2xl">
-          <h2 className="text-3xl sm:text-4xl font-normal text-white leading-none tracking-[-0.04em] mb-4">
-            What You Stand to Win
-          </h2>
-          <p className="text-blue-200 text-sm sm:text-base leading-relaxed">
-            Beyond the funding, you&apos;re gaining the network and support to
-            scale faster
-          </p>
-        </div>
+      <Wrapper className="relative z-10">
+        <div className="max-w-6xl mx-auto flex flex-col items-start gap-12 font-epilogue">
+          {/* Heading */}
+          <div className="text-left max-w-2xl">
+            <h2 className="text-3xl sm:text-4xl font-normal text-white leading-none tracking-[-0.04em] mb-4">
+              What You Stand to Win
+            </h2>
+            <p className="text-blue-200 text-sm sm:text-base leading-relaxed">
+              Beyond the funding, you&apos;re gaining the network and support to
+              scale faster
+            </p>
+          </div>
 
-        {/* Benefits Grid */}
-        <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {benefits.map((benefit, index) => (
-            <BenefitCard key={index} {...benefit} />
-          ))}
+          {/* Benefits Grid */}
+          <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {benefits.map((benefit, index) => (
+              <BenefitCard key={index} {...benefit} />
+            ))}
+          </div>
         </div>
-      </div>
+      </Wrapper>
     </section>
   );
 }

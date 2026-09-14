@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Wrapper from "@/components/shared/Wrapper";
 
 interface FAQItem {
   question: string;
@@ -91,8 +92,9 @@ export default function FAQ() {
   };
 
   return (
-    <section className="w-full bg-white py-16 lg:py-24 px-4 sm:px-6 lg:px-[150px]">
-      <div className="max-w-4xl mx-auto font-epilogue">
+    <section className="w-full bg-white py-16 lg:py-24">
+      <Wrapper>
+        <div className="max-w-4xl mx-auto font-epilogue">
         {/* Heading */}
         <div className="mb-14 text-center">
           <h2 className="text-3xl sm:text-4xl font-normal text-[#0F1990] leading-none tracking-[-0.04em] mb-3">
@@ -151,7 +153,8 @@ export default function FAQ() {
             );
           })}
         </div>
-      </div>
+        </div>
+      </Wrapper>
     </section>
   );
 }

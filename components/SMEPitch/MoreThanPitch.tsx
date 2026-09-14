@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React from "react";
+import Wrapper from "@/components/shared/Wrapper";
 
 const CheckCircleIcon = () => (
   <svg
@@ -38,75 +39,77 @@ export default function MoreThanPitch() {
   ];
 
   return (
-    <section className="w-full bg-white py-16 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-10 lg:gap-16 items-center">
-        {/* Left – Content */}
-        <div className="flex-1 flex flex-col gap-6 order-2 lg:order-1">
-          {/* Heading */}
-          <div className="font-epilogue">
-            <h2 className="text-3xl sm:text-4xl font-normal text-[#0F1990] leading-none tracking-[-0.04em]">
-              More Than a{" "}
-              <span className="font-black text-[#0DA04C]">
-                Pitch Competition
-              </span>
-            </h2>
-          </div>
+    <section className="w-full bg-white py-16">
+      <Wrapper>
+        <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-10 lg:gap-16 items-center">
+          {/* Left – Content */}
+          <div className="flex-1 flex flex-col gap-6 order-2 lg:order-1">
+            {/* Heading */}
+            <div className="font-epilogue">
+              <h2 className="text-3xl sm:text-4xl font-normal text-[#0F1990] leading-none tracking-[-0.04em]">
+                More Than a{" "}
+                <span className="font-black text-[#0DA04C]">
+                  Pitch Competition
+                </span>
+              </h2>
+            </div>
 
-          {/* Description */}
-          <p className="text-[#4a5565] text-sm sm:text-base leading-relaxed font-epilogue max-w-lg">
-            The NGM SME Pitch Challenge 2026 is Nigeria&apos;s most ambitious
-            entrepreneurship programme – backed by a ₦100M commitment from
-            Afropreneur, in partnership with Verraki Partners.
-          </p>
+            {/* Description */}
+            <p className="text-[#4a5565] text-sm sm:text-base leading-relaxed font-epilogue max-w-lg">
+              The NGM SME Pitch Challenge 2026 is Nigeria&apos;s most ambitious
+              entrepreneurship programme – backed by a ₦100M commitment from
+              Afropreneur, in partnership with Verraki Partners.
+            </p>
 
-          {/* Feature List */}
-          <div className="flex flex-col gap-4">
-            {features.map((feature, index) => (
-              <div key={index} className="flex gap-3 items-start">
-                <CheckCircleIcon />
-                <div className="font-epilogue">
-                  <span className="font-bold text-[#0F1990]">
-                    {feature.title}
-                  </span>
-                  <span className="text-[#4a5565]">
-                    {" "}
-                    – {feature.description}
-                  </span>
+            {/* Feature List */}
+            <div className="flex flex-col gap-4">
+              {features.map((feature, index) => (
+                <div key={index} className="flex gap-3 items-start">
+                  <CheckCircleIcon />
+                  <div className="font-epilogue">
+                    <span className="font-bold text-[#0F1990]">
+                      {feature.title}
+                    </span>
+                    <span className="text-[#4a5565]">
+                      {" "}
+                      – {feature.description}
+                    </span>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
+
+            {/* CTA */}
+            <div className="mt-2 font-epilogue">
+              <a
+                href="/competitions/sme-pitch/apply"
+                className="inline-flex items-center font-epilogue gap-2 bg-[#0F1990] hover:bg-blue-950 text-white font-bold text-sm px-6 py-3 rounded-md transition-colors duration-200 tracking-wide"
+              >
+                Apply Now
+                <Image
+                  src="/icons/rightArrow.svg"
+                  alt="right"
+                  width={16}
+                  height={16}
+                />
+              </a>
+            </div>
           </div>
 
-          {/* CTA */}
-          <div className="mt-2 font-epilogue">
-            <a
-              href="/competitions/sme-pitch/apply"
-              className="inline-flex items-center font-epilogue gap-2 bg-[#0F1990] hover:bg-blue-950 text-white font-bold text-sm px-6 py-3 rounded-md transition-colors duration-200 tracking-wide"
-            >
-              Apply Now
+          {/* Right – Image */}
+          <div className="w-full lg:w-1/2 shrink-0 order-1 lg:order-2">
+            <div className="rounded-2xl overflow-hidden shadow-lg border border-gray-100">
               <Image
-                src="/icons/rightArrow.svg"
-                alt="right"
-                width={16}
-                height={16}
+                src="/gallery/more-than-a-pitch-competition.png"
+                alt="SME Pitch participant presenting"
+                className="w-full h-auto object-cover"
+                width={560}
+                height={400}
               />
-            </a>
+            </div>
           </div>
         </div>
-
-        {/* Right – Image */}
-        <div className="w-full lg:w-1/2 shrink-0 order-1 lg:order-2">
-          <div className="rounded-2xl overflow-hidden shadow-lg border border-gray-100">
-            <Image
-              src="/gallery/more-than-a-pitch-competition.png"
-              alt="SME Pitch participant presenting"
-              className="w-full h-auto object-cover"
-              width={560}
-              height={400}
-            />
-          </div>
-        </div>
-      </div>
+      </Wrapper>
     </section>
   );
 }

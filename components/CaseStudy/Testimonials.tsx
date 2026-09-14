@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import Wrapper from "@/components/shared/Wrapper";
 import { TestimonialsColumn } from "@/components/ui/testimonials-columns-1";
 
 const testimonials = [
@@ -66,8 +67,9 @@ const thirdColumn = testimonials.slice(6, 9);
 
 export default function Testimonials() {
   return (
-    <section className="w-full bg-white py-20 lg:py-24 px-4 sm:px-6 lg:px-[150px] overflow-hidden">
-      <div className="max-w-6xl mx-auto">
+    <section className="w-full bg-white py-20 lg:py-24 overflow-hidden">
+      <Wrapper>
+        <div className="max-w-6xl mx-auto">
         {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -100,7 +102,8 @@ export default function Testimonials() {
             duration={16}
           />
         </div>
-      </div>
+        </div>
+      </Wrapper>
     </section>
   );
 }

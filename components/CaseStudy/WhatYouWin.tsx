@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Wrapper from "@/components/shared/Wrapper";
 
 const CheckIcon = ({ inverted = false }: { inverted?: boolean }) => (
   <svg
@@ -149,8 +150,9 @@ const prizes: PrizeCardProps[] = [
 
 export default function WhatYouWin() {
   return (
-    <section className="w-full bg-white py-20 lg:py-24 px-4 sm:px-6 lg:px-[150px]">
-      <div className="max-w-6xl mx-auto flex flex-col items-center gap-12 font-epilogue">
+    <section className="w-full bg-white py-20 lg:py-24">
+      <Wrapper>
+        <div className="max-w-6xl mx-auto flex flex-col items-center gap-12 font-epilogue">
         {/* Heading */}
         <div className="text-center max-w-2xl">
           <h2 className="text-3xl sm:text-4xl font-normal text-[#0F1990] leading-none tracking-[-0.04em] mb-4">
@@ -169,7 +171,8 @@ export default function WhatYouWin() {
             <PrizeCard key={i} {...prize} />
           ))}
         </div>
-      </div>
+        </div>
+      </Wrapper>
     </section>
   );
 }

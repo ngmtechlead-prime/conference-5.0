@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React from "react";
+import Wrapper from "@/components/shared/Wrapper";
 
 interface CriteriaCardProps {
   icon: string;
@@ -90,31 +91,33 @@ export default function WhoCanApply() {
 
   return (
     <section
-      className="w-full py-24 px-4 sm:px-6 lg:px-8 font-epilogue"
+      className="w-full py-24 font-epilogue"
       style={{
         backgroundImage: `url("/gallery/WhoCanApplyBg.png")`,
       }}
     >
-      <div className="max-w-5xl mx-auto flex flex-col items-center gap-10">
-        {/* Heading */}
-        <div className="text-center max-w-3xl">
-          <h2 className="text-3xl sm:text-5xl font-bold text-white leading-none tracking-[-0.04em] mb-6">
-            Who Can Apply?
-          </h2>
-          <p className="text-[#DBEAFE] font-normal text-lg text-center">
-            We are looking for Nigeria&apos;s brightest young minds. Review the
-            criteria below to ensure your idea qualifies for the ₦30M DARE
-            Nigeria Challenge.
-          </p>
-        </div>
+      <Wrapper>
+        <div className="max-w-5xl mx-auto flex flex-col items-center gap-10">
+          {/* Heading */}
+          <div className="text-center max-w-3xl">
+            <h2 className="text-3xl sm:text-5xl font-bold text-white leading-none tracking-[-0.04em] mb-6">
+              Who Can Apply?
+            </h2>
+            <p className="text-[#DBEAFE] font-normal text-lg text-center">
+              We are looking for Nigeria&apos;s brightest young minds. Review the
+              criteria below to ensure your idea qualifies for the ₦30M DARE
+              Nigeria Challenge.
+            </p>
+          </div>
 
-        {/* Cards Grid */}
-        <div className="mt-16 w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {criteria.map((item) => (
-            <CriteriaCard key={item.title} {...item} />
-          ))}
+          {/* Cards Grid */}
+          <div className="mt-16 w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {criteria.map((item) => (
+              <CriteriaCard key={item.title} {...item} />
+            ))}
+          </div>
         </div>
-      </div>
+      </Wrapper>
     </section>
   );
 }

@@ -3,6 +3,7 @@
 import { motion } from "motion/react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import Wrapper from "@/components/shared/Wrapper";
 
 const TARGET_DATE = new Date("2026-10-03T09:00:00+01:00").getTime();
 
@@ -60,7 +61,7 @@ export default function TicketsCTA() {
       />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(13,160,76,0.25),transparent_55%)]" />
 
-      <div className="relative z-10 px-4 sm:px-6 lg:px-[150px]">
+      <Wrapper className="relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -206,7 +207,7 @@ export default function TicketsCTA() {
           Prices return to standard rates after the early bird window closes.
           Tickets cap at 2,000.
         </p>
-      </div>
+      </Wrapper>
     </section>
   );
 }

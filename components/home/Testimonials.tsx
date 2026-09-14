@@ -2,6 +2,7 @@
 
 import { motion } from "motion/react";
 import { TestimonialsColumn } from "@/components/ui/testimonials-columns-1";
+import Wrapper from "@/components/shared/Wrapper";
 
 const testimonials = [
   {
@@ -75,14 +76,15 @@ const thirdColumn = testimonials.slice(6, 9);
 
 export default function Testimonials() {
   return (
-    <section className="w-full bg-white py-16 lg:py-24 px-4 sm:px-6 lg:px-[150px] overflow-hidden font-epilogue">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7 }}
-        viewport={{ once: true }}
-        className="flex flex-col items-center text-center mb-12"
-      >
+    <section className="w-full overflow-hidden bg-white py-16 font-epilogue lg:py-24">
+      <Wrapper>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+          className="flex flex-col items-center text-center mb-12"
+        >
         <h2 className="text-3xl sm:text-4xl font-normal text-[#0F1990] leading-none tracking-[-0.04em] max-w-2xl">
           The people who&apos;ve{" "}
           <span className="font-bold text-[#0DA04C]">already been here.</span>
@@ -101,7 +103,8 @@ export default function Testimonials() {
           className="hidden lg:block"
           duration={18}
         />
-      </div>
+        </div>
+      </Wrapper>
     </section>
   );
 }

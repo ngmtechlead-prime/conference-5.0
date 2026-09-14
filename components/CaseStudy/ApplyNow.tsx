@@ -1,15 +1,17 @@
 "use client";
 
 import Image from "next/image";
+import Wrapper from "@/components/shared/Wrapper";
 
 export default function ApplyNow() {
   return (
     <section
       id="apply"
-      className="w-full py-8 lg:py-24 px-4 sm:px-6 lg:px-[150px] font-epilogue"
+      className="w-full py-8 lg:py-24 font-epilogue"
     >
-      <div
-        className="relative overflow-hidden rounded-2xl py-16 px-4 sm:px-6"
+      <Wrapper>
+        <div
+          className="relative overflow-hidden rounded-2xl py-16 px-4 sm:px-6"
         style={{ backgroundColor: "#0F1990" }}
       >
         <div
@@ -40,7 +42,8 @@ export default function ApplyNow() {
             />
           </a>
         </div>
-      </div>
+        </div>
+      </Wrapper>
     </section>
   );
 }

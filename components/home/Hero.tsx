@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion } from "motion/react";
 import { useEffect, useState } from "react";
+import Wrapper from "@/components/shared/Wrapper";
 
 const TARGET_DATE = new Date("2026-10-03T09:00:00+01:00").getTime();
 
@@ -49,7 +50,7 @@ export default function Hero() {
       />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(13,160,76,0.18),transparent_55%),radial-gradient(ellipse_at_bottom_right,rgba(15,25,144,0.7),transparent_60%)]" />
 
-      <div className="relative z-10 flex flex-col min-h-[calc(100vh-88px)] px-4 sm:px-6 lg:px-[150px] py-16 lg:py-24">
+      <Wrapper className="relative z-10 flex min-h-[calc(100vh-88px)] flex-col py-16 lg:py-24">
         <div className="flex-1 flex flex-col justify-center">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
@@ -122,7 +123,7 @@ export default function Hero() {
             {unit("Seconds", seconds)}
           </div>
         </motion.div>
-      </div>
+      </Wrapper>
     </section>
   );
 }
