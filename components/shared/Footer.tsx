@@ -38,6 +38,7 @@ const navColumns = [
     heading: "Support",
     links: [
       { label: "Contact", href: "/contact" },
+      { label: "More Info", href: "/more-info" },
       { label: "Privacy Policy", href: "#" },
       { label: "Terms & Conditions", href: "#" },
     ],
