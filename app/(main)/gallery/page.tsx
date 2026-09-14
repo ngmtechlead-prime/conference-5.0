@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
+import Wrapper from "@/components/shared/Wrapper";
 
 const tabs = ["NGM 1.0", "NGM 2.0", "NGM 3.0", "NGM 4.0"];
 
@@ -42,8 +43,9 @@ export default function GalleryPage() {
 
   return (
     <div className="flex flex-col min-h-screen font-sans">
-      <section className="flex flex-col items-center text-center py-16 px-4">
-        <p className="text-xs font-semibold tracking-[0.3em] text-gray-500 uppercase mb-4">
+      <section className="py-16">
+        <Wrapper className="flex flex-col items-center text-center">
+          <p className="text-xs font-semibold tracking-[0.3em] text-gray-500 uppercase mb-4">
           Gallery
         </p>
         <h1 className="text-4xl md:text-5xl font-bold text-[#1e2d8f] leading-tight">
@@ -67,13 +69,15 @@ export default function GalleryPage() {
             />
           </svg>
         </div>
-        <p className="mt-8 text-gray-500 text-base">
-          Relive some of the best moments from the NGM Conferences
-        </p>
+          <p className="mt-8 text-gray-500 text-base">
+            Relive some of the best moments from the NGM Conferences
+          </p>
+        </Wrapper>
       </section>
 
-      <section className="flex justify-center px-4 mb-10">
-        <div className="flex items-center bg-gray-100 rounded-full p-1 gap-1">
+      <section className="mb-10">
+        <Wrapper className="flex justify-center">
+          <div className="flex items-center bg-gray-100 rounded-full p-1 gap-1">
           {tabs.map((tab) => (
             <button
               key={tab}
@@ -86,12 +90,14 @@ export default function GalleryPage() {
             >
               {tab}
             </button>
-          ))}
-        </div>
+            ))}
+          </div>
+        </Wrapper>
       </section>
 
-      <section className="max-w-6xl mx-auto px-4 w-full mb-16">
-        {images.length === 0 ? (
+      <section className="mb-16 w-full">
+        <Wrapper>
+          {images.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-24 text-gray-400">
             <p className="text-lg font-medium">No photos yet</p>
             <p className="text-sm mt-1">Check back after the event!</p>
@@ -113,11 +119,13 @@ export default function GalleryPage() {
               </div>
             ))}
           </div>
-        )}
+          )}
+        </Wrapper>
       </section>
 
-      <section className="max-w-6xl mx-auto px-4 w-full mb-16">
-        <div className="relative rounded-2xl bg-[#1e2d8f] overflow-hidden py-16 px-8 flex flex-col items-center text-center">
+      <section className="mb-16 w-full">
+        <Wrapper>
+          <div className="relative rounded-2xl bg-[#1e2d8f] overflow-hidden py-16 px-8 flex flex-col items-center text-center">
           <p className="text-xs font-semibold tracking-[0.3em] text-blue-300 uppercase mb-4">
             NGM Conference 5.0
           </p>
@@ -152,8 +160,9 @@ export default function GalleryPage() {
             className="bg-[#22c55e] text-white px-8 py-3 rounded-md font-semibold hover:bg-green-600 transition-colors"
           >
             Get Your Ticket
-          </a>
-        </div>
+            </a>
+          </div>
+        </Wrapper>
       </section>
     </div>
   );

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React from "react";
+import Wrapper from "@/components/shared/Wrapper";
 
 const CheckCircleIcon = () => (
   <svg
@@ -30,49 +31,51 @@ export default function WhoThisIsFor() {
   ];
 
   return (
-    <section className="w-full bg-white py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
-        {/* Left – Image */}
-        <div className="w-full lg:w-5/12 shrink-0">
-          <div className="rounded-2xl overflow-hidden shadow-lg">
-            <Image
-              src="/gallery/who-is-this-for.png"
-              alt="SME Pitch target audience"
-              className="w-full h-auto object-cover"
-              width={480}
-              height={400}
-            />
+    <section className="w-full bg-white py-20">
+      <Wrapper>
+        <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
+          {/* Left – Image */}
+          <div className="w-full lg:w-5/12 shrink-0">
+            <div className="rounded-2xl overflow-hidden shadow-lg">
+              <Image
+                src="/gallery/who-is-this-for.png"
+                alt="SME Pitch target audience"
+                className="w-full h-auto object-cover"
+                width={480}
+                height={400}
+              />
+            </div>
+          </div>
+
+          {/* Right – Content */}
+          <div className="flex-1 flex flex-col gap-6">
+            {/* Heading */}
+            <div className="font-epilogue">
+              <h2 className="text-3xl sm:text-4xl font-normal text-[#0F1990] leading-none tracking-[-0.04em]">
+                <span className="font-black text-[#0DA04C]">Who</span> This Is
+                For?
+              </h2>
+            </div>
+
+            {/* Description */}
+            <p className="text-[#4a5565] text-sm sm:text-base leading-relaxed font-epilogue">
+              If you check these boxes, your application is waiting for you.
+            </p>
+
+            {/* Criteria List */}
+            <div className="flex flex-col gap-4">
+              {criteria.map((criterion, index) => (
+                <div key={index} className="flex gap-3 items-start">
+                  <CheckCircleIcon />
+                  <p className="text-[#333333] text-sm sm:text-base leading-relaxed font-epilogue">
+                    {criterion}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
-
-        {/* Right – Content */}
-        <div className="flex-1 flex flex-col gap-6">
-          {/* Heading */}
-          <div className="font-epilogue">
-            <h2 className="text-3xl sm:text-4xl font-normal text-[#0F1990] leading-none tracking-[-0.04em]">
-              <span className="font-black text-[#0DA04C]">Who</span> This Is
-              For?
-            </h2>
-          </div>
-
-          {/* Description */}
-          <p className="text-[#4a5565] text-sm sm:text-base leading-relaxed font-epilogue">
-            If you check these boxes, your application is waiting for you.
-          </p>
-
-          {/* Criteria List */}
-          <div className="flex flex-col gap-4">
-            {criteria.map((criterion, index) => (
-              <div key={index} className="flex gap-3 items-start">
-                <CheckCircleIcon />
-                <p className="text-[#333333] text-sm sm:text-base leading-relaxed font-epilogue">
-                  {criterion}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+      </Wrapper>
     </section>
   );
 }

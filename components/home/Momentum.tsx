@@ -2,6 +2,7 @@
 
 import { motion, useInView, useMotionValue, animate } from "motion/react";
 import { useEffect, useRef, useState } from "react";
+import Wrapper from "@/components/shared/Wrapper";
 
 type Edition = {
   label: string;
@@ -51,7 +52,7 @@ export default function Momentum() {
         aria-hidden
       />
 
-      <div className="relative z-10 px-4 sm:px-6 lg:px-[150px]">
+      <Wrapper className="relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -125,7 +126,7 @@ export default function Momentum() {
         >
           Tickets close once we hit 2,000.
         </motion.p>
-      </div>
+      </Wrapper>
     </section>
   );
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import Wrapper from "@/components/shared/Wrapper";
 import Image from "next/image";
 import { useRef, useState, useCallback, useEffect } from "react";
 
@@ -169,8 +170,9 @@ export default function Speakers() {
   };
 
   return (
-    <section className="w-full bg-white py-16 lg:py-24 px-4 sm:px-6 lg:px-[150px] font-epilogue">
-      {/* Header row */}
+    <section className="w-full bg-white py-16 font-epilogue lg:py-24">
+      <Wrapper>
+        {/* Header row */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -281,8 +283,9 @@ export default function Speakers() {
               Follow @NGM_Platform for first looks.
             </p>
           </div>
-        </motion.div>
-      </div>
+          </motion.div>
+        </div>
+      </Wrapper>
     </section>
   );
 }

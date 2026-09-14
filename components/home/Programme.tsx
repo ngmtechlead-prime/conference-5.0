@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import Wrapper from "@/components/shared/Wrapper";
 
 const sessions = [
   {
@@ -44,9 +45,10 @@ export default function Programme() {
   return (
     <section
       id="programme"
-      className="w-full bg-[#fafaf8] py-16 lg:py-24 px-4 sm:px-6 lg:px-[150px] font-epilogue"
+      className="w-full bg-[#fafaf8] py-16 font-epilogue lg:py-24"
     >
-      <motion.div
+      <Wrapper>
+        <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -110,8 +112,9 @@ export default function Programme() {
               </motion.div>
             );
           })}
+          </div>
         </div>
-      </div>
+      </Wrapper>
     </section>
   );
 }

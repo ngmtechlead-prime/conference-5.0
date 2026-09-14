@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Wrapper from "../shared/Wrapper";
+import Wrapper from "@/components/shared/Wrapper";
 
 const DrKolaFrame = () => {
   return (
@@ -28,7 +28,7 @@ const DrKolaFrame = () => {
 
 export default function About() {
   return (
-    <section className="w-full bg-white py-16 md:py-24 px-4 sm:px-6 lg:px-8">
+    <section className="w-full bg-white py-16 md:py-24">
       <Wrapper className="flex flex-col lg:flex-row gap-10 items-start">
         {/* Left – Portrait Card */}
         <div className="w-full sm:w-[40%] shrink-0 mx-auto lg:mx-0">

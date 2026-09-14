@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import Wrapper from "@/components/shared/Wrapper";
 
 const lines = [
   "One day. One room.",
@@ -11,8 +12,9 @@ const lines = [
 
 export default function WhatIsNGM() {
   return (
-    <section className="w-full bg-white py-16 lg:py-24 px-4 sm:px-6 lg:px-[150px] font-epilogue">
-      <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
+    <section className="w-full bg-white py-16 font-epilogue lg:py-24">
+      <Wrapper>
+        <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
         {lines.map((line, i) => (
           <motion.p
             key={i}
@@ -28,8 +30,9 @@ export default function WhatIsNGM() {
           >
             {line}
           </motion.p>
-        ))}
-      </div>
+          ))}
+        </div>
+      </Wrapper>
     </section>
   );
 }

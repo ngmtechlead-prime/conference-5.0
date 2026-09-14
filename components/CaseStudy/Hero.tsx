@@ -1,10 +1,12 @@
 import Image from "next/image";
 import React from "react";
+import Wrapper from "@/components/shared/Wrapper";
 
 export default function Hero() {
   return (
-    <section className="w-full bg-white py-16 lg:py-24 px-4 sm:px-6 lg:px-[150px]">
-      <div className="flex flex-col items-center">
+    <section className="w-full bg-white py-16 lg:py-24">
+      <Wrapper>
+        <div className="flex flex-col items-center">
         {/* Heading */}
         <div className="w-full text-center mb-4">
           <h1 className="text-4xl sm:text-5xl lg:text-[56px] font-epilogue font-normal text-[#0F1990] leading-[1.1] tracking-[-0.06em]">
@@ -51,7 +53,8 @@ export default function Hero() {
             />
           </div>
         </div>
-      </div>
+        </div>
+      </Wrapper>
     </section>
   );
 }

@@ -1,11 +1,13 @@
 "use client";
 
 import { motion } from "motion/react";
+import Wrapper from "@/components/shared/Wrapper";
 
 export default function PartnerWithUs() {
   return (
-    <section className="w-full bg-[#0a0a0a] text-white py-16 lg:py-24 px-4 sm:px-6 lg:px-[150px] font-epilogue">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
+    <section className="w-full bg-[#0a0a0a] py-16 text-white font-epilogue lg:py-24">
+      <Wrapper>
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -48,8 +50,9 @@ export default function PartnerWithUs() {
               <span aria-hidden>→</span>
             </a>
           </div>
-        </motion.div>
-      </div>
+          </motion.div>
+        </div>
+      </Wrapper>
     </section>
   );
 }

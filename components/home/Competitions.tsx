@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
+import Wrapper from "@/components/shared/Wrapper";
 
 const competitions = [
   {
@@ -37,7 +38,7 @@ const competitions = [
 export default function Competitions() {
   return (
     <section className="w-full bg-white font-epilogue">
-      <div className="px-4 sm:px-6 lg:px-[150px] py-16 lg:py-24">
+      <Wrapper className="py-16 lg:py-24">
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -104,7 +105,7 @@ export default function Competitions() {
             </motion.div>
           ))}
         </div>
-      </div>
+      </Wrapper>
     </section>
   );
 }
