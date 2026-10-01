@@ -25,7 +25,6 @@ function useCountdown() {
 type Tier = {
   name: string;
   blurb: string;
-  original: string;
   price: string;
   featured?: boolean;
 };
@@ -34,14 +33,12 @@ const tiers: Tier[] = [
   {
     name: "Student",
     blurb: "For currently enrolled undergraduates and postgraduates.",
-    original: "₦10,000",
-    price: "₦7,500",
+    price: "₦10,000",
   },
   {
     name: "Graduate",
     blurb: "For early-career professionals and recent graduates.",
-    original: "₦15,000",
-    price: "₦11,250",
+    price: "₦15,000",
     featured: true,
   },
 ];
@@ -70,12 +67,12 @@ export default function TicketsCTA() {
           className="max-w-3xl mb-10"
         >
           <h2 className="text-3xl sm:text-4xl font-normal leading-none tracking-[-0.04em]">
-            Lock in the early bird price{" "}
-            <span className="font-bold text-[#0DA04C]">while it lasts.</span>
+            Secure your spot at Conference 5.0. {" "}
+            <span className="font-bold text-[#0DA04C]">Tickets are available.</span>
           </h2>
           <p className="text-white/70 text-base sm:text-lg mt-4 max-w-xl leading-relaxed">
-            Early bird tickets are 25% off the standard rate. Prices return to
-            full once the window closes — and the room caps at 2,000.
+            Choose the ticket category that applies to you and reserve your
+            seat. The room caps at 2,000.
           </p>
         </motion.div>
 
@@ -144,13 +141,6 @@ export default function TicketsCTA() {
                 >
                   {t.name}
                 </h3>
-                <span
-                  className={`text-sm font-semibold ${
-                    t.featured ? "text-white/80" : "text-[#0DA04C]"
-                  }`}
-                >
-                  Early bird
-                </span>
               </div>
 
               <p
@@ -161,25 +151,11 @@ export default function TicketsCTA() {
                 {t.blurb}
               </p>
 
-              <div className="flex items-end gap-3 mb-2">
+              <div className="flex items-end mb-8">
                 <span className="text-5xl sm:text-6xl font-bold tracking-[-0.04em] leading-none">
                   {t.price}
                 </span>
-                <span
-                  className={`text-lg sm:text-xl line-through pb-1 ${
-                    t.featured ? "text-white/50" : "text-[#4a5565]/60"
-                  }`}
-                >
-                  {t.original}
-                </span>
               </div>
-              <p
-                className={`text-sm mb-8 ${
-                  t.featured ? "text-white/70" : "text-[#4a5565]"
-                }`}
-              >
-                Save 25% — limited
-              </p>
 
               <a
                 href="https://bitooqoh.com/explore/ngm-conference-5.0"
@@ -204,8 +180,7 @@ export default function TicketsCTA() {
         </div>
 
         <p className="mt-8 text-white/60 text-sm max-w-lg">
-          Prices return to standard rates after the early bird window closes.
-          Tickets cap at 2,000.
+          Tickets cap at 2,000. Secure your seat while tickets are available.
         </p>
       </Wrapper>
     </section>
