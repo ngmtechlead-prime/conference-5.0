@@ -92,9 +92,9 @@ export default function MoreInfoPage() {
               <span className="flex size-12 items-center justify-center rounded-xl bg-[#0DA04C]/10 text-[#0DA04C]">
                 <HandCoins aria-hidden="true" className="size-6" />
               </span>
-              <span className="rounded-full bg-amber-50 px-3 py-1 text-xs font-bold uppercase tracking-wider text-amber-700">
+              {/*<span className="rounded-full bg-amber-50 px-3 py-1 text-xs font-bold uppercase tracking-wider text-amber-700">
                 Details to be updated
-              </span>
+              </span>*/}
             </div>
             <div className="mt-auto pt-10 font-epilogue">
               <h2 className="text-2xl font-semibold tracking-[-0.03em] text-[#111827]">
