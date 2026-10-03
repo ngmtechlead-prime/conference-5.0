@@ -200,6 +200,7 @@ const agenda: AgendaItem[] = [
   {
     start: "4:40 PM",
     end: "5:00 PM",
+    duration: "20 mins",
     category: "Networking",
     title: "Asr / Networking",
   },
