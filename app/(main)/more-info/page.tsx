@@ -92,8 +92,7 @@ export default function MoreInfoPage() {
                 Conference Brochure
               </h2>
               <p className="mt-2 leading-6 text-[#4A5565]">
-                View the official NGM Conference 5.0 brochure in Google Drive.
-                Opens in a new tab.
+                View the official NGM Conference 5.0 Event Brochure.
               </p>
             </div>
           </a>
