@@ -34,6 +34,13 @@ export const registrationRatelimit = new Ratelimit({
   prefix: "ratelimit:conference-registration",
 });
 
+export const volunteerInterestRatelimit = new Ratelimit({
+  redis,
+  limiter: Ratelimit.slidingWindow(5, "1 m"),
+  analytics: true,
+  prefix: "ratelimit:volunteer-interest",
+});
+
 export async function checkRateLimit(
   limiter: Ratelimit,
   identifier: string,

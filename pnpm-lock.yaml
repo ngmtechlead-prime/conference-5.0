@@ -32,6 +32,9 @@ importers:
       '@react-email/components':
         specifier: ^1.0.12
         version: 1.0.12(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+      '@tanstack/react-query':
+        specifier: ^5.104.2
+        version: 5.104.2(react@19.2.4)
       '@upstash/ratelimit':
         specifier: ^2.0.8
         version: 2.0.8(@upstash/redis@1.37.0)
@@ -65,6 +68,9 @@ importers:
       next-auth:
         specifier: 5.0.0-beta.30
         version: 5.0.0-beta.30(next@16.2.1(@babel/core@7.29.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react@19.2.4)
+      nigeria-lga-data:
+        specifier: ^1.0.0
+        version: 1.0.0
       pg:
         specifier: ^8.20.0
         version: 8.20.0
@@ -1560,6 +1566,14 @@ packages:
   '@tailwindcss/postcss@4.2.2':
     resolution: {integrity: sha512-n4goKQbW8RVXIbNKRB/45LzyUqN451deQK0nzIeauVEqjlI49slUlgKYJM2QyUzap/PcpnS7kzSUmPb1sCRvYQ==}
 
+  '@tanstack/query-core@5.104.2':
+    resolution: {integrity: sha512-/qbsxJK5c3Ve1aFIULWYNcT2jeRUAiD4HME6Eu2ZdpofHoVgAjpkQhLg5xHuOoBkTPQUJLfP7zOxy0qsBcqROA==}
+
+  '@tanstack/react-query@5.104.2':
+    resolution: {integrity: sha512-xKmzWGhadbE5wGS/ZmXShRITnI9oItox5GO14KvFZco3+vhTAyXS1erYzJWdiY280zapAGJXFUL9nHgwP6SV/g==}
+    peerDependencies:
+      react: ^18 || ^19
+
   '@tybys/wasm-util@0.10.1':
     resolution: {integrity: sha512-9tTaPJLSiejZKx+Bmog4uSubteqTvFrVrURwkmHixBo0G4seD0zUxp98E1DzUBJxLQ3NPwXrGKDiVjwx/DpPsg==}
 
@@ -2962,6 +2976,10 @@ packages:
         optional: true
       sass:
         optional: true
+
+  nigeria-lga-data@1.0.0:
+    resolution: {integrity: sha512-ZvZXF+5je6THHmZYru6stpZBEItweRAhUn8+oiNGUM0HffrIkeXGMnd8QE3W0iqgGYHUQcvO2bP1yDjhCwICzA==}
+    engines: {node: '>=16'}
 
   node-exports-info@1.6.0:
     resolution: {integrity: sha512-pyFS63ptit/P5WqUkt+UUfe+4oevH+bFeIiPPdfb0pFeYEu/1ELnJu5l+5EcTKYL5M7zaAa7S8ddywgXypqKCw==}
@@ -5379,6 +5397,13 @@ snapshots:
       postcss: 8.5.8
       tailwindcss: 4.2.2
 
+  '@tanstack/query-core@5.104.2': {}
+
+  '@tanstack/react-query@5.104.2(react@19.2.4)':
+    dependencies:
+      '@tanstack/query-core': 5.104.2
+      react: 19.2.4
+
   '@tybys/wasm-util@0.10.1':
     dependencies:
       tslib: 2.8.1
@@ -6861,6 +6886,8 @@ snapshots:
     transitivePeerDependencies:
       - '@babel/core'
       - babel-plugin-macros
+
+  nigeria-lga-data@1.0.0: {}
 
   node-exports-info@1.6.0:
     dependencies:

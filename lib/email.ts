@@ -2,6 +2,11 @@ import { Resend, type CreateEmailOptions } from "resend";
 import fs from "fs";
 import path from "path";
 import { emailLogger } from "@/lib/logger";
+import {
+  getVolunteerRoleLabel,
+  VOLUNTEER_INTEREST_EVENT,
+  type VolunteerRoleValue,
+} from "@/lib/constants/volunteer-interest";
 
 export type Competition = "dare_nigeria" | "sme_pitch" | "case_study";
 
@@ -27,6 +32,9 @@ function getResend(): Resend {
 
 const FROM_EMAIL =
   process.env.RESEND_FROM_EMAIL || "NGM Conference 5.0 <info@ngmplatform.com>";
+
+const VOLUNTEER_INTEREST_FROM_EMAIL =
+  process.env.RESEND_FROM_EMAIL || "NGM Conference 6.0 <info@ngmplatform.com>";
 
 const CONTACT_RECIPIENT_EMAIL =
   process.env.CONTACT_RECIPIENT_EMAIL || "info@ngmplatform.com";
@@ -290,6 +298,41 @@ export function sendConferenceRegistrationConfirmation({
       },
       failureMessage: "Failed to send conference registration confirmation",
       successMessage: "Conference registration confirmation sent",
+    },
+  );
+}
+
+export interface VolunteerInterestEmailParams {
+  to: string;
+  firstName: string;
+  primaryRole: VolunteerRoleValue;
+}
+
+export function sendVolunteerInterestConfirmation({
+  to,
+  firstName,
+  primaryRole,
+}: VolunteerInterestEmailParams): Promise<EmailResult> {
+  const html = loadTemplate("received", "volunteer-interest", {
+    first_name: escapeHtml(firstName),
+    primary_role: escapeHtml(getVolunteerRoleLabel(primaryRole)),
+    support_email: escapeHtml(VOLUNTEER_INTEREST_EVENT.supportEmail),
+  });
+
+  return dispatchEmail(
+    {
+      from: VOLUNTEER_INTEREST_FROM_EMAIL,
+      to,
+      subject: "Volunteer Interest Received — NGM Conference 6.0",
+      html,
+    },
+    {
+      context: {
+        primaryRole,
+        type: "volunteer-interest-confirmation",
+      },
+      failureMessage: "Failed to send volunteer interest confirmation",
+      successMessage: "Volunteer interest confirmation sent",
     },
   );
 }

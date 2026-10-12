@@ -34,6 +34,70 @@ enum ConferenceTicketType {
   GRADUATE_PROFESSIONAL
 }
 
+enum VolunteerRole {
+  CREATIVE_GRAPHICS_DESIGN
+  CONTENT_WRITING_COPYWRITING
+  CONFERENCE_OPERATIONS_LOGISTICS
+  MARKETING_PROMOTION
+  SOCIAL_MEDIA_INFLUENCE_PROMOTION
+  MEDIA_PUBLICITY_PUBLIC_RELATIONS
+  FUNDRAISING_SPONSORSHIP
+  BUSINESS_DEVELOPMENT_CORPORATE_PARTNERSHIPS
+  TICKETING_REGISTRATION
+  PROGRAMME_PLANNING_COORDINATION
+  PHOTOGRAPHY_VIDEOGRAPHY
+  TECHNICAL_IT_SUPPORT
+  VOLUNTEER_COORDINATION_MANAGEMENT
+  PROTOCOL_GUEST_RELATIONS
+  OTHER
+}
+
+enum VolunteerApplicantCategory {
+  SECONDARY_SCHOOL_STUDENT
+  UNDERGRADUATE_STUDENT
+  GRADUATE_STUDENT
+  EARLY_CAREER_PROFESSIONAL
+  EXPERIENCED_PROFESSIONAL
+  OTHER
+}
+
+enum VolunteerExperienceLevel {
+  NO_FORMAL_EXPERIENCE
+  LESS_THAN_ONE_YEAR
+  ONE_TO_TWO_YEARS
+  THREE_TO_FIVE_YEARS
+  SIX_PLUS_YEARS
+}
+
+enum VolunteerContributionMode {
+  ON_SITE
+  REMOTE
+  HYBRID_FLEXIBLE
+}
+
+enum VolunteerWeeklyCommitment {
+  UNDER_THREE_HOURS
+  THREE_TO_FIVE_HOURS
+  SIX_TO_TEN_HOURS
+  MORE_THAN_TEN_HOURS
+}
+
+enum VolunteerEventAvailability {
+  AVAILABLE
+  NEEDS_CONFIRMATION
+  NOT_AVAILABLE
+}
+
+enum VolunteerInterestStatus {
+  NEW
+  UNDER_REVIEW
+  SHORTLISTED
+  CONTACTED
+  SELECTED
+  WAITLISTED
+  NOT_SELECTED
+}
+
 model Admin {
   id           String   @id @default(cuid())
   email        String   @unique
@@ -89,6 +153,59 @@ model ConferenceRegistration {
   @@index([ticketType])
   @@index([createdAt])
   @@index([discoverySource])
+}
+
+model VolunteerInterest {
+  id                       String                      @id @default(cuid())
+  firstName                String
+  lastName                 String
+  email                    String
+  normalizedEmail          String                      @unique
+  phoneNumber              String
+  state                    String
+  lga                      String
+  city                     String
+  address                  String
+  applicantCategory        VolunteerApplicantCategory
+  applicantCategoryOther   String?
+  affiliationName          String?
+  courseOrJobTitle         String?
+  primaryRole              VolunteerRole
+  secondaryRole            VolunteerRole?
+  otherRoleDescription     String?
+  competencies             String[]
+  otherCompetency          String?
+  experienceLevel          VolunteerExperienceLevel?
+  relevantExperience       String?
+  hasVolunteeredBefore     Boolean?
+  volunteerExperience      String?
+  motivation               String?
+  proposedContribution     String?
+  portfolioUrl             String?
+  additionalProfileUrl     String?
+  contributionStages       String[]                    @default([])
+  contributionMode         VolunteerContributionMode?
+  weeklyCommitment         VolunteerWeeklyCommitment?
+  availabilityWindows      String[]                    @default([])
+  eventAvailability        VolunteerEventAvailability?
+  commitmentAcknowledgedAt DateTime?
+  privacyConsentAt         DateTime?
+  privacyNoticeVersion     String
+  status                   VolunteerInterestStatus     @default(NEW)
+  adminNotes               String?
+  reviewedAt               DateTime?
+  reviewedBy               String?
+  submissionKeyHash        String                      @unique
+  createdAt                DateTime                    @default(now())
+  updatedAt                DateTime                    @updatedAt
+
+  @@index([state])
+  @@index([lga])
+  @@index([primaryRole])
+  @@index([secondaryRole])
+  @@index([status])
+  @@index([applicantCategory])
+  @@index([createdAt])
 }
 
 model Application {

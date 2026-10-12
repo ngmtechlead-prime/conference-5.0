@@ -6,6 +6,7 @@ import "../globals.css";
 import Navbar from "@/components/shared/Navbar";
 import Footer from "@/components/shared/Footer";
 import { Toaster } from "@/components/ui/sonner";
+import { Providers } from "./providers";
 
 const epilogue = Epilogue({
   variable: "--font-epilogue",
@@ -37,10 +38,12 @@ export default function RootLayout({
       <Analytics />
       <SpeedInsights />
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
-        <Toaster position="bottom-center" richColors closeButton />
+        <Providers>
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+          <Toaster position="bottom-center" richColors closeButton />
+        </Providers>
       </body>
     </html>
   );
