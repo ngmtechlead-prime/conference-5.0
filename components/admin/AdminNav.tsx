@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { signOut } from "next-auth/react";
 import {
   FileText,
+  HandHeart,
   LayoutDashboard,
   LogOut,
   MessageSquare,
@@ -47,6 +48,13 @@ export default function AdminNav() {
               >
                 <TicketCheck className="w-4 h-4" />
                 Registrations
+              </Link>
+              <Link
+                href="/admin/volunteer-interests"
+                className="flex items-center gap-2 text-sm hover:text-gray-200 transition-colors"
+              >
+                <HandHeart className="w-4 h-4" />
+                Volunteer Interests
               </Link>
               <Link
                 href="/admin/contact"
