@@ -316,6 +316,7 @@ export function sendVolunteerInterestConfirmation({
   const html = loadTemplate("received", "volunteer-interest", {
     first_name: escapeHtml(firstName),
     primary_role: escapeHtml(getVolunteerRoleLabel(primaryRole)),
+    conference_url: DEFAULT_COMPETITION_URL,
     support_email: escapeHtml(VOLUNTEER_INTEREST_EVENT.supportEmail),
   });
 
