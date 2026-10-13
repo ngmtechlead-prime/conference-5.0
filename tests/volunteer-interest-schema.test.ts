@@ -6,7 +6,11 @@ import {
   NIGERIA_STATE_COUNT,
   NIGERIA_STATE_NAMES,
 } from "@/lib/constants/nigeria-locations";
-import { VOLUNTEER_ROLE_VALUES } from "@/lib/constants/volunteer-interest";
+import {
+  VOLUNTEER_COMPETENCY_OPTIONS,
+  VOLUNTEER_ROLE_OPTIONS,
+  VOLUNTEER_ROLE_VALUES,
+} from "@/lib/constants/volunteer-interest";
 import { volunteerInterestSchema } from "@/lib/schemas/volunteer-interest";
 
 const words = (word: string, count: number) =>
@@ -26,8 +30,8 @@ function validMinimalInterest() {
     affiliationName: "Example University",
     courseOrJobTitle: "Computer Science",
     primaryRole: "TECHNICAL_IT_SUPPORT" as const,
-    secondaryRole: "TICKETING_REGISTRATION" as const,
-    competencies: ["WEB_DEVELOPMENT_IT_SUPPORT"] as const,
+    secondaryRole: "TICKET_SALES_REGISTRATION" as const,
+    competencies: ["TECHNICAL_IT_SUPPORT"] as const,
     idempotencyKey: "550e8400-e29b-41d4-a716-446655440000",
   };
 }
@@ -46,8 +50,8 @@ function validInterest() {
     affiliationName: "Example University",
     courseOrJobTitle: "Computer Science",
     primaryRole: "TECHNICAL_IT_SUPPORT" as const,
-    secondaryRole: "TICKETING_REGISTRATION" as const,
-    competencies: ["WEB_DEVELOPMENT_IT_SUPPORT"] as const,
+    secondaryRole: "TICKET_SALES_REGISTRATION" as const,
+    competencies: ["TECHNICAL_IT_SUPPORT"] as const,
     experienceLevel: "ONE_TO_TWO_YEARS" as const,
     relevantExperience: words("experience", 40),
     hasVolunteeredBefore: false,
@@ -165,6 +169,54 @@ test("phone number must use the Nigerian +234 mobile format", () => {
       phoneNumber,
     );
   }
+});
+
+test("role options match the approved volunteer teams", () => {
+  assert.deepEqual(
+    VOLUNTEER_ROLE_OPTIONS.map(({ label }) => label),
+    [
+      "Ticket Sales and Registration",
+      "Partnership and Sponsorship",
+      "Marketing, Communications and Publicity",
+      "Event Hall Selection and Management",
+      "Hospitality: Breakfast, Lunch and Post-event",
+      "Event Medical Team",
+      "Operations Team",
+      "Technical and IT Support",
+      "Programs Team",
+      "Pre-event Team",
+      "Competition Team",
+      "Protocol, Logistics and Security",
+      "VIP Management",
+      "Creative Graphics Team",
+      "Sales, Advertisement and Merchandise",
+      "Other — please specify",
+    ],
+  );
+});
+
+test("competency options align with the approved volunteer teams", () => {
+  assert.deepEqual(
+    VOLUNTEER_COMPETENCY_OPTIONS.map(({ label }) => label),
+    [
+      "Ticket sales or registration",
+      "Partnership or sponsorship management",
+      "Marketing, communications or publicity",
+      "Event hall selection or management",
+      "Hospitality or catering support",
+      "Event medical support",
+      "Event operations",
+      "Technical or IT support",
+      "Program planning or coordination",
+      "Pre-event planning or coordination",
+      "Competition coordination",
+      "Protocol, logistics or security",
+      "VIP management or guest relations",
+      "Creative or graphic design",
+      "Sales, advertisement or merchandise",
+      "Other",
+    ],
+  );
 });
 
 test("every controlled primary role is accepted", () => {

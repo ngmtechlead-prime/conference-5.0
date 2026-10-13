@@ -13,52 +13,41 @@ function optionValues<
 }
 
 export const VOLUNTEER_ROLE_OPTIONS = [
-  { value: "CREATIVE_GRAPHICS_DESIGN", label: "Creative and Graphics Design" },
   {
-    value: "CONTENT_WRITING_COPYWRITING",
-    label: "Content Writing and Copywriting",
+    value: "TICKET_SALES_REGISTRATION",
+    label: "Ticket Sales and Registration",
   },
   {
-    value: "CONFERENCE_OPERATIONS_LOGISTICS",
-    label: "Conference Operations and Logistics",
-  },
-  { value: "MARKETING_PROMOTION", label: "Marketing and Promotion" },
-  {
-    value: "SOCIAL_MEDIA_INFLUENCE_PROMOTION",
-    label: "Social Media Influence and Promotion",
+    value: "PARTNERSHIP_SPONSORSHIP",
+    label: "Partnership and Sponsorship",
   },
   {
-    value: "MEDIA_PUBLICITY_PUBLIC_RELATIONS",
-    label: "Media, Publicity and Public Relations",
+    value: "MARKETING_COMMUNICATIONS_PUBLICITY",
+    label: "Marketing, Communications and Publicity",
   },
   {
-    value: "FUNDRAISING_SPONSORSHIP",
-    label: "Fundraising and Sponsorship",
+    value: "EVENT_HALL_SELECTION_MANAGEMENT",
+    label: "Event Hall Selection and Management",
   },
   {
-    value: "BUSINESS_DEVELOPMENT_CORPORATE_PARTNERSHIPS",
-    label: "Business Development and Corporate Partnerships",
+    value: "HOSPITALITY",
+    label: "Hospitality: Breakfast, Lunch and Post-event",
   },
-  {
-    value: "TICKETING_REGISTRATION",
-    label: "Ticketing and Registration",
-  },
-  {
-    value: "PROGRAMME_PLANNING_COORDINATION",
-    label: "Programme Planning and Coordination",
-  },
-  {
-    value: "PHOTOGRAPHY_VIDEOGRAPHY",
-    label: "Photography and Videography",
-  },
+  { value: "EVENT_MEDICAL_TEAM", label: "Event Medical Team" },
+  { value: "OPERATIONS_TEAM", label: "Operations Team" },
   { value: "TECHNICAL_IT_SUPPORT", label: "Technical and IT Support" },
+  { value: "PROGRAMS_TEAM", label: "Programs Team" },
+  { value: "PRE_EVENT_TEAM", label: "Pre-event Team" },
+  { value: "COMPETITION_TEAM", label: "Competition Team" },
   {
-    value: "VOLUNTEER_COORDINATION_MANAGEMENT",
-    label: "Volunteer Coordination and Management",
+    value: "PROTOCOL_LOGISTICS_SECURITY",
+    label: "Protocol, Logistics and Security",
   },
+  { value: "VIP_MANAGEMENT", label: "VIP Management" },
+  { value: "CREATIVE_GRAPHICS_TEAM", label: "Creative Graphics Team" },
   {
-    value: "PROTOCOL_GUEST_RELATIONS",
-    label: "Protocol and Guest Relations",
+    value: "SALES_ADVERTISEMENT_MERCHANDISE",
+    label: "Sales, Advertisement and Merchandise",
   },
   { value: "OTHER", label: "Other — please specify" },
 ] as const satisfies readonly VolunteerInterestOption[];
@@ -89,59 +78,53 @@ export const VOLUNTEER_APPLICANT_CATEGORY_VALUES = optionValues(
 );
 
 export const VOLUNTEER_COMPETENCY_OPTIONS = [
-  { value: "GRAPHIC_DESIGN", label: "Graphic design" },
-  { value: "UI_UX_DESIGN", label: "UI/UX design" },
   {
-    value: "CONTENT_WRITING_COPYWRITING",
-    label: "Content writing or copywriting",
-  },
-  { value: "PHOTOGRAPHY", label: "Photography" },
-  {
-    value: "VIDEO_RECORDING_EDITING",
-    label: "Video recording or editing",
-  },
-  { value: "DIGITAL_MARKETING", label: "Digital marketing" },
-  {
-    value: "SOCIAL_MEDIA_COMMUNITY_MANAGEMENT",
-    label: "Social media or community management",
+    value: "TICKET_SALES_REGISTRATION",
+    label: "Ticket sales or registration",
   },
   {
-    value: "MEDIA_PUBLIC_RELATIONS",
-    label: "Media relations or public relations",
+    value: "PARTNERSHIP_SPONSORSHIP_MANAGEMENT",
+    label: "Partnership or sponsorship management",
   },
   {
-    value: "EVENT_OPERATIONS_LOGISTICS",
-    label: "Event operations or logistics",
+    value: "MARKETING_COMMUNICATIONS_PUBLICITY",
+    label: "Marketing, communications or publicity",
   },
   {
-    value: "PROJECT_PROGRAMME_MANAGEMENT",
-    label: "Project or programme management",
-  },
-  { value: "FUNDRAISING_SALES", label: "Fundraising or sales" },
-  {
-    value: "SPONSORSHIP_PARTNERSHIP_MANAGEMENT",
-    label: "Sponsorship or partnership management",
+    value: "EVENT_HALL_SELECTION_MANAGEMENT",
+    label: "Event hall selection or management",
   },
   {
-    value: "REGISTRATION_CUSTOMER_SERVICE",
-    label: "Registration or customer service",
+    value: "HOSPITALITY_CATERING_SUPPORT",
+    label: "Hospitality or catering support",
+  },
+  { value: "EVENT_MEDICAL_SUPPORT", label: "Event medical support" },
+  { value: "EVENT_OPERATIONS", label: "Event operations" },
+  { value: "TECHNICAL_IT_SUPPORT", label: "Technical or IT support" },
+  {
+    value: "PROGRAM_PLANNING_COORDINATION",
+    label: "Program planning or coordination",
   },
   {
-    value: "WEB_DEVELOPMENT_IT_SUPPORT",
-    label: "Web development or IT support",
+    value: "PRE_EVENT_PLANNING_COORDINATION",
+    label: "Pre-event planning or coordination",
   },
-  { value: "DATA_TOOLS_AI_AUTOMATION", label: "Data tools or AI automation" },
+  { value: "COMPETITION_COORDINATION", label: "Competition coordination" },
   {
-    value: "PEOPLE_VOLUNTEER_MANAGEMENT",
-    label: "People or volunteer management",
-  },
-  {
-    value: "PROTOCOL_GUEST_RELATIONS",
-    label: "Protocol or guest relations",
+    value: "PROTOCOL_LOGISTICS_SECURITY",
+    label: "Protocol, logistics or security",
   },
   {
-    value: "PUBLIC_SPEAKING_FACILITATION",
-    label: "Public speaking or facilitation",
+    value: "VIP_MANAGEMENT_GUEST_RELATIONS",
+    label: "VIP management or guest relations",
+  },
+  {
+    value: "CREATIVE_GRAPHIC_DESIGN",
+    label: "Creative or graphic design",
+  },
+  {
+    value: "SALES_ADVERTISEMENT_MERCHANDISE",
+    label: "Sales, advertisement or merchandise",
   },
   { value: "OTHER", label: "Other" },
 ] as const satisfies readonly VolunteerInterestOption[];

@@ -145,27 +145,28 @@ export async function POST(request: Request) {
     const submissionKeyHash = hashSubmissionKey(data.idempotencyKey);
     attemptedSubmissionKeyHash = submissionKeyHash;
 
-    const result = await db.$transaction(async (transaction) => {
-      const replay = await transaction.volunteerInterest.findUnique({
-        where: { submissionKeyHash },
-        select: {
-          id: true,
-          primaryRole: true,
-          firstName: true,
-          email: true,
-        },
-      });
+    const replay = await db.volunteerInterest.findUnique({
+      where: { submissionKeyHash },
+      select: {
+        id: true,
+        primaryRole: true,
+        firstName: true,
+        email: true,
+      },
+    });
 
-      if (replay) return { interest: replay, replayed: true };
+    let interest = replay;
+    const replayed = replay !== null;
 
-      const duplicate = await transaction.volunteerInterest.findUnique({
+    if (!interest) {
+      const duplicate = await db.volunteerInterest.findUnique({
         where: { normalizedEmail },
         select: { id: true },
       });
       if (duplicate) throw new DuplicateVolunteerInterestError();
 
       const consentedAt = new Date();
-      const interest = await transaction.volunteerInterest.create({
+      interest = await db.volunteerInterest.create({
         data: {
           firstName: data.firstName,
           lastName: data.lastName,
@@ -212,24 +213,22 @@ export async function POST(request: Request) {
           email: true,
         },
       });
+    }
 
-      return { interest, replayed: false };
-    });
-
-    if (!result.replayed) {
+    if (!replayed) {
       try {
         const emailResult = await sendVolunteerInterestConfirmation({
-          to: result.interest.email,
-          firstName: result.interest.firstName,
-          primaryRole: result.interest.primaryRole,
+          to: interest.email,
+          firstName: interest.firstName,
+          primaryRole: data.primaryRole,
         });
 
         if (!emailResult.success) {
           apiLogger.warn(
             {
               requestId,
-              interestId: result.interest.id,
-              primaryRole: result.interest.primaryRole,
+              interestId: interest.id,
+              primaryRole: interest.primaryRole,
               outcome: "email_failed",
               replayed: false,
             },
@@ -240,8 +239,8 @@ export async function POST(request: Request) {
         apiLogger.warn(
           {
             requestId,
-            interestId: result.interest.id,
-            primaryRole: result.interest.primaryRole,
+            interestId: interest.id,
+            primaryRole: interest.primaryRole,
             outcome: "email_failed",
             replayed: false,
             ...privateErrorMetadata(error),
@@ -254,10 +253,10 @@ export async function POST(request: Request) {
     apiLogger.info(
       {
         requestId,
-        interestId: result.interest.id,
-        primaryRole: result.interest.primaryRole,
+        interestId: interest.id,
+        primaryRole: interest.primaryRole,
         outcome: "success",
-        replayed: result.replayed,
+        replayed,
       },
       "Volunteer interest submission completed",
     );
@@ -265,10 +264,10 @@ export async function POST(request: Request) {
     return NextResponse.json(
       {
         success: true,
-        interestId: result.interest.id,
+        interestId: interest.id,
         message: SUCCESS_MESSAGE,
       },
-      { status: result.replayed ? 200 : 201 },
+      { status: replayed ? 200 : 201 },
     );
   } catch (error) {
     if (error instanceof DuplicateVolunteerInterestError) {
