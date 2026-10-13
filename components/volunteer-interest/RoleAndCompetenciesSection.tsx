@@ -13,6 +13,8 @@ import {
   volunteerFieldId,
 } from "@/components/volunteer-interest/VolunteerInterestField";
 
+const TEAM_DESCRIPTIONS_URL = "https://drive.google.com/file/d/1HvM95y_RvizG4Epjlk4fr_vGf9LSjDPs/view?usp=sharing";
+
 function emptyToUndefined(value: unknown) {
   return typeof value === "string" && value.trim() === "" ? undefined : value;
 }
@@ -38,6 +40,20 @@ export function RoleAndCompetenciesSection() {
         title="Preferred role and competencies"
         description="Choose the area where you can contribute most, then tell us the practical skills you can bring."
       />
+
+      <div className="rounded-xl border border-blue-200 bg-blue-50 p-4 text-sm leading-6 text-blue-950">
+        Before choosing a role, review each team&apos;s job description, key
+        responsibilities, expectations, and KPIs in the{" "}
+        <a
+          href={TEAM_DESCRIPTIONS_URL}
+          className="font-semibold text-[#0F1990] underline underline-offset-2 hover:no-underline"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          volunteer team descriptions
+        </a>
+        .
+      </div>
 
       <div className="grid gap-5 sm:grid-cols-2">
         <VolunteerInterestField

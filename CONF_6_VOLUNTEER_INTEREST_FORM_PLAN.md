@@ -210,21 +210,22 @@ If “Other” is selected for applicant category, show and require “Please sp
 
 Role options:
 
-1. Creative and Graphics Design
-2. Content Writing and Copywriting
-3. Conference Operations and Logistics
-4. Marketing and Promotion
-5. Social Media Influence and Promotion
-6. Media, Publicity and Public Relations
-7. Fundraising and Sponsorship
-8. Business Development and Corporate Partnerships
-9. Ticketing and Registration
-10. Programme Planning and Coordination
-11. Photography and Videography
-12. Technical and IT Support
-13. Volunteer Coordination and Management
-14. Protocol and Guest Relations
-15. Other — please specify
+1. Ticket Sales and Registration
+2. Partnership and Sponsorship
+3. Marketing, Communications and Publicity
+4. Event Hall Selection and Management
+5. Hospitality: Breakfast, Lunch and Post-event
+6. Event Medical Team
+7. Operations Team
+8. Technical and IT Support
+9. Programs Team
+10. Pre-event Team
+11. Competition Team
+12. Protocol, Logistics and Security
+13. VIP Management
+14. Creative Graphics Team
+15. Sales, Advertisement and Merchandise
+16. Other — please specify
 
 The role constants should be the single source of truth for the public form, validation, admin labels, filters, and exports.
 
@@ -238,27 +239,24 @@ Ask: “Which competencies can you confidently contribute?”
 
 Recommended competency options:
 
-- Graphic design
-- UI/UX design
-- Content writing or copywriting
-- Photography
-- Video recording or editing
-- Digital marketing
-- Social media or community management
-- Media relations or public relations
-- Event operations or logistics
-- Project or programme management
-- Fundraising or sales
-- Sponsorship or partnership management
-- Registration or customer service
-- Web development or IT support
-- Data tools or AI automation
-- People or volunteer management
-- Protocol or guest relations
-- Public speaking or facilitation
+- Ticket sales or registration
+- Partnership or sponsorship management
+- Marketing, communications or publicity
+- Event hall selection or management
+- Hospitality or catering support
+- Event medical support
+- Event operations
+- Technical or IT support
+- Program planning or coordination
+- Pre-event planning or coordination
+- Competition coordination
+- Protocol, logistics or security
+- VIP management or guest relations
+- Creative or graphic design
+- Sales, advertisement or merchandise
 - Other
 
-This list preserves skills from the second previous form while adding competencies needed for the new role categories.
+This list aligns the available competencies with the current volunteer team structure.
 
 ### 6.3 Section C — Experience and Motivation
 
