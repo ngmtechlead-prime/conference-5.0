@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import {
   ArrowUpRight,
   FileText,
@@ -125,14 +126,23 @@ export default function MoreInfoPage() {
             </div>
           </article>
 
-          <article className="flex min-h-64 flex-col rounded-2xl border border-gray-200 bg-white/70 p-7 shadow-sm sm:p-8">
+          <Link
+            href="/conf-6.0-interest-form"
+            className="group flex min-h-64 flex-col rounded-2xl border border-gray-200 bg-white/70 p-7 shadow-sm transition duration-200 hover:-translate-y-1 hover:border-[#0F1990]/25 hover:shadow-xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#0F1990] sm:p-8"
+          >
             <div className="flex items-start justify-between gap-4">
               <span className="flex size-12 items-center justify-center rounded-xl bg-[#0F1990]/10 text-[#0F1990]">
                 <HeartHandshake aria-hidden="true" className="size-6" />
               </span>
-              <span className="rounded-full bg-[#0DA04C]/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-[#087a3a]">
-                Coming soon
-              </span>
+              <div className="flex items-center gap-3">
+                <span className="rounded-full bg-[#0DA04C]/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-[#087a3a]">
+                  Registration closed
+                </span>
+                <ArrowUpRight
+                  aria-hidden="true"
+                  className="size-6 text-[#0F1990] transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                />
+              </div>
             </div>
             <div className="mt-auto pt-10 font-epilogue">
               <h2 className="text-2xl font-semibold tracking-[-0.03em] text-[#111827]">
@@ -143,7 +153,7 @@ export default function MoreInfoPage() {
                 Conference experience.
               </p>
             </div>
-          </article>
+          </Link>
         </div>
       </Wrapper>
     </section>
