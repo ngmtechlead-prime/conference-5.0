@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { CalendarClock, Clock3, MapPin, UsersRound } from "lucide-react";
-import { VolunteerInterestForm } from "@/components/volunteer-interest/VolunteerInterestForm";
+// import { VolunteerInterestForm } from "@/components/volunteer-interest/VolunteerInterestForm";
 import { VOLUNTEER_INTEREST_EVENT } from "@/lib/constants/volunteer-interest";
 
 export const metadata: Metadata = {
@@ -80,7 +80,23 @@ export default function VolunteerInterestPage() {
             are optional. Your answers remain on this page if a network or
             server error occurs.
           </div> */}
-          <VolunteerInterestForm />
+          {/* <VolunteerInterestForm /> */}
+          <div
+            role="status"
+            className="mx-auto flex max-w-2xl flex-col items-center py-10 text-center sm:py-14"
+          >
+            <div className="flex size-14 items-center justify-center rounded-full bg-[#0F1990]/10 text-[#0F1990]">
+              <CalendarClock className="size-7" aria-hidden="true" />
+            </div>
+            <h2 className="mt-5 text-2xl font-bold tracking-tight text-gray-950 sm:text-3xl">
+              Registration closed
+            </h2>
+            <p className="mt-3 max-w-xl text-sm leading-7 text-gray-600 sm:text-base">
+              Volunteer registration for {VOLUNTEER_INTEREST_EVENT.name} is now
+              closed. Thank you to everyone who expressed interest in supporting
+              the conference.
+            </p>
+          </div>
         </div>
 
         <div className="mx-auto mt-8 grid max-w-5xl gap-4 text-sm leading-6 text-gray-700 md:grid-cols-2">
